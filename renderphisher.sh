@@ -704,13 +704,13 @@ main_menu() {
 		${RED}[${WHITE}03${RED}]${ORANGE} Google
 		${RED}[${WHITE}04${RED}]${ORANGE} Microsoft
 		${RED}[${WHITE}05${RED}]${ORANGE} Paypal
-		${RED}[${WHITE}08${RED}]${ORANGE} Tiktok
-		${RED}[${WHITE}09${RED}]${ORANGE} Snapchat
-		${RED}[${WHITE}10${RED}]${ORANGE} Spotify
-		${RED}[${WHITE}11${RED}]${ORANGE} Xbox
-		${RED}[${WHITE}12${RED}]${ORANGE} GitHub
-		${RED}[${WHITE}13${RED}]${ORANGE} Discord
-		${RED}[${WHITE}14${RED}]${ORANGE} Roblox
+		${RED}[${WHITE}06${RED}]${ORANGE} Tiktok
+		${RED}[${WHITE}07${RED}]${ORANGE} Snapchat
+		${RED}[${WHITE}08${RED}]${ORANGE} Spotify
+		${RED}[${WHITE}09${RED}]${ORANGE} Xbox
+		${RED}[${WHITE}10${RED}]${ORANGE} GitHub
+		${RED}[${WHITE}11${RED}]${ORANGE} Discord
+		${RED}[${WHITE}12${RED}]${ORANGE} Roblox
 
 		${RED}[${WHITE}99${RED}]${ORANGE} About         ${RED}[${WHITE}00${RED}]${ORANGE} Exit
 
