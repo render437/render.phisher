@@ -77,20 +77,9 @@
 ##    modification follow.
 ##
 ##      Copyright (C) 2022  RENDER (https://github.com/render437)
-##
-
-##   THANKS TO :
-##   1RaY-1 - https://github.com/1RaY-1
-##   Aditya Shakya - https://github.com/adi1090x
-##   Ali Milani Amin - https://github.com/AliMilani
-##   Ignitetch  - https://github.com/Ignitetch/AdvPhishing
-##   Moises Tapia - https://github.com/MoisesTapia
-##   Mr.Derek - https://github.com/E343IO
-##   Mustakim Ahmed - https://github.com/bdhackers009
-##   TheLinuxChoice - https://twitter.com/linux_choice
 
 
-__version__="2.3.5"
+__version__="1.0"
 
 ## DEFAULT HOST & PORT
 HOST='127.0.0.1'
