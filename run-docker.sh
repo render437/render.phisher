@@ -10,7 +10,7 @@ fi
 
 CONTAINER="render.phisher"
 IMAGE="render437/render.phisher:latest"
-IMG_MIRROR="ghcr.io/htr-tech/zphisher:latest"
+IMG_MIRROR="ghcr.io/render437/render.phisher:latest"
 MOUNT_LOCATION=${BASE_DIR}/auth
 check_container=$(docker ps --all --format "{{.Names}}")
 
