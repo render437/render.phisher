@@ -30,7 +30,7 @@ src="https://images.guns.lol/6c68ccf4187e186e14f5455cdefdbe8e6124f8c9/3OvaqL.png
 
 <b>This toolkit contains materials that can be potentially damaging or dangerous for social media</b>. Refer to the laws in your province/country before accessing, using,or in any other way utilizing this in a wrong way.
 
-<b>This Tool is made for educational purposes only</b>. Do not attempt to violate the law with anything contained here. <b>If this is your intention, then Get the hell out of here</b>!
+<b>This Tool is made for educational purposes only</b>. Do not attempt to violate the law with anything contained here. <b>If this is your intention, then get the fuck outta here.</b>!
 
 It only demonstrates "how phishing works". <b>You shall not misuse the information to gain unauthorized access to someones social media</b>. However you may try out this at your own risk.</i>
 
@@ -39,12 +39,12 @@ It only demonstrates "how phishing works". <b>You shall not misuse the informati
 ### Features
 
 - Latest and updated login pages.
-- Beginners friendly
+- Beginner friendly
 - Multiple tunneling options
   - Localhost
   - Cloudflared
   - LocalXpose
-- Mask URL support 
+- Mask URL support(might not work)
 - Docker support
 
 ##
