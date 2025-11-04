@@ -231,20 +231,20 @@ check_status() {
 
 ## Banner
 banner() {
-	cat <<- EOF
-		${ORANGE}                    _                   _     _     _                 
-		${ORANGE}				    | |                 | |   (_)   | |                
-		${ORANGE} _ __ ___ _ __   __| | ___ _ __   _ __ | |__  _ ___| |__   ___ _ __   
-		${ORANGE}| '__/ _ \ '_ \ / _` |/ _ \ '__| | '_ \| '_ \| / __| '_ \ / _ \ '__|  
-		${ORANGE}| | |  __/ | | | (_| |  __/ |    | |_) | | | | \__ \ | | |  __/ |     
-		${ORANGE}|_|  \___|_| |_|\__,_|\___|_|    | .__/|_| |_|_|___/_| |_|\___|_|     
-		${ORANGE}                                 | |                                  
-		${ORANGE}                                 |_|   ${RED}Version : ${__version__} 
+    cat << EOF
+${ORANGE}                    _                   _     _     _                 
+${ORANGE}                   | |                 | |   (_)   | |                
+${ORANGE} _ __ ___ _ __   __| | ___ _ __   _ __ | |__  _ ___| |__   ___ _ __   
+${ORANGE}| '__/ _ \ '_ \ / _\` |/ _ \ '__| | '_ \| '_ \| / __| '_ \ / _ \ '__|  
+${ORANGE}| | |  __/ | | | (_| |  __/ |    | |_) | | | | \__ \ | | |  __/ |     
+${ORANGE}|_|  \___|_| |_|\__,_|\___|_|    | .__/|_| |_|_|___/_| |_|\___|_|     
+${ORANGE}                                 | |                                  
+${ORANGE}                                 |_|   ${RED}Version : ${__version__} 
 
-
-		${GREEN}[${WHITE}-${GREEN}]${CYAN} Tool Created by render (tahmid.rayat)${WHITE}
-	EOF
+${GREEN}[${WHITE}-${GREEN}]${CYAN} Tool Created by render (tahmid.rayat)${WHITE}
+EOF
 }
+
 
 ## Small Banner
 banner_small() {
