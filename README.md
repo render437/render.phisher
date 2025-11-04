@@ -1,7 +1,7 @@
 <!-- render.phisher -->
 
 <p align="center">
-  <img src=".github/misc/logo.png">
+  <img src="[.github/misc/logo.png](https://images.guns.lol/6c68ccf4187e186e14f5455cdefdbe8e6124f8c9/3OvaqL.png)">
 </p>
 
 <p align="center">
