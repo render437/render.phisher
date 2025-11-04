@@ -35,7 +35,7 @@ jobs:
         if: github.repository == 'render437/render.phisher' && github.ref == 'refs/heads/master'
         uses: docker/login-action@v2
         with:
-          username: "htrtech"
+          username: "render437"
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Push
