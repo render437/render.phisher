@@ -166,9 +166,9 @@ check_update(){
 		--retry 3 --retry-delay 2 --location --output ".render.phisher.tar.gz" "${tarball_url}"
 
 		if [[ -e ".render.phisher.tar.gz" ]]; then
-			tar -xf .render.phisher.tar.gz -C "$BASE_DIR" --strip-components 1 > /dev/null 2>&1
+			sudo tar -xf .render.phisher.tar.gz -C "$BASE_DIR" --strip-components 1 > /dev/null 2>&1
 			[ $? -ne 0 ] && { echo -e "\n\n${RED}[${WHITE}!${RED}]${RED} Error occured while extracting."; reset_color; exit 1; }
-			rm -f .render.phisher.tar.gz
+			sudo rm -f .render.phisher.tar.gz
 			popd > /dev/null 2>&1
 			{ sleep 3; clear; banner_small; }
 			echo -ne "\n${GREEN}[${WHITE}+${GREEN}] Successfully updated! Run render.phisher again\n\n"${WHITE}
