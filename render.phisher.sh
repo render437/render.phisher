@@ -175,7 +175,7 @@ check_update() {
   fi
 
   if [ -z "$new_version" ]; then
-    echo -e "${ORANGE}Could not determine latest version (empty).${WHITE}"
+    echo -e "${ORANGE}Could not determine latest version.${WHITE}"
     return 1
   fi
 
