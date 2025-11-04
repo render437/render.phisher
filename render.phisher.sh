@@ -150,7 +150,37 @@ kill_pid() {
 	done
 }
 
+# Check for a newer release
+check_update(){
+	echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Checking for update : "
+	relase_url='https://api.github.com/repos/render437/render.phisher/releases/latest'
+	new_version=$(curl -s "${relase_url}" | grep '"tag_name":' | awk -F\" '{print $4}')
+	tarball_url="https://github.com/render437/render.phisher/archive/refs/tags/${new_version}.tar.gz"
 
+	if [[ $new_version != $__version__ ]]; then
+		echo -ne "${ORANGE}update found\n"${WHITE}
+		sleep 2
+		echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Downloading Update..."
+		pushd "$HOME" > /dev/null 2>&1
+		curl --silent --insecure --fail --retry-connrefused \
+		--retry 3 --retry-delay 2 --location --output ".render.phisher.tar.gz" "${tarball_url}"
+
+		if [[ -e ".render.phisher.tar.gz" ]]; then
+			tar -xf .render.phisher.tar.gz -C "$BASE_DIR" --strip-components 1 > /dev/null 2>&1
+			[ $? -ne 0 ] && { echo -e "\n\n${RED}[${WHITE}!${RED}]${RED} Error occured while extracting."; reset_color; exit 1; }
+			rm -f .render.phisher.tar.gz
+			popd > /dev/null 2>&1
+			{ sleep 3; clear; banner_small; }
+			echo -ne "\n${GREEN}[${WHITE}+${GREEN}] Successfully updated! Run render.phisher again\n\n"${WHITE}
+			{ reset_color ; exit 1; }
+		else
+			echo -e "\n${RED}[${WHITE}!${RED}]${RED} Error occured while downloading."
+			{ reset_color; exit 1; }
+		fi
+	else
+		echo -ne "${GREEN}up to date\n${WHITE}" ; sleep .5
+	fi
+}
 
 ## Check Internet Status
 check_status() {
