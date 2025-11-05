@@ -739,18 +739,18 @@ main_menu() {
 	cat <<- EOF
 		${RED}[${WHITE}::${RED}]${ORANGE} Select An Attack For Your Victim ${RED}[${WHITE}::${RED}]${ORANGE}
 
-		${RED}[${WHITE}01${RED}]${ORANGE} Facebook
-		${RED}[${WHITE}02${RED}]${ORANGE} Instagram
-		${RED}[${WHITE}03${RED}]${ORANGE} Google
-		${RED}[${WHITE}04${RED}]${ORANGE} Microsoft
-		${RED}[${WHITE}05${RED}]${ORANGE} Paypal
-		${RED}[${WHITE}06${RED}]${ORANGE} Tiktok
-		${RED}[${WHITE}07${RED}]${ORANGE} Snapchat
-		${RED}[${WHITE}08${RED}]${ORANGE} Spotify
-		${RED}[${WHITE}09${RED}]${ORANGE} Xbox
-		${RED}[${WHITE}10${RED}]${ORANGE} GitHub
-		${RED}[${WHITE}11${RED}]${ORANGE} Discord
-		${RED}[${WHITE}12${RED}]${ORANGE} Roblox
+		${MAGENTA}[${CYAN}01${MAGENTA}]${ORANGE} Facebook
+		${MAGENTA}[${CYAN}02${MAGENTA}]${ORANGE} Instagram
+		${MAGENTA}[${CYAN}03${MAGENTA}]${ORANGE} Google
+		${MAGENTA}[${CYAN}04${MAGENTA}]${ORANGE} Microsoft
+		${MAGENTA}[${CYAN}05${MAGENTA}]${ORANGE} Paypal
+		${MAGENTA}[${CYAN}06${MAGENTA}]${ORANGE} Tiktok
+		${MAGENTA}[${CYAN}07${MAGENTA}]${ORANGE} Snapchat
+		${MAGENTA}[${CYAN}08${MAGENTA}]${ORANGE} Spotify
+		${MAGENTA}[${CYAN}09${MAGENTA}]${ORANGE} Xbox
+		${MAGENTA}[${CYAN}10${MAGENTA}]${ORANGE} GitHub
+		${MAGENTA}[${CYAN}11${MAGENTA}]${ORANGE} Discord
+		${MAGENTA}[${CYAN}12${MAGENTA}]${ORANGE} Roblox
 
 		${RED}[${WHITE}99${RED}]${ORANGE} About         ${RED}[${WHITE}00${RED}]${ORANGE} Exit
 
