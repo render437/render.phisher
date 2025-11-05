@@ -6,18 +6,18 @@ src="https://images.guns.lol/6c68ccf4187e186e14f5455cdefdbe8e6124f8c9/3OvaqL.png
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Version-2.3.5-green?style=for-the-badge">
-  <img src="https://img.shields.io/github/license/render437/render.phisher?style=for-the-badge">
-  <img src="https://img.shields.io/github/stars/render437/render.phisher?style=for-the-badge">
-  <img src="https://img.shields.io/github/issues/render437/render.phisher?color=red&style=for-the-badge">
-  <img src="https://img.shields.io/github/forks/render437/render.phisher?color=teal&style=for-the-badge">
+  <img src="https://img.shields.io/badge/Version-2.3.5-green?style=for-the-badge" alt="Version">
+  <img src="https://img.shields.io/github/license/render437/render.phisher?style=for-the-badge" alt="License">
+  <img src="https://img.shields.io/github/stars/render437/render.phisher?style=for-the-badge" alt="Stars">
+  <img src="https://img.shields.io/github/issues/render437/render.phisher?color=red&style=for-the-badge" alt="Issues">
+  <img src="https://img.shields.io/github/forks/render437/render.phisher?color=teal&style=for-the-badge" alt="Forks">
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Author-render437-blue?style=flat-square">
-  <img src="https://img.shields.io/badge/Open%20Source-Yes-darkgreen?style=flat-square">
-  <img src="https://img.shields.io/badge/Maintained%3F-Yes-lightblue?style=flat-square">
-  <img src="https://img.shields.io/badge/Written%20In-Bash-darkcyan?style=flat-square"></a>
+  <img src="https://img.shields.io/badge/Author-render437-blue?style=flat-square" alt="Author">
+  <img src="https://img.shields.io/badge/Open%20Source-Yes-darkgreen?style=flat-square" alt="Open Source">
+  <img src="https://img.shields.io/badge/Maintained%3F-Yes-lightblue?style=flat-square" alt="Maintained">
+  <img src="https://img.shields.io/badge/Written%20In-Bash-darkcyan?style=flat-square" alt="Written In">
 </p>
 
 <p align="center"><b>A beginner friendly, simple automated phishing tool with 10+ templates.</b></p>
