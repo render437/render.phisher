@@ -20,13 +20,6 @@
 </p>
 
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Author-render437-blue?style=flat-square">
-  <img src="https://img.shields.io/badge/Open%20Source-Yes-darkgreen?style=flat-square">
-  <img src="https://img.shields.io/badge/Maintained%3F-Yes-lightblue?style=flat-square">
-  <img src="https://img.shields.io/badge/Written%20In-Bash-darkcyan?style=flat-square">
-</p>
-
 <p align="center"><b>A beginner friendly, simple automated phishing tool with 10+ templates.</b></p>
 
 ##
