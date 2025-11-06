@@ -67,18 +67,11 @@
 
 - On first launch, It'll install the dependencies and that's it. ***render.phisher*** is installed.
 
-- All-in-one command: -
-  ```
-  git clone --depth=1 https://github.com/render437/render.phisher.git; cd render.phisher; bash render.phisher.sh
-  ```
-
 ##
 
-### Uninstall Process
-
-- Just paste this command into your terminal -
+### All-In-One Command
   ```
-  cd; sudo rm -r render.phisher
+  git clone --depth=1 https://github.com/render437/render.phisher.git; cd render.phisher; bash render.phisher.sh
   ```
 
 ##
@@ -114,6 +107,15 @@ $ render.phisher
   ```
   $ dpkg -i <your path to deb file>
   $ apt install -f
+  ```
+
+##
+
+### Uninstall Process
+
+- Just paste this command into your terminal -
+  ```
+  cd; sudo rm -r render.phisher
   ```
 
 ##
