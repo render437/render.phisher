@@ -1,0 +1,35 @@
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f0f4f8;
+  color: #333;
+  text-align: center;
+}
+
+header {
+  background: #0366d6;
+  color: white;
+  padding: 1em 0;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  font-size: 1rem;
+  background: #0366d6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #024ea4;
+}
+
+footer {
+  margin-top: 50px;
+  font-size: 0.9em;
+  color: #777;
+}
