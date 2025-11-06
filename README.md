@@ -4,14 +4,21 @@
   <img src="https://images.guns.lol/6c68ccf4187e186e14f5455cdefdbe8e6124f8c9/3OvaqL.png">
 </p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Version-1.2.0-green?style=for-the-badge">
+  <img src="https://img.shields.io/github/license/render.phisher/render437?style=for-the-badge">
+  <img src="https://img.shields.io/github/stars/render.phisher/render437?style=for-the-badge">
+  <img src="https://img.shields.io/github/issues/render.phisher/render437?color=red&style=for-the-badge">
+  <img src="https://img.shields.io/github/forks/render.phisher/render437?color=teal&style=for-the-badge">
+</p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Version-1.1.0-green?style=for-the-badge">
-  <img src="https://img.shields.io/github/license/render437/render.phisher?style=for-the-badge">
-  <img src="https://img.shields.io/github/stars/render437/render.phisher?style=for-the-badge">
-  <img src="https://img.shields.io/github/issues/render437/render.phisher?color=red&style=for-the-badge">
-  <img src="https://img.shields.io/github/forks/render437/render.phisher?color=teal&style=for-the-badge">
+  <img src="https://img.shields.io/badge/Author-render437-blue?style=flat-square">
+  <img src="https://img.shields.io/badge/Open%20Source-Yes-darkgreen?style=flat-square">
+  <img src="https://img.shields.io/badge/Maintained%3F-Yes-lightblue?style=flat-square">
+  <img src="https://img.shields.io/badge/Written%20In-Bash-darkcyan?style=flat-square">
 </p>
+
 
 <p align="center">
   <img src="https://img.shields.io/badge/Author-render437-blue?style=flat-square">
