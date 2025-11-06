@@ -83,14 +83,6 @@ $ pkg install tur-repo
 $ pkg install render.phisher
 $ render.phisher
 ```
-### A Note : 
-***Termux discourages hacking*** .. So never discuss anything related to *render.phisher* in any of the termux discussion groups. For more check : [wiki](https://wiki.termux.com/wiki/Hacking)
-
-##
-
-<p align="left">
-  <a href="https://shell.cloud.google.com/cloudshell/open?cloudshell_git_repo=https://github.com/render437/render.phisher&tutorial=README.md" target="_blank"><img src="https://gstatic.com/cloudssh/images/open-btn.svg"></a>
-</p>
 
 ##
 
