@@ -160,6 +160,13 @@ $ render.phisher
 
 ##
 
+<h3 align="center"><i>:: Workflow ::</i></h3>
+<p align="center">
+<img src=".github/misc/workflow.gif"/>
+</p>
+
+##
+
 ### Find Me on:
 <p align="left">
   <a href="https://beacons.ai/render437" target="_blank">
