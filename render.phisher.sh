@@ -549,9 +549,9 @@ tunnel_menu() {
 	{ clear; banner_small; }
 	cat <<- EOF
 
-		${RED}[${WHITE}01${RED}]${ORANGE} Localhost
-		${RED}[${WHITE}02${RED}]${ORANGE} Cloudflared  ${RED}[${CYAN}Auto Detects${RED}]
-		${RED}[${WHITE}03${RED}]${ORANGE} LocalXpose   ${RED}[${CYAN}NEW! Max 15Min${RED}]
+		${MAGENTA}[${CYAN}01${MAGENTA}]${ORANGE} Localhost
+		${MAGENTA}[${CYAN}02${MAGENTA}]${ORANGE} Cloudflared  ${RED}[${CYAN}Auto Detects${RED}]
+		${MAGENTA}[${CYAN}03${MAGENTA}]${ORANGE} LocalXpose   ${RED}[${CYAN}BROKEN${RED}]
 
 	EOF
 
@@ -737,7 +737,7 @@ site_gmail() {
 main_menu() {
 	{ clear; banner; echo; }
 	cat <<- EOF
-		${RED}[${WHITE}::${RED}]${ORANGE} Select An Attack For Your Victim ${RED}[${WHITE}::${RED}]${ORANGE}
+		${MAGENTA}[${CYAN}::${MAGENTA}]${BLUE} Select An Attack For Your Victim ${MAGENTA}[${CYAN}::${MAGENTA}]${BLUE}
 
 		${MAGENTA}[${CYAN}01${MAGENTA}]${BLUE} Facebook		${MAGENTA}[${CYAN}05${MAGENTA}]${BLUE} Paypal		${MAGENTA}[${CYAN}09${MAGENTA}]${BLUE} Xbox
 		${MAGENTA}[${CYAN}02${MAGENTA}]${BLUE} Instagram		${MAGENTA}[${CYAN}06${MAGENTA}]${BLUE} Tiktok		${MAGENTA}[${CYAN}10${MAGENTA}]${BLUE} GitHub
