@@ -1,8 +1,8 @@
 <!-- render.phisher -->
 
-<h1 align="center">render</h1>
+<h1 align="left">render.phisher</h1>
 
-<p align="center">
+<p align="left">
   <a href="https://github.com/render437/render.phisher">
     <img title="Version" src="https://img.shields.io/badge/Version-1.2.0-green?style=for-the-badge"></a>
   <a href="https://github.com/render437/render.phisher">
@@ -15,7 +15,7 @@
     <img title="Issues" src="https://img.shields.io/badge/Forks-0-purple?style=for-the-badge"></a>
 </p>
 
-<p align="center">
+<p align="left">
   <img src="https://img.shields.io/badge/Author-render437-blue?style=flat-square">
   <img src="https://img.shields.io/badge/Open%20Source-Yes-darkgreen?style=flat-square">
   <img src="https://img.shields.io/badge/Maintained%3F-Yes-lightblue?style=flat-square">
@@ -23,7 +23,7 @@
 </p>
 
 
-<p align="center"><b>A beginner friendly, simple automated phishing tool with 10+ templates.</b></p>
+<p align="left"><b>A beginner friendly, simple automated phishing tool with 10+ templates.</b></p>
 
 ##
 
