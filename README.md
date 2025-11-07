@@ -1,15 +1,18 @@
 <!-- render.phisher -->
 
-<p align="center">
-  <img src="https://images.guns.lol/6c68ccf4187e186e14f5455cdefdbe8e6124f8c9/3OvaqL.png">
-</p>
+<h1 align="center">render</h1>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Version-1.2.0-green?style=for-the-badge">
-  <img src="https://img.shields.io/github/license/render.phisher/render437?style=for-the-badge">
-  <img src="https://img.shields.io/github/stars/render.phisher/render437?style=for-the-badge">
-  <img src="https://img.shields.io/github/issues/render.phisher/render437?color=red&style=for-the-badge">
-  <img src="https://img.shields.io/github/forks/render.phisher/render437?color=teal&style=for-the-badge">
+  <a href="https://github.com/render437/render.phisher">
+    <img title="Version" src="https://img.shields.io/badge/Version-1.2.0-green?style=for-the-badge"></a>
+  <a href="https://github.com/render437/render.phisher">
+    <img title="License" src="https://img.shields.io/badge/License-GNU-orange?style=for-the-badge"></a>
+  <a href="https://github.com/render437/render.phisher">
+    <img title="Stars" src="https://img.shields.io/badge/Stars-0-yellow?style=for-the-badge"></a>
+  <a href="https://github.com/render437/render.phisher">
+    <img title="Issues" src="https://img.shields.io/badge/Issues-0-cyan?style=for-the-badge"></a>
+  <a href="https://github.com/render437/render.phisher">
+    <img title="Issues" src="https://img.shields.io/badge/Forks-0-purple?style=for-the-badge"></a>
 </p>
 
 <p align="center">
