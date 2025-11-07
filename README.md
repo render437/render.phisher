@@ -49,7 +49,6 @@
 - Multiple tunneling options
   - Localhost
   - Cloudflared
-  - LocalXpose(might not work)
 - Mask URL support(might not work)
 - Docker support
 
