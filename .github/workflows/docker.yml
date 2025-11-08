@@ -21,7 +21,7 @@ jobs:
           docker build --tag render437/render.phisher:latest .
 
           # Tag Docker Image for GHCR
-          docker tag htrtech/zphisher:latest ghcr.io/htr-tech/zphisher:latest
+          docker tag htrtech/render.phisher:latest ghcr.io/render437/render.phisher:latest
 
       - name: Login to GHCR
         if: github.repository == 'render437/render.phisher' && github.ref == 'refs/heads/master'
