@@ -1,12 +1,12 @@
 #!/bin/bash
 
 ##   render.phisher 	: 	Simple Automated Phishing Tool
-##   Author 			: 	render
-##   Version			: 	1.1.0
+##   Author 			: 	render437
+##   Version			: 	1.2.0
 ##   Github 			: 	https://github.com/render437/render.phisher
 
 
-__version__="1.1.0"
+__version__="1.2.0"
 
 ## DEFAULT HOST & PORT
 HOST='127.0.0.1'
