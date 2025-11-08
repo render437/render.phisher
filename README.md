@@ -4,16 +4,23 @@
 
 <p align="left">
   <a href="https://github.com/render437/render.phisher">
-    <img title="Version" src="https://img.shields.io/badge/Version-1.2.0-green?style=for-the-badge"></a>
+    <img alt="Release" src="https://img.shields.io/github/v/release/render437/render%2Ephisher?style=for-the-badge&label=Version&logo=github">
+  </a>
   <a href="https://github.com/render437/render.phisher">
-    <img title="License" src="https://img.shields.io/badge/License-GNU-orange?style=for-the-badge"></a>
-  <a href="https://github.com/render437/render.phisher">
-    <img title="Stars" src="https://img.shields.io/badge/Stars-0-yellow?style=for-the-badge"></a>
-  <a href="https://github.com/render437/render.phisher">
-    <img title="Issues" src="https://img.shields.io/badge/Issues-0-cyan?style=for-the-badge"></a>
-  <a href="https://github.com/render437/render.phisher">
-    <img title="Issues" src="https://img.shields.io/badge/Forks-0-purple?style=for-the-badge"></a>
+    <img alt="License" src="https://img.shields.io/github/license/render437/render%2Ephisher?style=for-the-badge&label=License">
+  </a>
+  <a href="https://github.com/render437/render.phisher/stargazers">
+    <img alt="GitHub stars" src="https://img.shields.io/github/stars/render437/render%2Ephisher?style=for-the-badge&logo=github&label=Stars">
+  </a>
+  <a href="https://github.com/render437/render.phisher/issues">
+    <img alt="Open issues" src="https://img.shields.io/github/issues/render437/render%2Ephisher?style=for-the-badge&label=Issues">
+  </a>
+  <a href="https://github.com/render437/render.phisher/network/members">
+    <img alt="Forks" src="https://img.shields.io/github/forks/render437/render%2Ephisher?style=for-the-badge&label=Forks">
+  </a>
 </p>
+
+
 
 <p align="left">
   <img src="https://img.shields.io/badge/Author-render437-blue?style=flat-square">
