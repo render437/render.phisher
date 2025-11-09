@@ -2,7 +2,7 @@
 
 # Make Deb Package for render.phisher (^.^)
 _PACKAGE=render.phisher
-_VERSION=1.0
+_VERSION=1.2
 _ARCH="all"
 PKG_NAME="${_PACKAGE}_${_VERSION}_${_ARCH}.deb"
 
