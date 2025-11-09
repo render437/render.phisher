@@ -6,13 +6,13 @@
   <a href="https://github.com/render437/render.phisher">
     <img title="Version" src="https://img.shields.io/badge/Version-1.2-green?style=for-the-badge&logo=github"></a>
   <a href="https://github.com/render437/render.phisher/blob/main/LICENSE">
-    <img title="License" src="https://img.shields.io/badge/License-GPL_3.0-lightblue?style=for-the-badge&logo=gnu"></a>
+    <img title="License" src="https://img.shields.io/badge/License-GPL_3.0-orange?style=for-the-badge&logo=gnu"></a>
   <a href="https://github.com/render437/render.phisher/stargazers">
     <img title="Stars" src="https://img.shields.io/badge/Stars-0-yellow?style=for-the-badge&logo=github"></a>
    <a href="https://github.com/render437/render.phisher/issues">
     <img title="Issues" src="https://img.shields.io/badge/Issues-0-purple?style=for-the-badge&logo=github"></a>
    <a href="https://github.com/render437/render.phisher/network/members">
-    <img title="FOrks" src="https://img.shields.io/badge/Forks-0-orange?style=for-the-badge&logo=github"></a>
+    <img title="FOrks" src="https://img.shields.io/badge/Forks-0-magenta?style=for-the-badge&logo=github"></a>
    <a href="https://github.com/render437/render.phisher/pulls">
      <img title="Pull Requests" src="https://img.shields.io/badge/Pull Requests-0-darkblue?style=for-the-badge&logo=github"></a>
 </p>
