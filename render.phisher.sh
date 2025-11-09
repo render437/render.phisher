@@ -19,6 +19,42 @@ REDBG="$(printf '\033[41m')"  GREENBG="$(printf '\033[42m')"  ORANGEBG="$(printf
 MAGENTABG="$(printf '\033[45m')"  CYANBG="$(printf '\033[46m')"  WHITEBG="$(printf '\033[47m')" BLACKBG="$(printf '\033[40m')"
 RESETBG="$(printf '\e[0m\n')"
 
+## Reset terminal colors
+reset_color() {
+	tput sgr0   # reset attributes
+	tput op     # reset color
+	return
+}
+
+## Banner
+banner() {
+    cat << EOF
+${CYAN}                    _                   _     _     _                 
+${CYAN}                   | |                 | |   (_)   | |                
+${CYAN} _ __ ___ _ __   __| | ___ _ __   _ __ | |__  _ ___| |__   ___ _ __   
+${CYAN}| '__/ _ \ '_ \ / _\` |/ _ \ '__| | '_ \| '_ \| / __| '_ \ / _ \ '__|  
+${CYAN}| | |  __/ | | | (_| |  __/ |    | |_) | | | | \__ \ | | |  __/ |     
+${CYAN}|_|  \___|_| |_|\__,_|\___|_|    | .__/|_| |_|_|___/_| |_|\___|_|     
+${CYAN}                                 | |                                  
+${CYAN}                                 |_|   ${RED}Version : ${__version__} 
+
+${GREEN}[${WHITE}-${GREEN}]${CYAN} Tool Created by render${WHITE}
+EOF
+}
+
+
+## Small Banner
+banner_small() {
+	cat <<- EOF
+		${BLUE}
+		${BLUE}░█▀▄░█▀▀░█▀█░█▀▄░█▀▀░█▀▄░░░█▀█░█░█░▀█▀░█▀▀░█░█░█▀▀░█▀▄
+		${BLUE}░█▀▄░█▀▀░█░█░█░█░█▀▀░█▀▄░░░█▀▀░█▀█░░█░░▀▀█░█▀█░█▀▀░█▀▄
+		${BLUE}░▀░▀░▀▀▀░▀░▀░▀▀░░▀▀▀░▀░▀░░░▀░░░▀░▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀░▀${WHITE} ${__version__}
+		${BLUE}
+		${BLUE}
+	EOF
+}
+
 ## Directories
 BASE_DIR=$(realpath "$(dirname "$BASH_SOURCE")")
 
@@ -60,12 +96,6 @@ exit_on_signal_SIGTERM() {
 trap exit_on_signal_SIGINT SIGINT
 trap exit_on_signal_SIGTERM SIGTERM
 
-## Reset terminal colors
-reset_color() {
-	tput sgr0   # reset attributes
-	tput op     # reset color
-	return
-}
 
 ## Kill already running process
 kill_pid() {
@@ -154,35 +184,6 @@ check_status() {
 	echo -ne "\n${ORANGE}[${BLUE}+${ORANGE}]${CYAN} Internet Status : "
 	timeout 3s curl -fIs "https://api.github.com" > /dev/null
 	[ $? -eq 0 ] && echo -e "${GREEN}Online${WHITE}" && check_update || echo -e "${RED}Offline${WHITE}"
-}
-
-## Banner
-banner() {
-    cat << EOF
-${CYAN}                    _                   _     _     _                 
-${CYAN}                   | |                 | |   (_)   | |                
-${CYAN} _ __ ___ _ __   __| | ___ _ __   _ __ | |__  _ ___| |__   ___ _ __   
-${CYAN}| '__/ _ \ '_ \ / _\` |/ _ \ '__| | '_ \| '_ \| / __| '_ \ / _ \ '__|  
-${CYAN}| | |  __/ | | | (_| |  __/ |    | |_) | | | | \__ \ | | |  __/ |     
-${CYAN}|_|  \___|_| |_|\__,_|\___|_|    | .__/|_| |_|_|___/_| |_|\___|_|     
-${CYAN}                                 | |                                  
-${CYAN}                                 |_|   ${RED}Version : ${__version__} 
-
-${GREEN}[${WHITE}-${GREEN}]${CYAN} Tool Created by render${WHITE}
-EOF
-}
-
-
-## Small Banner
-banner_small() {
-	cat <<- EOF
-		${BLUE}
-		${BLUE}░█▀▄░█▀▀░█▀█░█▀▄░█▀▀░█▀▄░░░█▀█░█░█░▀█▀░█▀▀░█░█░█▀▀░█▀▄
-		${BLUE}░█▀▄░█▀▀░█░█░█░█░█▀▀░█▀▄░░░█▀▀░█▀█░░█░░▀▀█░█▀█░█▀▀░█▀▄
-		${BLUE}░▀░▀░▀▀▀░▀░▀░▀▀░░▀▀▀░▀░▀░░░▀░░░▀░▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀░▀${WHITE} ${__version__}
-		${BLUE}
-		${BLUE}
-	EOF
 }
 
 ## Dependencies
