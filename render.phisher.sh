@@ -312,14 +312,11 @@ about() {
 		${GREEN} Github   ${RED}:  ${CYAN}https://github.com/render437
 		${GREEN} Version  ${RED}:  ${ORANGE}${__version__}
 
-		${WHITE} ${REDBG}Warning:${RESETBG}
-		${CYAN}  This Tool is made for educational purpose 
-		  only ${RED}!${WHITE}${CYAN} Author will not be responsible for 
-		  any misuse of this tool ${RED}!${WHITE}
-		
+		${RED} Warning:${RESET}
+		${ORANGE}  This tool is made for educational purposes only. 
+		The author will not be responsible for any misuse of this tool!${RESET}
 
 		${RED}[${WHITE}00${RED}]${ORANGE} Main Menu     ${RED}[${WHITE}99${RED}]${ORANGE} Exit
-
 	EOF
 
 	read -p "${RED}[${WHITE}-${RED}]${GREEN} Select an option : ${BLUE}"
