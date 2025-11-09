@@ -474,9 +474,9 @@ tunnel_menu() {
 	{ clear; banner_small; }
 	cat <<- EOF
 
+		${MAGENTA}[${CYAN}00${MAGENTA}]${ORANGE} Main Menu
 		${MAGENTA}[${CYAN}01${MAGENTA}]${ORANGE} Localhost
 		${MAGENTA}[${CYAN}02${MAGENTA}]${ORANGE} Cloudflared  ${RED}[${CYAN}Auto Detects${RED}]
-		${MAGENTA}[${CYAN}03${MAGENTA}]${ORANGE} Main Menu
 
 	EOF
 		read -p "${RED}[${WHITE}-${RED}]${GREEN} Select an option : ${BLUE}"
@@ -484,13 +484,13 @@ tunnel_menu() {
 	read -p "${RED}[${WHITE}-${RED}]${GREEN} Select a port forwarding service : ${BLUE}"
 
 	case $REPLY in 
+		0 | 00)
+			echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Returning to main menu..."
+			{ sleep 1; main_menu; };;
 		1 | 01)
 			start_localhost;;
 		2 | 02)
 			start_cloudflared;;
-		3 | 03)
-			echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Returning to main menu..."
-			{ sleep 1; main_menu; };;
 		*)
 			echo -ne "\n${RED}[${WHITE}!${RED}]${RED} Invalid Option, Try Again..."
 			{ sleep 1; tunnel_menu; };;
