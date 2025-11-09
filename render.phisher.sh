@@ -476,8 +476,10 @@ tunnel_menu() {
 
 		${MAGENTA}[${CYAN}01${MAGENTA}]${ORANGE} Localhost
 		${MAGENTA}[${CYAN}02${MAGENTA}]${ORANGE} Cloudflared  ${RED}[${CYAN}Auto Detects${RED}]
+		${MAGENTA}[${CYAN}03${MAGENTA}]${ORANGE} Main Menu
 
 	EOF
+		read -p "${RED}[${WHITE}-${RED}]${GREEN} Select an option : ${BLUE}"
 
 	read -p "${RED}[${WHITE}-${RED}]${GREEN} Select a port forwarding service : ${BLUE}"
 
@@ -486,6 +488,9 @@ tunnel_menu() {
 			start_localhost;;
 		2 | 02)
 			start_cloudflared;;
+		3 | 03)
+			echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Returning to main menu..."
+			{ sleep 1; main_menu; };;
 		*)
 			echo -ne "\n${RED}[${WHITE}!${RED}]${RED} Invalid Option, Try Again..."
 			{ sleep 1; tunnel_menu; };;
