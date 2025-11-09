@@ -1,0 +1,32 @@
+{"level":"info","time":"2025-11-09T20:01:43Z","message":"Thank you for trying Cloudflare Tunnel. Doing so, without a Cloudflare account, is a quick way to experiment and try it out. However, be aware that these account-less Tunnels have no uptime guarantee, are subject to the Cloudflare Online Services Terms of Use (https://www.cloudflare.com/website-terms/), and Cloudflare reserves the right to investigate your use of Tunnels for violations of such terms. If you intend to use Tunnels in production you should use a pre-created named tunnel by following: https://developers.cloudflare.com/cloudflare-one/connections/connect-apps"}
+{"level":"info","time":"2025-11-09T20:01:43Z","message":"Requesting new quick Tunnel on trycloudflare.com..."}
+{"level":"info","time":"2025-11-09T20:01:47Z","message":"+--------------------------------------------------------------------------------------------+"}
+{"level":"info","time":"2025-11-09T20:01:47Z","message":"|  Your quick Tunnel has been created! Visit it at (it may take some time to be reachable):  |"}
+{"level":"info","time":"2025-11-09T20:01:47Z","message":"|  https://harbour-paradise-supervisors-farmer.trycloudflare.com                             |"}
+{"level":"info","time":"2025-11-09T20:01:47Z","message":"+--------------------------------------------------------------------------------------------+"}
+{"level":"info","time":"2025-11-09T20:01:47Z","message":"Cannot determine default configuration path. No file [config.yml config.yaml] in [~/.cloudflared ~/.cloudflare-warp ~/cloudflare-warp /etc/cloudflared /usr/local/etc/cloudflared]"}
+{"level":"info","time":"2025-11-09T20:01:47Z","message":"Version 2025.11.1 (Checksum 991dffd8889ee9f0147b6b48933da9e4407e68ea8c6d984f55fa2d3db4bb431d)"}
+{"level":"info","time":"2025-11-09T20:01:47Z","message":"GOOS: linux, GOVersion: go1.24.9, GoArch: amd64"}
+{"level":"info","time":"2025-11-09T20:01:47Z","message":"Settings: map[ha-connections:1 logfile:.server/.cld.log protocol:quic url:127.0.0.1:8080]"}
+{"level":"info","autoupdateFreq":86400000,"time":"2025-11-09T20:01:47Z","message":"Autoupdate frequency is set"}
+{"level":"info","time":"2025-11-09T20:01:47Z","message":"Generated Connector ID: 8785a11d-752b-461f-b9e7-2530e42204c7"}
+{"level":"info","time":"2025-11-09T20:01:47Z","message":"Initial protocol quic"}
+{"level":"info","time":"2025-11-09T20:01:47Z","message":"ICMP proxy will use 100.115.92.203 as source for IPv4"}
+{"level":"info","time":"2025-11-09T20:01:47Z","message":"ICMP proxy will use 2600:1008:a033:bf93:216:3eff:fe97:6fb8 in zone eth0 as source for IPv6"}
+{"level":"warn","error":"Group ID 1000 is not between ping group 65534 to 65534","time":"2025-11-09T20:01:47Z","message":"The user running cloudflared process has a GID (group ID) that is not within ping_group_range. You might need to add that user to a group within that range, or instead update the range to encompass a group the user is already in by modifying /proc/sys/net/ipv4/ping_group_range. Otherwise cloudflared will not be able to ping this network"}
+{"level":"warn","error":"cannot create ICMPv4 proxy: Group ID 1000 is not between ping group 65534 to 65534 nor ICMPv6 proxy: socket: permission denied","time":"2025-11-09T20:01:47Z","message":"ICMP proxy feature is disabled"}
+{"level":"error","originCertPath":"","time":"2025-11-09T20:01:47Z","message":"Cannot determine default origin certificate path. No file cert.pem in [~/.cloudflared ~/.cloudflare-warp ~/cloudflare-warp /etc/cloudflared /usr/local/etc/cloudflared]. You need to specify the origin certificate path by specifying the origincert option in the configuration file, or set TUNNEL_ORIGIN_CERT environment variable"}
+{"level":"info","time":"2025-11-09T20:01:47Z","message":"ICMP proxy will use 100.115.92.203 as source for IPv4"}
+{"level":"info","time":"2025-11-09T20:01:47Z","message":"ICMP proxy will use 2600:1008:a033:bf93:216:3eff:fe97:6fb8 in zone eth0 as source for IPv6"}
+{"level":"info","time":"2025-11-09T20:01:47Z","message":"Starting metrics server on 127.0.0.1:20241/metrics"}
+{"level":"info","event":0,"ip":"198.41.200.53","connIndex":0,"time":"2025-11-09T20:01:47Z","message":"Tunnel connection curve preferences: [X25519MLKEM768 CurveP256]"}
+{"level":"info","event":0,"connection":"79ce6039-e1f8-4bb1-af01-698c6a0feac5","connIndex":0,"location":"ord11","ip":"198.41.200.53","protocol":"quic","time":"2025-11-09T20:01:48Z","message":"Registered tunnel connection"}
+{"level":"info","time":"2025-11-09T20:02:03Z","message":"Initiating graceful shutdown due to signal interrupt ..."}
+{"level":"error","event":0,"ip":"198.41.200.53","connIndex":0,"error":"context canceled","time":"2025-11-09T20:02:03Z","message":"failed to run the datagram handler"}
+{"level":"error","event":0,"ip":"198.41.200.53","connIndex":0,"error":"accept stream listener encountered a failure while serving","time":"2025-11-09T20:02:03Z","message":"failed to serve tunnel connection"}
+{"level":"error","event":0,"ip":"198.41.200.53","connIndex":0,"error":"accept stream listener encountered a failure while serving","time":"2025-11-09T20:02:03Z","message":"Serve tunnel error"}
+{"level":"info","event":0,"ip":"198.41.200.53","connIndex":0,"time":"2025-11-09T20:02:03Z","message":"Retrying connection in up to 1s"}
+{"level":"error","connIndex":0,"time":"2025-11-09T20:02:03Z","message":"Connection terminated"}
+{"level":"error","time":"2025-11-09T20:02:03Z","message":"no more connections active and exiting"}
+{"level":"info","time":"2025-11-09T20:02:03Z","message":"Tunnel server stopped"}
+{"level":"info","time":"2025-11-09T20:02:03Z","message":"Metrics server stopped"}

