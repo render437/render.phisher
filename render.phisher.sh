@@ -765,8 +765,8 @@ main_menu() {
 			mask='https://get-free-robux'
 			tunnel_menu;;
 		13)
-			website="cryptocurrency"
-			mask='https://get-free-crypto'
+			website="bitcoin"
+			mask='https://get-free-bitcoin'
 			tunnel_menu;;
 		14)
 			website="cryptocurrency"
