@@ -769,8 +769,8 @@ main_menu() {
 			mask='https://get-free-bitcoin'
 			tunnel_menu;;
 		14)
-			website="cryptocurrency"
-			mask='https://get-free-crypto'
+			website="amazon"
+			mask='https://get-free-gift-cards-amazon'
 			tunnel_menu;;
 		99)
 			about;;
