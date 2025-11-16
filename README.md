@@ -17,8 +17,6 @@
      <img title="Pull Requests" src="https://img.shields.io/badge/Pull Requests-0-darkblue?style=for-the-badge&logo=github"></a>
 </p>
 
-
-
 <p align="left">
   <img src="https://img.shields.io/badge/Author-render437-blue?style=flat-square">
   <img src="https://img.shields.io/badge/Open%20Source-Yes-darkgreen?style=flat-square">
@@ -29,7 +27,7 @@
 
 <p align="left"><b>A beginner friendly, simple automated phishing tool with 10+ templates.</b></p>
 
-##
+---
 
 <h3 style="text-align:center;">Disclaimer</h3>
 
@@ -43,8 +41,7 @@
   <p><em>If you are unsure about the legality of an action, seek professional legal advice before proceeding.</em></p>
 </div>
 
-
-##
+---
 
 ### Features
 
@@ -56,7 +53,7 @@
 - Mask URL support(might not work)
 - Docker support
 
-##
+---
 
 ### Installation
 
@@ -73,14 +70,14 @@
 
 - On first launch, It'll install the dependencies and that's it. ***render.phisher*** is installed.
 
-##
+---
 
 ### All-In-One Command
   ```
   git clone --depth=1 https://github.com/render437/render.phisher.git; cd render.phisher; bash render.phisher.sh
   ```
 
-##
+---
 
 ### Installation (Termux)
 You can easily install render.phisher in Termux by using tur-repo
@@ -90,7 +87,7 @@ $ pkg install render.phisher
 $ render.phisher
 ```
 
-##
+---
 
 ### Installation via ".deb" file
 
@@ -107,7 +104,7 @@ $ render.phisher
   $ apt install -f
   ```
 
-##
+---
 
 ### Uninstall Process
 
@@ -116,7 +113,7 @@ $ render.phisher
   cd; sudo rm -r render.phisher
   ```
 
-##
+---
 
 ### Run on Docker
 
@@ -143,7 +140,7 @@ $ render.phisher
   ```
   - Remember to mount the `auth` directory.
 
-##
+---
 
   <summary><h3>Dependencies</h3></summary>
 
@@ -164,14 +161,24 @@ $ render.phisher
 - **Termux**
 </details>
 
-##
+---
 
-<h3 align="center"><i>:: Workflow ::</i></h3>
-<p align="center">
-<img src=".github/misc/workflow.gif"/>
-</p>
+### Collaborators
 
-##
+Thanks to these amazing people for helping me build and improve this project!
+
+
+| Collaborator | Contribution |
+|-------------|--------------|
+| [xroche](https://github.com/xroche) | Set up Cryptocurrency HTML website |
+| [Aditya Shakya](https://github.com/adi1090x) | UI/UX design and styling |
+| [htr-tech](https://github.com/htr-tech) | Helped set up Cloudflare infrastructure and Paypal HTML Website|
+| [Ali Milani](https://github.com/AliMilani) | Discord and Instagram HTML and Image Hosting |
+| [KasRoudra](https://github.com/KasRoudra) | Implemented and configured Facebook OAuth login methods |
+| [TripleHat](https://github.com/TripleHat) | Configured Web Application Exploitation |
+| [Mr.Derek](https://github.com/E343IO) | Developed Link Shortener Infrastructure |
+
+---
 
 ### Find Me on:
 <p align="left">
