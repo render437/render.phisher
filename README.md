@@ -39,6 +39,9 @@
   <p><em>This tool is provided strictly for <strong>educational and research purposes</strong> to demonstrate how phishing works. Do not use any information, code, or techniques contained here to attempt unauthorized access to someone else’s accounts or systems — doing so is illegal. Use this toolkit at your own risk.</em></p>
 
   <p><em>If you are unsure about the legality of an action, seek professional legal advice before proceeding.</em></p>
+  
+  <p><em>This project is for educational, penetration-testing, or phishing-simulation purposes only. Not for malicious use.</em></p>
+
 </div>
 
 ---
