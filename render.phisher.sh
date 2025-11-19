@@ -289,7 +289,6 @@ check_status() {
 
 ## Dependencies
 dependencies() {
-	sudo apt install jq -y
 	echo -e "\n${CYAN}Installing required packages..."
 
 	if [[ -d "/data/data/com.termux/files/home" ]]; then
@@ -304,10 +303,11 @@ dependencies() {
 		fi
 	fi
 
-	if [[ $(command -v php) && $(command -v curl) && $(command -v unzip) ]]; then
+	# Check for php, curl, unzip, and jq
+	if [[ $(command -v php) && $(command -v curl) && $(command -v unzip) && $(command -v jq) ]]; then
 		echo -e "\n${GREEN} Packages already installed."
 	else
-		pkgs=(php curl unzip)
+		pkgs=(php curl unzip jq)  # Add jq to the list of packages
 		for pkg in "${pkgs[@]}"; do
 			type -p "$pkg" &>/dev/null || {
 				echo -e "\n${CYAN} Installing package: ${ORANGE}$pkg${CYAN}"${WHITE}
