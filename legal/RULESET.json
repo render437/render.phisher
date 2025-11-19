@@ -1,0 +1,34 @@
+{
+  "name": "Main Branch Protection",
+  "target": "branch",
+  "enforcement": "active",
+  "conditions": {
+    "ref_name": {
+      "include": ["main"]
+    }
+  },
+  "rules": [
+    {
+      "type": "restrict_creations",
+      "parameters": {}
+    },
+    {
+      "type": "restrict_updates",
+      "parameters": {}
+    },
+    {
+      "type": "restrict_deletions",
+      "parameters": {}
+    },
+    {
+      "type": "block_force_pushes",
+      "parameters": { "enabled": true }
+    },
+    {
+      "type": "required_pull_request",
+      "parameters": {
+        "required_approvals": 0
+      }
+    }
+  ]
+}
