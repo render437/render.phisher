@@ -398,6 +398,47 @@ install_localxpose() {
 	fi
 }
 
+## Install Ngrok
+install_ngrok() {
+    if command -v ngrok >/dev/null 2>&1; then
+        echo -e "\n${GREEN} ngrok already installed."
+        return
+    fi
+
+    echo -e "\n${CYAN} Installing ngrok...${WHITE}"
+
+    ARCH=$(uname -m)
+
+    # Pick correct binary for Intel or ARM Chromebooks
+    if [[ "$ARCH" == "x86_64" ]]; then
+        NGROK_URL="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.tgz"
+    elif [[ "$ARCH" == "aarch64" || "$ARCH" == arm* ]]; then
+        NGROK_URL="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.tgz"
+    else
+        echo -e "${RED} Unsupported CPU architecture: $ARCH"
+        return 1
+    fi
+
+    mkdir -p .server
+    cd .server
+
+    # Download & extract
+    wget -q "$NGROK_URL" -O ngrok.tgz
+    tar -xvf ngrok.tgz >/dev/null
+    rm ngrok.tgz
+
+    # Move ngrok into .server directory
+    mv ngrok loc-ngrok
+    chmod +x loc-ngrok
+
+    cd ..
+
+    echo -e "${GREEN} ngrok installed successfully (anonymous mode)."
+    echo -e "${YELLOW} You can use it with: ${WHITE}.server/loc-ngrok http 8080"
+}
+
+
+
 ## Exit message
 msg_exit() {
 	{ clear; banner; echo; }
