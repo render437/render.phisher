@@ -289,6 +289,7 @@ check_status() {
 
 ## Dependencies
 dependencies() {
+	sudo apt install jq -y
 	echo -e "\n${CYAN}Installing required packages..."
 
 	if [[ -d "/data/data/com.termux/files/home" ]]; then
@@ -322,8 +323,6 @@ dependencies() {
 					sudo dnf -y install "$pkg"
 				elif [[ $(command -v yum) ]]; then
 					sudo yum -y install "$pkg"
-				elif [[ $(command -v jq) ]]; then
-					sudo jq -y install "$pkg"
 				else
 					echo -e "\n${RED} Unsupported package manager, Install packages manually."
 					{ reset_color; exit 1; }
