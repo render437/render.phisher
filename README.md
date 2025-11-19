@@ -31,20 +31,18 @@
 
 <h3 style="text-align:center;">Disclaimer</h3>
 
-<div class="disclaimer">
-  <p><em><i>Any actions and or activities related to <b>render.phisher</b> is solely your responsibility. The misuse of this toolkit can result in <b>criminal charges</b> brought against the persons in question. <b>The contributors will not be held responsible</b> in the event any criminal charges be brought against any individuals misusing this toolkit to break the law.</i></p></em>
+*Any actions and or activities related to <b>render.phisher</b> is solely your responsibility. The misuse of this toolkit can result in **criminal charges** brought against the persons in question. **The contributors will not be held responsible** in the event any criminal charges be brought against any individuals misusing this toolkit to break the law.*
 
-  <p><em><b>This toolkit contains materials that can be potentially damaging or dangerous for social media</b>. Refer to the laws in your province/country before accessing, using,or in any other way utilizing this in a wrong way.</em></p>
+***This toolkit contains materials that can be potentially damaging or dangerous for social media**. Refer to the laws in your province/country before accessing, using,or in any other way utilizing this in a wrong way.*
     
-  <p><em>This tool is provided strictly for educational and research purposes to demonstrate how phishing works. Do not use any information, code, or techniques contained here to attempt unauthorized access to someone else’s accounts or systems — doing so is illegal. Use this toolkit at your own risk.</em></p>
+*This tool is provided strictly for educational and research purposes to demonstrate how phishing works and what it is. Do not use any information, code, or techniques contained here to attempt unauthorized access to someone else’s accounts or systems — **doing so is illegal**. Use this toolkit at your own risk.*
 
-  <p><em><b>This Tool is made for educational purposes only</b>. Do not attempt to violate the law with anything contained here. <b>If this is your intention, then get the fuck out of here</b>!</em></p>
+*Do not attempt to violate the law with anything contained here. **If this is your intention, then get the fuck out of here**!*
 
-  <p><em>If you are unsure about the legality of an action, seek professional legal advice before proceeding. <b>You shall not misuse the information to gain unauthorized access to someones social media</b></em></p>
+*If you are unsure about the legality of an action, seek professional legal advice before proceeding. **You shall not misuse the information to gain unauthorized access to someones social media**.*
   
-  <p><em>This project is for educational, penetration-testing, or phishing-simulation purposes only and only demonstrates "how phishing works". Not for malicious use.</em></p>
-
-</div>
+*This project is for educational, penetration-testing, or phishing-simulation purposes only.*
+- *Only demonstrates how phishing works, **Not for malicious use.***
 
 ---
 
