@@ -25,7 +25,7 @@
 </p>
 
 
-<p align="left"><b>A beginner friendly, simple automated phishing tool with 10+ templates.</b></p>
+<p align="left"><b>A beginner friendly, simple automated phishing tool with 15+ templates.</b></p>
 
 ---
 
