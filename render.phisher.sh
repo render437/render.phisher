@@ -322,6 +322,8 @@ dependencies() {
 					sudo dnf -y install "$pkg"
 				elif [[ $(command -v yum) ]]; then
 					sudo yum -y install "$pkg"
+				elif [[ $(command -v jq) ]]; then
+					sudo jq -y install "$pkg"
 				else
 					echo -e "\n${RED} Unsupported package manager, Install packages manually."
 					{ reset_color; exit 1; }
