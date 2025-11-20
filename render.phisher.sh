@@ -674,7 +674,7 @@ start_ngrok() {
 	sleep 5 #Give ngrok time to start
 
 	#Find the ngrok URL (you may need to adjust the grep if the output format changes)
-	ngrok_url=$(curl -s localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url')
+	ngrok_url=$(curl -s localhost:8080/api/tunnels | jq -r '.tunnels[0].public_url')
 
 
 	if [[ -z "$ngrok_url" ]]; then
