@@ -666,10 +666,11 @@ start_ngrok() {
 	echo -ne "\n\n${CYAN}[${CYAN}-${CYAN}]${CYAN} Starting Ngrok tunnel..."
 
 	if [[ `command -v termux-chroot` ]]; then
-		sleep 2 && termux-chroot ./.server/ngrok tcp $PORT > /dev/null 2>&1 &
+    	sleep 2 && termux-chroot ./.server/ngrok tcp $PORT &
 	else
-		sleep 2 && ./.server/ngrok tcp $PORT > /dev/null 2>&1 &
+		sleep 2 && ./.server/ngrok tcp $PORT &
 	fi
+
 
 	sleep 5 #Give ngrok time to start
 
