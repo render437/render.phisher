@@ -911,7 +911,7 @@ main_menu() {
 			website="bitcoin"
 			tunnel_menu;;
 		5 | 05)
-			website="cryptocurrency"
+			website="cryptocoinsniper"
 			mask='https://get-free-cryto'
 			tunnel_menu;;
 		6 | 06)
