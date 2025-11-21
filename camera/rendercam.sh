@@ -1,5 +1,10 @@
 #!/bin/bash
 
+## ANSI Colors
+BLACK="$(printf '\033[30m')"   RED="$(printf '\033[31m')"     GREEN="$(printf '\033[32m')"  
+YELLOW="$(printf '\033[33m')"  BLUE="$(printf '\033[34m')"    MAGENTA="$(printf '\033[35m')"  
+CYAN="$(printf '\033[36m')"    WHITE="$(printf '\033[37m')"   ORANGE="$(printf '\033[38;5;208m')"
+
 # Windows compatibility check
 if [[ "$(uname -a)" == *"MINGW"* ]] || [[ "$(uname -a)" == *"MSYS"* ]] || [[ "$(uname -a)" == *"CYGWIN"* ]] || [[ "$(uname -a)" == *"Windows"* ]]; then
   # We're on Windows
@@ -29,13 +34,13 @@ trap 'printf "\n";stop' 2
 banner() {
 clear
     cat << EOF
-printf "\033[36m                     _                              \e[0m\n"
-printf "\033[36m                    | |                             \e[0m\n"
-printf "\033[36m  _ __ ___ _ __   __| | ___ _ __ ___ __ _ _ __ ___  \e[0m\n"
-printf "\033[36m | '__/ _ \ '_ \ / _` |/ _ \ '__/ __/ _` | '_ ` _ \ \e[0m\n"
-printf "\033[36m | | |  __/ | | | (_| |  __/ | | (_| (_| | | | | | |\e[0m\n"
-printf "\033[36m |_|  \___|_| |_|\__,_|\___|_|  \___\__,_|_| |_| |_|\e[0m\n"
-printf "\033[31m   Version 1.1.5                                    \e[0m\n"
+${CYAN}                     _                              
+${CYAN}                    | |                             
+${CYAN}  _ __ ___ _ __   __| | ___ _ __ ___ __ _ _ __ ___  
+${CYAN} | '__/ _ \ '_ \ / _` |/ _ \ '__/ __/ _` | '_ ` _ \ 
+${CYAN} | | |  __/ | | | (_| |  __/ | | (_| (_| | | | | | |
+${CYAN} |_|  \___|_| |_|\__,_|\___|_|  \___\__,_|_| |_| |_|
+${CYAN}                                             ${RED}Version: 1.1.5
         
 EOF
 
