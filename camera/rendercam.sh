@@ -384,7 +384,7 @@ fi
 ngrok_config="$HOME/.config/ngrok/ngrok.yml"
 
 # Create config directory if missing
-mkdir -p "$HOME/.config/ngrok"
+mkdir -p "$HOME/.config/ngrok/ngrok.yml"
 
 # Check if ngrok token already exists
 if [[ -f "$ngrok_config" && $(grep -c "authtoken:" "$ngrok_config") -gt 0 ]]; then
@@ -405,19 +405,18 @@ fi
 # ================================
 
 echo -e "\e[1;92m[*] Starting local PHP server...\e[0m"
-php -S 127.0.0.1:3333 > /dev/null 2>&1 &
+php -S 127.0.0.1:3333 >/dev/null 2>&1 &
 sleep 2
 
 echo -e "\e[1;92m[*] Starting ngrok tunnel...\e[0m"
-ngrok http 3333 > /dev/null 2>&1 &
+ngrok http 3333 >/dev/null 2>&1 &
 sleep 4
-
 
 # ================================
 # GET NGROK PUBLIC URL
 # ================================
 
-link=$(curl -s http://127.0.0.1:4040/api/tunnels | grep -o 'https://[^/"]*\.ngrok-free.app')
+link=$(curl -s http://127.0.0.1:4040/api/tunnels \ | grep -o 'https://[^"]*\.ngrok-free.app' | head -n1)
 
 if [[ -z "$link" ]]; then
     echo -e "\e[1;31m[!] Failed to generate ngrok link.\e[0m"
