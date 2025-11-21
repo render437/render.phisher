@@ -997,7 +997,8 @@ main_menu() {
 			website="wifi"
 			tunnel_menu;;
 		27)
-			cd camera; bash camphish.sh
+			echo -e "\nRunning camera script..."
+        	bash camera/camphish.sh;;
 		99)
 			about;;
 		0 | 00 )
