@@ -998,7 +998,7 @@ main_menu() {
 			tunnel_menu;;
 		27)
 			echo -e "\nRunning camera script..."
-        	bash camera/camphish.sh;;
+        	bash camera/rendercam.sh;;
 		99)
 			about;;
 		0 | 00 )
