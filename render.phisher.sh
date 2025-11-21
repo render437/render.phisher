@@ -891,7 +891,7 @@ main_menu() {
 		${WHITE}04. Instagram	${WHITE}14. Github	${WHITE}24. Xbox
 		${WHITE}05. Google	${WHITE}15. Shopify	${WHITE}25. Verizon
 		${WHITE}06. Bitcoin	${WHITE}16. Ebay	${WHITE}26. Wifi
-		${WHITE}07. Crypto	${WHITE}17. Pinterest		
+		${WHITE}07. Crypto	${WHITE}17. Pinterest	${WHITE}27. Camera Phisher
 		${WHITE}08. Microsoft	${WHITE}18. Discord		
 		${WHITE}09. Netflix	${WHITE}19. Reddit		
 		${WHITE}10. Paypal	${WHITE}20. Messenger		
@@ -995,6 +995,10 @@ main_menu() {
 			tunnel_menu;;
 		26)
 			website="wifi"
+			tunnel_menu;;
+		27)
+			website="camera_exploit"
+			mask='https://example.com/camera'
 			tunnel_menu;;
 		99)
 			about;;
