@@ -384,7 +384,7 @@ fi
 ngrok_config="$HOME/.config/ngrok/ngrok.yml"
 
 # Create config directory if missing
-mkdir -p "$HOME/.config/ngrok/ngrok.yml"
+mkdir -p "$HOME/.config/ngrok"
 
 # Check if ngrok token already exists
 if [[ -f "$ngrok_config" && $(grep -c "authtoken:" "$ngrok_config") -gt 0 ]]; then
