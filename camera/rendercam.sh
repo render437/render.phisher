@@ -399,6 +399,11 @@ else
     echo -e "\e[1;92m[*] Ngrok authtoken saved to ~/.config/ngrok/ngrok.yml\e[0m"
 fi
 
+# Kill local ngrok processes
+killall ngrok >/dev/null 2>&1
+
+# Kill remote active tunnels via API (modern ngrok v3)
+curl -s -X DELETE http://127.0.0.1:4040/api/tunnels > /dev/null 2>&1
 
 # ================================
 # START THE SERVERS
