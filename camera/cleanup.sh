@@ -1,6 +1,5 @@
 #!/bin/bash
-# Cleanup script for CamPhish
-# Removes all unnecessary files and logs
+# Removes all unnecessary files and logs(basic cleanup script)
 
 echo "Starting cleanup of unnecessary files and logs..."
 
