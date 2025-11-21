@@ -56,8 +56,6 @@ else
   checkphp=$(ps aux | grep -o "php" | head -n1)
   checkcloudflaretunnel=$(ps aux | grep -o "cloudflared" | head -n1)
 
-  fi
-
   if [[ $checkphp == *'php'* ]]; then
     killall -2 php > /dev/null 2>&1
   fi
@@ -311,7 +309,6 @@ cloudflare_tunnel
 sleep 1
 clear
 rendercam
-fi
 }
 
 select_template() {
