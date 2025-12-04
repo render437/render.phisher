@@ -58,6 +58,28 @@
 
 ---
 
+### Available Links
+
+| Website     | Status                         | Website     | Status                          |
+|-------------|--------------------------------|-------------|---------------------------------|
+| **Adobe**       | Working                        | **Github**      | Working                          |
+| **Airbnb**      | Working                        | **Shopify**     | Working (won't grab username)    |
+| **Facebook**    | Working                        | **Ebay**        | Working                          |
+| **Instagram**   | Working                        | **Pinterest**   | Working                          |
+| **Google**      | Working                        | **Discord**     | Working                          |
+| **Bitcoin**     | Working                        | **Reddit**      | Working                          |
+| **Crypto**      | Working                        | **Messenger**   | Working (needs new html file)    |
+| **Microsoft**   | Working                        | **Roblox**      | Working                          |
+| **Netflix**     | Working                        | **Steam**       | Working                          |
+| **Paypal**      | Working                        | **Playstation** | Working                          |
+| **Tiktok**      | Working                        | **Xbox**        | Working                          |
+| **Snapchat**    | Working                        | **Verizon**     | Broken                           |
+| **Spotify**     | Working                        | **Wifi**        | Working                          |
+
+***- More to be added in the future!***
+
+---
+
 ### Installation
 
 - Just, clone this repository -
