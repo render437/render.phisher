@@ -209,7 +209,7 @@ kill_pid() {
 }
 
 check_update() {
-  local relase_url='https://api.github.com/repos/render437/render.phisher/releases/latest'
+  local release_url='https://api.github.com/repos/render437/render.phisher/releases/latest'
   local ua='render-phisher-updater/1.0 (+https://example.com)'
   local tmpfile
   local new_version
@@ -227,9 +227,9 @@ check_update() {
 
   # Prefer jq if available, otherwise fallback to grep/awk
   if command -v jq >/dev/null 2>&1; then
-    new_version=$(curl -sS -A "$ua" "$relase_url" | jq -r '.tag_name // empty')
+    new_version=$(curl -sS -A "$ua" "$release_url" | jq -r '.tag_name // empty')
   else
-    new_version=$(curl -sS -A "$ua" "$relase_url" | grep '"tag_name":' | awk -F\" '{print $4}')
+    new_version=$(curl -sS -A "$ua" "$release_url" | grep '"tag_name":' | awk -F\" '{print $4}')
   fi
 
   if [ -z "$new_version" ]; then
