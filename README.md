@@ -121,11 +121,11 @@ $ render.phisher
 
 - Install the `.deb` file by executing
   ```
-  apt install YOUR/PATH/TO/YOUR/DEB/FILE
+  apt install YOUR/PATH/TO/DEB/FILE
   ```
   Or
   ```
-  $ dpkg -i <your path to deb file>
+  $ dpkg -i YOUR/PATH/TO/DEB/FILE
   $ apt install -f
   ```
 
