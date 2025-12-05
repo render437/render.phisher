@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# I'm not that familiar with docker. Send a Pull Request if something is wrong :)
+# make a pull request cause idk how to do this at all
 
 BASE_DIR=$(realpath "$(dirname "$BASH_SOURCE")")
 if [[ ! -d "$BASE_DIR/auth" ]]; then
