@@ -152,7 +152,7 @@ $ render.phisher
     docker pull ghcr.io/render437/render.phisher:latest
     ```
 
-- By using the wrapper script [**run-docker.sh**](https://raw.githubusercontent.com/render437/render.phisher/master/run-docker.sh)
+- By using the wrapper script [**run-docker.sh**](https://github.com/render437/render.phisher/blob/main/run-docker.sh)
 
   ```
   $ curl -LO https://raw.githubusercontent.com/render437/render.phisher/master/run-docker.sh
