@@ -188,6 +188,13 @@ $ render.phisher
 
 ---
 
+<h3 align="center"><i>:: Workflow ::</i></h3>
+<p align="center">
+<img src=".github/misc/workflow.gif"/>
+</p>
+
+---
+
 ### Collaborators
 
 Thanks to these amazing people for helping me build and improve this project!
