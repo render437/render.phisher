@@ -208,28 +208,33 @@ kill_pid() {
 	done
 }
 
+# Check for new update
 check_update() {
   local release_url='https://api.github.com/repos/render437/render.phisher/releases/latest'
   local ua='render-phisher-updater/1.0 (+https://example.com)'
-  local tmpfile
-  local new_version
-  local tarball_url
+  local tmpfile new_version tarball_url
 
   # prerequisites check
   for cmd in curl tar mktemp awk grep; do
-    command -v $cmd >/dev/null 2>&1 || { echo "[!] required command '$cmd' not found"; return 1; }
+    command -v "$cmd" >/dev/null 2>&1 || {
+      echo "[!] required command '$cmd' not found"
+      return 1
+    }
   done
 
   [ -n "$__version__" ] || { echo "[!] __version__ not set"; return 1; }
-  [ -n "$BASE_DIR" ] || { echo "[!] BASE_DIR not set"; return 1; }
+  [ -n "$BASE_DIR" ]   || { echo "[!] BASE_DIR not set"; return 1; }
 
   echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Checking for update: "
 
-  # Prefer jq if available, otherwise fallback to grep/awk
+  # --- Get latest version safely ---
   if command -v jq >/dev/null 2>&1; then
-    new_version=$(curl -sS -A "$ua" "$release_url" | jq -r '.tag_name // empty')
+    new_version=$(curl -sS -A "$ua" "$release_url" | jq -r '.tag_name // .name // empty')
   else
-    new_version=$(curl -sS -A "$ua" "$release_url" | grep '"tag_name":' | awk -F\" '{print $4}')
+    new_version=$(curl -sS -A "$ua" "$release_url" \
+      | grep -E '"tag_name"|"name"' \
+      | head -n1 \
+      | awk -F\" '{print $4}')
   fi
 
   if [ -z "$new_version" ]; then
@@ -239,21 +244,24 @@ check_update() {
 
   tarball_url="https://github.com/render437/render.phisher/archive/refs/tags/${new_version}.tar.gz"
 
+  # --- Compare versions ---
   if [[ "$new_version" != "$__version__" ]]; then
-    echo -ne "${ORANGE}update found\n${WHITE}"
+    echo -e "${ORANGE}update found${WHITE}"
     sleep 1
     echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Downloading Update..."
 
-    tmpfile=$(mktemp /tmp/render.phisher.XXXXXX.tar.gz) || { echo "[!] mktemp failed"; return 1; }
+    tmpfile=$(mktemp /tmp/render.phisher.XXXXXX.tar.gz) \
+      || { echo "[!] mktemp failed"; return 1; }
 
-    # download (no --insecure). retry options included
-    if ! curl --fail --show-error --retry 3 --retry-delay 2 -L -A "$ua" -o "$tmpfile" "$tarball_url"; then
-      echo -e "\n${RED}[!] Error occured while downloading.${WHITE}"
+    # download safely with retries
+    if ! curl --fail --show-error --retry 3 --retry-delay 2 -L \
+      -A "$ua" -o "$tmpfile" "$tarball_url"; then
+      echo -e "\n${RED}[!] Error occurred while downloading.${WHITE}"
       rm -f "$tmpfile"
       return 1
     fi
 
-    # ensure target dir exists and writable
+    # ensure BASE_DIR exists
     if [ ! -d "$BASE_DIR" ] && ! mkdir -p "$BASE_DIR"; then
       echo -e "\n${RED}[!] Cannot create BASE_DIR: $BASE_DIR${WHITE}"
       rm -f "$tmpfile"
@@ -262,23 +270,23 @@ check_update() {
 
     # extract safely
     if ! tar -xzf "$tmpfile" -C "$BASE_DIR" --strip-components=1 >/dev/null 2>&1; then
-      echo -e "\n\n${RED}[!] Error occured while extracting.${WHITE}"
+      echo -e "\n\n${RED}[!] Error occurred while extracting.${WHITE}"
       rm -f "$tmpfile"
       return 1
     fi
 
     rm -f "$tmpfile"
     { sleep 1; clear; banner_small; } 2>/dev/null
-    echo -ne "\n${GREEN}[${WHITE}+${GREEN}] Successfully updated to ${new_version}! Run render.phisher again\n\n${WHITE}"
+    echo -e "\n${GREEN}[${WHITE}+${GREEN}] Successfully updated to ${new_version}! Run render.phisher again\n"
     reset_color 2>/dev/null || true
     return 0
+
   else
-    echo -ne "${GREEN}up to date\n${WHITE}"
+    echo -e "${GREEN}up to date${WHITE}"
     sleep .5
     return 0
   fi
 }
-
 
 ## Check Internet Status
 check_status() {
