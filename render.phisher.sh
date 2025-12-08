@@ -475,7 +475,7 @@ about() {
 
 	EOF
 
-	read -p "\n${MAGENTA}Select an option:"
+	read -p "${MAGENTA}Select an option:"
 	case $REPLY in 
 		99)
 			msg_exit;;
@@ -801,7 +801,7 @@ site_facebook() {
 
 	EOF
 
-	read -p "\n${MAGENTA}Select an option:"
+	read -p "${MAGENTA}Select an option:"
 
 	case $REPLY in 
 		1 | 01)
@@ -837,7 +837,7 @@ site_instagram() {
 
 	EOF
 
-	read -p "\n${MAGENTA}Select an option:"
+	read -p "${MAGENTA}Select an option:"
 
 	case $REPLY in 
 		1 | 01)
@@ -872,7 +872,7 @@ site_gmail() {
 
 	EOF
 
-	read -p "\n${MAGENTA}Select an option:"
+	read -p "${MAGENTA}Select an option:"
 
 	case $REPLY in 
 		1 | 01)
@@ -913,7 +913,7 @@ main_menu() {
 		${BRIGHT_CYAN}99. About         ${BRIGHT_CYAN}0. Exit
 	EOF
 	
-	read -p "\n${MAGENTA}Select an option:"
+	read -p "${MAGENTA}Select an option:"
 
 	case $REPLY in 
 		1 | 01)
