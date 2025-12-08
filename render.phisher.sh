@@ -914,7 +914,7 @@ main_menu() {
 		 ${WHITE}| ${BRIGHT_BLACK}09. ${BRIGHT_CYAN}Netflix      ${WHITE}| ${BRIGHT_BLACK}19. ${BRIGHT_CYAN}Reddit       ${WHITE}|                  |
 		 ${WHITE}| ${BRIGHT_BLACK}10. ${BRIGHT_CYAN}Paypal       ${WHITE}| ${BRIGHT_BLACK}20. ${BRIGHT_CYAN}Messenger    ${WHITE}|                  |
 		
-		 ${WHITE}| ${BRIGHT_BLACK}99. ${BRIGHT_CYAN}About        ${WHITE}| ${BRIGHT_BLACK}0. ${BRIGHT_CYAN}Exit          ${WHITE}|
+		 ${WHITE}| ${BRIGHT_BLACK}99. ${BRIGHT_CYAN}About        ${WHITE}| ${BRIGHT_BLACK}0. ${BRIGHT_CYAN}Exit          ${WHITE}|                  |
 
 	EOF
 
