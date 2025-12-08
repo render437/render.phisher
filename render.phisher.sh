@@ -225,7 +225,7 @@ check_update() {
   [ -n "$__version__" ] || { echo "[!] __version__ not set"; return 1; }
   [ -n "$BASE_DIR" ]   || { echo "[!] BASE_DIR not set"; return 1; }
 
-  echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Checking for update: "
+  echo -ne "\n${BRIGHT_GREEN} Checking for update: "
 
   # --- Get latest version safely ---
   if command -v jq >/dev/null 2>&1; then
