@@ -919,7 +919,7 @@ main_menu() {
 	EOF
 
 	echo
-	read -p "${MAGENTA}Select an option:"
+	read -p " ${MAGENTA}Select an option: "
 
 	case $REPLY in 
 		1 | 01)
