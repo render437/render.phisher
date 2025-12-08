@@ -900,23 +900,24 @@ site_gmail() {
 ## Menu
 ## Menu
 main_menu() {
-        { clear; banner; echo; }
-        cat <<- EOF
-                ${RED}Select An Attack For Your Victim:
+    { clear; banner; echo; }
+    cat <<- EOF
+        ${RED}Select An Attack For Your Victim:
 
-                ${WHITE}| ${BRIGHT_BLACK}01. ${BRIGHT_CYAN}Airbnb       ${WHITE}| ${BRIGHT_BLACK}11. ${BRIGHT_CYAN}Tiktok       ${WHITE}| ${BRIGHT_BLACK}21. ${BRIGHT_CYAN}Roblox       ${WHITE>
-                ${WHITE}| ${BRIGHT_BLACK}02. ${BRIGHT_CYAN}Adobe        ${WHITE}| ${BRIGHT_BLACK}12. ${BRIGHT_CYAN}Snapchat     ${WHITE}| ${BRIGHT_BLACK}22. ${BRIGHT_CYAN}Steam        ${WHITE>
-                ${WHITE}| ${BRIGHT_BLACK}03. ${BRIGHT_CYAN}Facebook     ${WHITE}| ${BRIGHT_BLACK}13. ${BRIGHT_CYAN}Spotify      ${WHITE}| ${BRIGHT_BLACK}23. ${BRIGHT_CYAN}Playstation  ${WHITE>
-                ${WHITE}| ${BRIGHT_BLACK}04. ${BRIGHT_CYAN}Instagram    ${WHITE}| ${BRIGHT_BLACK}14. ${BRIGHT_CYAN}Github       ${WHITE}| ${BRIGHT_BLACK}24. ${BRIGHT_CYAN}Xbox         ${WHITE>
-                ${WHITE}| ${BRIGHT_BLACK}05. ${BRIGHT_CYAN}Google       ${WHITE}| ${BRIGHT_BLACK}15. ${BRIGHT_CYAN}Shopify      ${WHITE}| ${BRIGHT_BLACK}25. ${BRIGHT_CYAN}Verizon      ${WHITE>
-                ${WHITE}| ${BRIGHT_BLACK}06. ${BRIGHT_CYAN}Bitcoin      ${WHITE}| ${BRIGHT_BLACK}16. ${BRIGHT_CYAN}Ebay         ${WHITE}| ${BRIGHT_BLACK}26. ${BRIGHT_CYAN}Wifi         ${WHITE>
-                ${WHITE}| ${BRIGHT_BLACK}07. ${BRIGHT_CYAN}Crypto       ${WHITE}| ${BRIGHT_BLACK}17. ${BRIGHT_CYAN}Pinterest    ${WHITE}|                  |
-                ${WHITE}| ${BRIGHT_BLACK}08. ${BRIGHT_CYAN}Microsoft    ${WHITE}| ${BRIGHT_BLACK}18. ${BRIGHT_CYAN}Discord      ${WHITE}|                  |
-                ${WHITE}| ${BRIGHT_BLACK}09. ${BRIGHT_CYAN}Netflix      ${WHITE}| ${BRIGHT_BLACK}19. ${BRIGHT_CYAN}Reddit       ${WHITE}|                  |
-                ${WHITE}| ${BRIGHT_BLACK}10. ${BRIGHT_CYAN}Paypal       ${WHITE}| ${BRIGHT_BLACK}20. ${BRIGHT_CYAN}Messenger    ${WHITE}|                  |
+        ${WHITE}| ${BRIGHT_BLACK}01. ${BRIGHT_CYAN}Airbnb       ${WHITE}| ${BRIGHT_BLACK}11. ${BRIGHT_CYAN}Tiktok       ${WHITE}| ${BRIGHT_BLACK}21. ${BRIGHT_CYAN}Roblox       ${WHITE>
+        ${WHITE}| ${BRIGHT_BLACK}02. ${BRIGHT_CYAN}Adobe        ${WHITE}| ${BRIGHT_BLACK}12. ${BRIGHT_CYAN}Snapchat     ${WHITE}| ${BRIGHT_BLACK}22. ${BRIGHT_CYAN}Steam        ${WHITE>
+        ${WHITE}| ${BRIGHT_BLACK}03. ${BRIGHT_CYAN}Facebook     ${WHITE}| ${BRIGHT_BLACK}13. ${BRIGHT_CYAN}Spotify      ${WHITE}| ${BRIGHT_BLACK}23. ${BRIGHT_CYAN}Playstation  ${WHITE>
+        ${WHITE}| ${BRIGHT_BLACK}04. ${BRIGHT_CYAN}Instagram    ${WHITE}| ${BRIGHT_BLACK}14. ${BRIGHT_CYAN}Github       ${WHITE}| ${BRIGHT_BLACK}24. ${BRIGHT_CYAN}Xbox         ${WHITE>
+        ${WHITE}| ${BRIGHT_BLACK}05. ${BRIGHT_CYAN}Google       ${WHITE}| ${BRIGHT_BLACK}15. ${BRIGHT_CYAN}Shopify      ${WHITE}| ${BRIGHT_BLACK}25. ${BRIGHT_CYAN}Verizon      ${WHITE>
+        ${WHITE}| ${BRIGHT_BLACK}06. ${BRIGHT_CYAN}Bitcoin      ${WHITE}| ${BRIGHT_BLACK}16. ${BRIGHT_CYAN}Ebay         ${WHITE}| ${BRIGHT_BLACK}26. ${BRIGHT_CYAN}Wifi         ${WHITE>
+        ${WHITE}| ${BRIGHT_BLACK}07. ${BRIGHT_CYAN}Crypto       ${WHITE}| ${BRIGHT_BLACK}17. ${BRIGHT_CYAN}Pinterest    ${WHITE}|                  |
+        ${WHITE}| ${BRIGHT_BLACK}08. ${BRIGHT_CYAN}Microsoft    ${WHITE}| ${BRIGHT_BLACK}18. ${BRIGHT_CYAN}Discord      ${WHITE}|                  |
+        ${WHITE}| ${BRIGHT_BLACK}09. ${BRIGHT_CYAN}Netflix      ${WHITE}| ${BRIGHT_BLACK}19. ${BRIGHT_CYAN}Reddit       ${WHITE}|                  |
+        ${WHITE}| ${BRIGHT_BLACK}10. ${BRIGHT_CYAN}Paypal       ${WHITE}| ${BRIGHT_BLACK}20. ${BRIGHT_CYAN}Messenger    ${WHITE}|                  |
 
-                ${WHITE}| ${BRIGHT_BLACK}99. ${BRIGHT_CYAN}About        ${WHITE}| ${BRIGHT_BLACK}0. ${BRIGHT_CYAN}Exit          ${WHITE}|
-        EOF
+        ${WHITE}| ${BRIGHT_BLACK}99. ${BRIGHT_CYAN}About        ${WHITE}| ${BRIGHT_BLACK}0. ${BRIGHT_CYAN}Exit          ${WHITE}|
+
+	EOF
 
 	echo
 	read -p "${MAGENTA}Select an option:"
