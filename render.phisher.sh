@@ -209,16 +209,15 @@ kill_pid() {
 }
 
 # Check for new update
-# Check for new update
 check_update() {
   local release_url='https://api.github.com/repos/render437/render.phisher/releases/latest'
   local ua='render-phisher-updater/1.0 (+https://example.com)'
   local tmpfile new_version tarball_url
 
-  # prerequisites check
+  # Prerequisites check
   for cmd in curl tar mktemp awk grep; do
     command -v "$cmd" >/dev/null 2>&1 || {
-      echo "[!] required command '$cmd' not found"
+      echo "[!] Required command '$cmd' not found"
       return 1
     }
   done
@@ -247,14 +246,14 @@ check_update() {
 
   # --- Compare versions ---
   if [[ "$new_version" != "$__version__" ]]; then
-    echo -e "${ORANGE}update found${WHITE}"
+    echo -e "${ORANGE}Update found${WHITE}"
     sleep 1
     echo -ne "\n${BRIGHT_GREEN} Downloading Update..."
 
     tmpfile=$(mktemp /tmp/render.phisher.XXXXXX.tar.gz) \
       || { echo "[!] mktemp failed"; return 1; }
 
-    # download safely with retries
+    # Download safely with retries
     if ! curl --fail --show-error --retry 3 --retry-delay 2 -L \
       -A "$ua" -o "$tmpfile" "$tarball_url"; then
       echo -e "\n${RED} Error occurred while downloading.${WHITE}"
@@ -262,14 +261,14 @@ check_update() {
       return 1
     fi
 
-    # ensure BASE_DIR exists
+    # Ensure BASE_DIR exists
     if [ ! -d "$BASE_DIR" ] && ! mkdir -p "$BASE_DIR"; then
       echo -e "\n${RED} Cannot create BASE_DIR: $BASE_DIR${WHITE}"
       rm -f "$tmpfile"
       return 1
     fi
 
-    # extract safely
+    # Extract safely
     if ! tar -xzf "$tmpfile" -C "$BASE_DIR" --strip-components=1 >/dev/null 2>&1; then
       echo -e "\n\n${RED} Error occurred while extracting.${WHITE}"
       rm -f "$tmpfile"
@@ -283,12 +282,11 @@ check_update() {
     return 0
 
   else
-    echo -e "${GREEN}up to date${WHITE}"
+    echo -e "${GREEN}Up to date${WHITE}"
     sleep .5
     return 0
   fi
 }
-
 
 ## Check Internet Status
 check_status() {
