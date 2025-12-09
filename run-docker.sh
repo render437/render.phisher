@@ -2,6 +2,12 @@
 
 # make a pull request cause idk how to do this at all
 
+if docker ps -aq -f name="${CONTAINER}" | grep -q .; then
+    echo "Removing existing container ${CONTAINER}..."
+    docker stop "${CONTAINER}" 2>/dev/null # Stop the container if it's running
+    docker rm "${CONTAINER}" 2>/dev/null   # Remove the container
+fi
+
 BASE_DIR=$(realpath "$(dirname "$BASH_SOURCE")")
 if [[ ! -d "$BASE_DIR/auth" ]]; then
     echo "Creating Auth Directory.."
