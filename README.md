@@ -8,13 +8,13 @@
   <a href="https://github.com/render437/render.phisher/blob/main/LICENSE">
     <img title="License" src="https://img.shields.io/badge/License-GPL_3.0-orange?style=for-the-badge&logo=gnu"></a>
   <a href="https://github.com/render437/render.phisher/stargazers">
-    <img title="Stars" src="https://img.shields.io/badge/Stars-0-yellow?style=for-the-badge&logo=github"></a>
+    <img title="Stars" src="https://img.shields.io/github/stars/render437/render.phisher?style=for-the-badge&logo=github&color=yellow"></a>
    <a href="https://github.com/render437/render.phisher/issues">
-    <img title="Issues" src="https://img.shields.io/badge/Issues-0-purple?style=for-the-badge&logo=github"></a>
+    <img title="Issues" src="https://img.shields.io/github/issues-raw/render437/render.phisher?style=for-the-badge&logo=github&color=purple&label=Issues"></a>
    <a href="https://github.com/render437/render.phisher/network/members">
-    <img title="FOrks" src="https://img.shields.io/badge/Forks-0-magenta?style=for-the-badge&logo=github"></a>
+    <img title="Forks" src="https://img.shields.io/github/forks/render437/render.phisher?style=for-the-badge&logo=github&color=magenta"></a>
    <a href="https://github.com/render437/render.phisher/pulls">
-     <img title="Pull Requests" src="https://img.shields.io/badge/Pull Requests-0-darkblue?style=for-the-badge&logo=github"></a>
+     <img title="Pull Requests" src="https://img.shields.io/github/issues-pr-raw/render437/render.phisher?style=for-the-badge&logo=github&color=darkblue&label=Pull%20Requests"></a>
 </p>
 
 <p align="left">
@@ -23,6 +23,7 @@
   <img src="https://img.shields.io/badge/Maintained%3F-Yes-lightblue?style=flat-square">
   <img src="https://img.shields.io/badge/Written%20In-Bash-darkcyan?style=flat-square">
 </p>
+
 
 
 <p align="left"><b>A beginner friendly, simple automated phishing tool with 25+ templates.</b></p>
@@ -107,9 +108,10 @@
 ### Installation (Termux)
 You can easily install render.phisher in Termux by using tur-repo
 ```
-$ pkg install tur-repo
-$ pkg install render.phisher
-$ render.phisher
+$ git clone https://github.com/render437/render.phisher
+$ cd render.phisher
+$ chmod +x render.phisher
+$ ./render.phisher
 ```
 
 ---
