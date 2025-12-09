@@ -33,7 +33,7 @@ Architecture: ${_ARCH}
 Maintainer: @render437
 Depends: ${_depend}
 Homepage: https://github.com/render437/render.phisher
-Description: An automated phishing tool with 10+ templates. This Tool is made for educational purpose only !
+Description: An automated phishing tool with 25+ templates. This Tool is made for educational purpose only !
 CONTROL_EOF
 
 cat <<- PRERM_EOF > ./build_env/DEBIAN/prerm
