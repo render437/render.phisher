@@ -52,29 +52,6 @@ Include the following:
 
 ---
 
-## 📁 Project Structure
-General layout for contributors:
-
-render.phisher/
-├── Dockerfile
-├── legal
-│   ├── CODE_OF_CONDUCT.md
-│   ├── COPYRIGHT.md
-│   ├── DISCLAIMER.md
-│   ├── RULESET.json
-│   └── SECURITY.md
-├── LICENSE
-├── make-deb.sh
-├── ngrok-setup.md
-├── README.md
-├── render.phisher.sh
-├── run-docker.sh
-└── scripts
-    └── launch.sh
-
-
----
-
 ## 📝 Coding Standards
 
 ### Bash Guidelines
