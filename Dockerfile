@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM ubuntu:latest
 LABEL MAINTAINER="https://github.com/render437/render.phisher"
 WORKDIR /render.phisher/
 ADD . /render.phisher
