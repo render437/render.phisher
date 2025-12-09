@@ -209,6 +209,7 @@ kill_pid() {
 }
 
 # Check for new update
+# Check for new update
 check_update() {
   local release_url='https://api.github.com/repos/render437/render.phisher/releases/latest'
   local ua='render-phisher-updater/1.0 (+https://example.com)'
@@ -287,6 +288,7 @@ check_update() {
     return 0
   fi
 }
+
 
 ## Check Internet Status
 check_status() {
