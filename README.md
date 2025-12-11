@@ -4,7 +4,7 @@
 
 <p align="left">
   <a href="https://github.com/render437/render.phisher">
-    <img title="Version" src="https://img.shields.io/badge/Version-1.2-green?style=for-the-badge&logo=github"></a>
+    <img title="Version" src="https://img.shields.io/badge/Version-1.1.5-green?style=for-the-badge&logo=github"></a>
   <a href="https://github.com/render437/render.phisher/blob/main/LICENSE">
     <img title="License" src="https://img.shields.io/badge/License-GPL_3.0-orange?style=for-the-badge&logo=gnu"></a>
   <a href="https://github.com/render437/render.phisher/stargazers">
