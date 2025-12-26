@@ -2,7 +2,7 @@
 
 ##   render.phisher : 	Simple Automated Phishing Tool
 ##   Author 		: 	render437
-##   Version 		: 	1.2.1
+##   Version 		: 	1.2.2
 ##   Github 		: 	https://github.com/render437/render.phisher
 
 
@@ -79,7 +79,7 @@
 ##      Copyright (C) 2025  RENDER437 (https://github.com/render437)
 
 
-__version__="1.2.1"
+__version__="1.2.2"
 
 ## DEFAULT HOST & PORT
 HOST='127.0.0.1'
