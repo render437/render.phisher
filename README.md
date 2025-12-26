@@ -4,7 +4,7 @@
 
 <p align="left">
   <a href="https://github.com/render437/render.phisher">
-    <img title="Version" src="https://img.shields.io/badge/Version-1.2.1-green?style=for-the-badge&logo=github"></a>
+    <img title="Version" src="https://img.shields.io/badge/Version-1.2.2-green?style=for-the-badge&logo=github"></a>
   <a href="https://github.com/render437/render.phisher/blob/main/LICENSE">
     <img title="License" src="https://img.shields.io/badge/License-GPL_3.0-orange?style=for-the-badge&logo=gnu"></a>
   <a href="https://github.com/render437/render.phisher/stargazers">
@@ -105,6 +105,18 @@
 
 ---
 
+### Uninstall Process
+
+- Just paste this command into your terminal -
+  ```
+  cd; sudo rm -r render.phisher
+  ```
+
+---
+
+<details>
+<summary><strong>📦 Other Installation Methods</strong></summary>
+
 ### Installation (Termux)
 You can easily install render.phisher in Termux by using tur-repo
 ```
@@ -133,15 +145,6 @@ $ ./render.phisher
 
 ---
 
-### Uninstall Process
-
-- Just paste this command into your terminal -
-  ```
-  cd; sudo rm -r render.phisher
-  ```
-
----
-
 ### Run on Docker
 
 - Docker Image Mirror:
@@ -166,6 +169,8 @@ $ ./render.phisher
   docker run --rm -ti render437/render.phisher
   ```
   - Remember to mount the `auth` directory.
+
+</details>
 
 ---
 
