@@ -79,7 +79,7 @@
 ##      Copyright (C) 2025  RENDER437 (https://github.com/render437)
 
 
-__version__="1.2.2"
+__version__="1.2.3"
 
 ## DEFAULT HOST & PORT
 HOST='127.0.0.1'
