@@ -13,8 +13,8 @@ jobs:
         with:
           webhook_url: ${{ secrets.WEBHOOK_URL }}
           color: "2105893"
-          username: "Release Changelog"
-          avatar_url: "https://cdn.discordapp.com/avatars/487431320314576937/bd64361e4ba6313d561d54e78c9e7171.png"
+          username: "GitHub Release Log"
+          avatar_url: "https://images.guns.lol/6c68ccf4187e186e14f5455cdefdbe8e6124f8c9/AlfGcr.jpg"
           content: "||<@&1468659063817502944>||"
           footer_title: "Changelog"
           reduce_headings: true
