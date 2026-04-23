@@ -59,6 +59,7 @@
 | **Tiktok**      | Working                        | **Xbox**        | Working                          |
 | **Snapchat**    | Working                        | **Verizon**     | Broken                           |
 | **Spotify**     | Working                        | **Wifi**        | Working                          |
+| **Yahoo**       | Working                        |
 
 ***- More to be added in the future!***
 
