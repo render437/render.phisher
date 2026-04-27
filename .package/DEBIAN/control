@@ -1,0 +1,8 @@
+Package: render.phisher
+Version: 1.2.4
+Installed-Size: 71456
+Architecture: all
+Maintainer: @render437
+Depends: php, wget, git, curl
+Homepage: https://github.com/render437/render.phisher
+Description: A simple automated phishing tool with 25+ templates! Made for educational purposes only!
