@@ -4,7 +4,7 @@
 
 <p align="left">
   <a href="https://github.com/render437/render.phisher">
-    <img title="Version" src="https://img.shields.io/badge/Version-1.2.3-green?style=for-the-badge&logo=github"></a>
+    <img title="Version" src="https://img.shields.io/badge/Version-1.2.4-green?style=for-the-badge&logo=github"></a>
   <a href="https://github.com/render437/render.phisher/blob/main/LICENSE">
     <img title="License" src="https://img.shields.io/badge/License-GPL_3.0-orange?style=for-the-badge&logo=gnu"></a>
   <a href="https://github.com/render437/render.phisher/stargazers">
@@ -37,6 +37,7 @@
 - Multiple tunneling options
   - Localhost
   - Cloudflared
+  - Ngrok
 - Mask URL support(might not work)
 - Docker support
 
@@ -200,7 +201,7 @@ Thanks to these amazing people for helping me build and improve this project!
 | [KasRoudra](https://github.com/KasRoudra) | Implemented and configured Facebook OAuth login methods |
 | [TripleHat](https://github.com/TripleHat) | Configured Web Application Exploitation |
 | [Mr.Derek](https://github.com/E343IO) | Developed Link Shortener Infrastructure |
-| [alexbieber](https://github.com/alexbieber) | Inspirational Use of .package Files |
+| [alexbieber](https://github.com/alexbieber) | Helped with .package Files |
 
 ---
 
