@@ -200,6 +200,7 @@ Thanks to these amazing people for helping me build and improve this project!
 | [KasRoudra](https://github.com/KasRoudra) | Implemented and configured Facebook OAuth login methods |
 | [TripleHat](https://github.com/TripleHat) | Configured Web Application Exploitation |
 | [Mr.Derek](https://github.com/E343IO) | Developed Link Shortener Infrastructure |
+| [alexbieber](https://github.com/alexbieber) | Inspirational Use of .package Files |
 
 ---
 
