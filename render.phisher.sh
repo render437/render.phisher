@@ -1018,6 +1018,7 @@ main_menu() {
 			tunnel_menu;;
 		27)
 			website="yahoo"
+			mask='http://grab-mail-from-anyother-yahoo-account-free'
 			tunnel_menu;;
 		99)
 			about;;
